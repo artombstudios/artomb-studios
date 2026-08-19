@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#f7f4ee"
+    >
+
+    <title>Dashboard — Artomb Studios</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #f7f4ee;
+            --card: #fffdf9;
+            --text: #171717;
+            --muted: #77736c;
+            --border: rgba(23, 23, 23, .11);
+        }
+
+        body {
+            min-height: 100vh;
+
+            background: var(--bg);
+            color: var(--text);
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .admin-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+
+            height: 72px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 5vw;
+
+            background:
+                rgba(247, 244, 238, .94);
+
+            border-bottom:
+                1px solid var(--border);
+
+            backdrop-filter: blur(12px);
+        }
+
+        .brand {
+            text-decoration: none;
+            color: var(--text);
+
+            line-height: 1;
+        }
+
+        .brand-main {
+            display: block;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 21px;
+            letter-spacing: 3px;
+        }
+
+        .brand-sub {
+            display: block;
+
+            margin-top: 4px;
+
+            font-size: 7px;
+            letter-spacing: 4px;
+
+            opacity: .55;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .view-site {
+            color: var(--text);
+
+            text-decoration: none;
+
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+
+            padding: 11px 14px;
+
+            border: 1px solid var(--border);
+        }
+
+        .logout-button {
+            border: 0;
+
+            background: var(--text);
+            color: white;
+
+            padding: 12px 15px;
+
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .dashboard {
+            width: min(1200px, 90%);
+
+            margin: 0 auto;
+
+            padding:
+                70px 0 90px;
+        }
+
+        .dashboard-intro {
+            display: flex;
+
+            align-items: flex-end;
+            justify-content: space-between;
+
+            gap: 30px;
+
+            margin-bottom: 45px;
+        }
+
+        .eyebrow {
+            margin-bottom: 14px;
+
+            color: var(--muted);
+
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            max-width: 600px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size:
+                clamp(42px, 6vw, 70px);
+
+            font-weight: 400;
+
+            line-height: .98;
+
+            letter-spacing: -2px;
+        }
+
+        .intro-text {
+            max-width: 330px;
+
+            color: var(--muted);
+
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           STATS
+        ========================= */
+
+        .stats-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 1px;
+
+            margin-bottom: 55px;
+
+            background: var(--border);
+
+            border:
+                1px solid var(--border);
+        }
+
+        .stat-card {
+            min-height: 150px;
+
+            padding: 25px;
+
+            background: var(--card);
+        }
+
+        .stat-number {
+            display: block;
+
+            margin-bottom: 12px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 42px;
+            font-weight: 400;
+        }
+
+        .stat-label {
+            color: var(--muted);
+
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+
+        /* =========================
+           SECTION HEADER
+        ========================= */
+
+        .section-header {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 20px;
+        }
+
+        .section-header h2 {
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 30px;
+            font-weight: 400;
+        }
+
+        .section-label {
+            color: var(--muted);
+
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+
+        /* =========================
+           ARTWORK MANAGEMENT
+        ========================= */
+
+        .management-card {
+            background: var(--card);
+
+            border:
+                1px solid var(--border);
+        }
+
+        .management-top {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 22px;
+
+            border-bottom:
+                1px solid var(--border);
+        }
+
+        .management-top p {
+            color: var(--muted);
+
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .add-button {
+            flex-shrink: 0;
+
+            border: 0;
+
+            background: var(--text);
+            color: white;
+
+            padding: 14px 18px;
+
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+
+        /* =========================
+           EMPTY STATE
+        ========================= */
+
+        .empty-state {
+            padding: 75px 25px;
+
+            text-align: center;
+        }
+
+        .empty-symbol {
+            width: 60px;
+            height: 60px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin:
+                0 auto 22px;
+
+            border:
+                1px solid var(--border);
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 25px;
+        }
+
+        .empty-state h3 {
+            margin-bottom: 10px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 25px;
+            font-weight: 400;
+        }
+
+        .empty-state p {
+            max-width: 390px;
+
+            margin: 0 auto;
+
+            color: var(--muted);
+
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           QUICK ACTIONS
+        ========================= */
+
+        .quick-section {
+            margin-top: 60px;
+        }
+
+        .quick-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 12px;
+        }
+
+        .quick-card {
+            display: block;
+
+            padding: 24px;
+
+            color: var(--text);
+
+            text-decoration: none;
+
+            background: var(--card);
+
+            border:
+                1px solid var(--border);
+
+            transition:
+                transform .25s ease,
+                border-color .25s ease;
+        }
+
+        .quick-card:hover {
+            transform: translateY(-3px);
+
+            border-color:
+                rgba(23, 23, 23, .3);
+        }
+
+        .quick-number {
+            display: block;
+
+            margin-bottom: 30px;
+
+            color: var(--muted);
+
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        .quick-card h3 {
+            margin-bottom: 8px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 22px;
+            font-weight: 400;
+        }
+
+        .quick-card p {
+            color: var(--muted);
+
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .admin-footer {
+            width: min(1200px, 90%);
+
+            margin: 0 auto;
+
+            padding:
+                25px 0 35px;
+
+            border-top:
+                1px solid var(--border);
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            color: var(--muted);
+
+            font-size: 10px;
+            letter-spacing: 1px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .admin-header {
+                height: 65px;
+
+                padding: 0 5%;
+            }
+
+            .view-site {
+                display: none;
+            }
+
+            .dashboard {
+                width: 90%;
+
+                padding-top: 55px;
+            }
+
+            .dashboard-intro {
+                display: block;
+
+                margin-bottom: 35px;
+            }
+
+            h1 {
+                font-size: 46px;
+
+                letter-spacing: -1.5px;
+
+                margin-bottom: 20px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-card {
+                min-height: 115px;
+            }
+
+            .management-top {
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+            .add-button {
+                width: 100%;
+            }
+
+            .quick-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-footer {
+                flex-direction: column;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="admin-header">
+
+        <a
+            href="../index.html"
+            class="brand">
+
+            <span class="brand-main">
+                ARTOMB
+            </span>
+
+            <span class="brand-sub">
+                STUDIOS
+            </span>
+
+        </a>
+
+
+        <div class="header-actions">
+
+            <a
+                href="../index.html"
+                class="view-site">
+
+                View Website ↗
+
+            </a>
+
+
+            <button
+                class="logout-button"
+                id="logoutButton">
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================
+         DASHBOARD
+    ========================== -->
+
+    <main class="dashboard">
+
+        <section class="dashboard-intro">
+
+            <div>
+
+                <p class="eyebrow">
+                    Private Studio
+                </p>
+
+                <h1>
+                    Welcome<br>
+                    back.
+                </h1>
+
+            </div>
+
+
+            <p class="intro-text">
+                Manage your Artomb Studios collection,
+                update artwork and control what appears
+                on the public website.
+            </p>
+
+        </section>
+
+
+
+        <!-- =========================
+             STATS
+        ========================== -->
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+
+                <span
+                    class="stat-number"
+                    id="artworkCount">
+
+                    0
+
+                </span>
+
+                <span class="stat-label">
+                    Total Artworks
+                </span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span
+                    class="stat-number"
+                    id="publishedCount">
+
+                    0
+
+                </span>
+
+                <span class="stat-label">
+                    Published
+                </span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span
+                    class="stat-number"
+                    id="draftCount">
+
+                    0
+
+                </span>
+
+                <span class="stat-label">
+                    Drafts
+                </span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             ARTWORK MANAGEMENT
+        ========================== -->
+
+        <section>
+
+            <div class="section-header">
+
+                <h2>
+                    Artwork
+                </h2>
+
+                <span class="section-label">
+                    Collection
+                </span>
+
+            </div>
+
+
+            <div class="management-card">
+
+                <div class="management-top">
+
+                    <p>
+                        Your artwork collection will appear
+                        here once the management system is
+                        connected.
+                    </p>
+
+
+                    <button
+                        class="add-button"
+                        id="addArtworkButton">
+
+                        + Add Artwork
+
+                    </button>
+
+                </div>
+
+
+                <div class="empty-state">
+
+                    <div class="empty-symbol">
+                        +
+                    </div>
+
+                    <h3>
+                        No artworks yet
+                    </h3>
+
+                    <p>
+                        Add your first artwork to begin
+                        building the Artomb Studios gallery.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             QUICK ACTIONS
+        ========================== -->
+
+        <section class="quick-section">
+
+            <div class="section-header">
+
+                <h2>
+                    Quick Actions
+                </h2>
+
+                <span class="section-label">
+                    Studio Tools
+                </span>
+
+            </div>
+
+
+            <div class="quick-grid">
+
+                <a
+                    href="#"
+                    class="quick-card">
+
+                    <span class="quick-number">
+                        01
+                    </span>
+
+                    <h3>
+                        Add Artwork
+                    </h3>
+
+                    <p>
+                        Create a new artwork entry
+                        for your collection.
+                    </p>
+
+                </a>
+
+
+                <a
+                    href="#"
+                    class="quick-card">
+
+                    <span class="quick-number">
+                        02
+                    </span>
+
+                    <h3>
+                        Gallery
+                    </h3>
+
+                    <p>
+                        Manage which artworks appear
+                        in the public gallery.
+                    </p>
+
+                </a>
+
+
+                <a
+                    href="../index.html#contact"
+                    class="quick-card">
+
+                    <span class="quick-number">
+                        03
+                    </span>
+
+                    <h3>
+                        View Website
+                    </h3>
+
+                    <p>
+                        Open the public Artomb Studios
+                        website.
+                    </p>
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="admin-footer">
+
+        <span>
+            © 2026 Artomb Studios
+        </span>
+
+        <span>
+            Private Studio Dashboard
+        </span>
+
+    </footer>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        /*
+         * TEMPORARY DASHBOARD UI
+         *
+         * The artwork database and secure
+         * authentication will be connected later.
+         */
+
+
+        const logoutButton =
+            document.getElementById(
+                "logoutButton"
+            );
+
+
+        logoutButton.addEventListener(
+            "click",
+            function () {
+
+                window.location.href =
+                    "login.html";
+
+            }
+        );
+
+
+        const addArtworkButton =
+            document.getElementById(
+                "addArtworkButton"
+            );
+
+
+        addArtworkButton.addEventListener(
+            "click",
+            function () {
+
+                alert(
+                    "Artwork management will be connected in the next step."
+                );
+
+            }
+        );
+
+    </script>
+
+</body>
+  </html>
