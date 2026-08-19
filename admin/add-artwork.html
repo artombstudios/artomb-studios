@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color"
+          content="#f7f4ee">
+
+    <title>Add Artwork — Artomb Studios</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #f7f4ee;
+            --card: #fffdf9;
+            --text: #171717;
+            --muted: #77736c;
+            --border: rgba(23, 23, 23, .12);
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg);
+            color: var(--text);
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        textarea,
+        select {
+            font: inherit;
+        }
+
+        /* HEADER */
+
+        .header {
+            height: 72px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 5vw;
+
+            border-bottom: 1px solid var(--border);
+
+            background:
+                rgba(247, 244, 238, .95);
+
+            position: sticky;
+            top: 0;
+            z-index: 10;
+
+            backdrop-filter: blur(12px);
+        }
+
+        .brand-main {
+            display: block;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 21px;
+            letter-spacing: 3px;
+        }
+
+        .brand-sub {
+            display: block;
+
+            margin-top: 4px;
+
+            font-size: 7px;
+            letter-spacing: 4px;
+
+            opacity: .55;
+        }
+
+        .back-link {
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+
+            color: var(--muted);
+        }
+
+        /* MAIN */
+
+        .page {
+            width: min(1100px, 90%);
+            margin: auto;
+
+            padding:
+                65px 0 90px;
+        }
+
+        .intro {
+            margin-bottom: 40px;
+        }
+
+        .eyebrow {
+            margin-bottom: 14px;
+
+            color: var(--muted);
+
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size:
+                clamp(42px, 7vw, 68px);
+
+            font-weight: 400;
+            line-height: .98;
+
+            letter-spacing: -2px;
+        }
+
+        .intro p:last-child {
+            max-width: 520px;
+
+            margin-top: 18px;
+
+            color: var(--muted);
+
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* FORM */
+
+        .form-layout {
+            display: grid;
+
+            grid-template-columns:
+                1.1fr .9fr;
+
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            padding: 28px;
+        }
+
+        .card-title {
+            margin-bottom: 25px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 25px;
+            font-weight: 400;
+        }
+
+        .field {
+            margin-bottom: 22px;
+        }
+
+        label {
+            display: block;
+
+            margin-bottom: 9px;
+
+            font-size: 10px;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+
+            color: #555;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+
+            border: 1px solid #d8d4cc;
+
+            background: #f7f4ee;
+
+            color: var(--text);
+
+            outline: none;
+
+            padding: 14px;
+
+            transition:
+                border-color .2s ease,
+                box-shadow .2s ease;
+        }
+
+        input {
+            height: 50px;
+        }
+
+        textarea {
+            min-height: 135px;
+
+            resize: vertical;
+
+            line-height: 1.6;
+        }
+
+        select {
+            height: 50px;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #171717;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(23, 23, 23, .05);
+        }
+
+        /* IMAGE */
+
+        .upload-box {
+            min-height: 250px;
+
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            border: 1px dashed #bcb8b0;
+
+            background: #f7f4ee;
+
+            padding: 25px;
+
+            cursor: pointer;
+
+            transition:
+                border-color .2s ease,
+                background .2s ease;
+        }
+
+        .upload-box:hover {
+            border-color: #171717;
+            background: #f3efe8;
+        }
+
+        .upload-icon {
+            width: 52px;
+            height: 52px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid var(--border);
+
+            margin-bottom: 18px;
+
+            font-size: 23px;
+        }
+
+        .upload-box strong {
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 20px;
+            font-weight: 400;
+        }
+
+        .upload-box span {
+            color: var(--muted);
+
+            font-size: 11px;
+            line-height: 1.6;
+        }
+
+        #artworkImage {
+            display: none;
+        }
+
+        .preview {
+            display: none;
+
+            width: 100%;
+
+            margin-top: 15px;
+        }
+
+        .preview img {
+            display: block;
+
+            width: 100%;
+            max-height: 360px;
+
+            object-fit: contain;
+
+            background: #eeeae2;
+        }
+
+        /* STATUS */
+
+        .status-options {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 10px;
+        }
+
+        .status-option {
+            position: relative;
+        }
+
+        .status-option input {
+            position: absolute;
+
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .status-option label {
+            height: 50px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin: 0;
+
+            border: 1px solid #d8d4cc;
+
+            cursor: pointer;
+
+            color: var(--muted);
+
+            transition:
+                background .2s ease,
+                color .2s ease,
+                border-color .2s ease;
+        }
+
+        .status-option input:checked + label {
+            background: var(--text);
+            color: white;
+            border-color: var(--text);
+        }
+
+        /* ACTIONS */
+
+        .actions {
+            display: flex;
+
+            justify-content: flex-end;
+
+            gap: 10px;
+
+            margin-top: 25px;
+        }
+
+        .button {
+            min-height: 50px;
+
+            padding: 0 22px;
+
+            border: 1px solid var(--text);
+
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+
+            cursor: pointer;
+        }
+
+        .button-secondary {
+            background: transparent;
+            color: var(--text);
+        }
+
+        .button-primary {
+            background: var(--text);
+            color: white;
+        }
+
+        /* MESSAGE */
+
+        .message {
+            display: none;
+
+            margin-top: 20px;
+
+            padding: 14px;
+
+            border: 1px solid #b8d2bd;
+
+            background: #f3faf4;
+
+            color: #38603e;
+
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 760px) {
+
+            .header {
+                height: 65px;
+            }
+
+            .page {
+                padding-top: 50px;
+            }
+
+            .form-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 22px;
+            }
+
+            .actions {
+                flex-direction: column-reverse;
+            }
+
+            .button {
+                width: 100%;
+            }
+
+        }
+
+        @media (max-width: 420px) {
+
+            .back-link {
+                font-size: 9px;
+            }
+
+            h1 {
+                font-size: 43px;
+            }
+
+            .status-options {
+                grid-template-columns: 1fr;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <a
+            href="dashboard.html"
+            aria-label="Back to dashboard">
+
+            <span class="brand-main">
+                ARTOMB
+            </span>
+
+            <span class="brand-sub">
+                STUDIOS
+            </span>
+
+        </a>
+
+
+        <a
+            href="dashboard.html"
+            class="back-link">
+
+            ← Dashboard
+
+        </a>
+
+    </header>
+
+
+    <!-- MAIN -->
+
+    <main class="page">
+
+        <section class="intro">
+
+            <p class="eyebrow">
+                Studio Collection
+            </p>
+
+            <h1>
+                Add new<br>
+                artwork.
+            </h1>
+
+            <p>
+                Add the details of your artwork below.
+                The collection system will later publish
+                this artwork to the public Artomb Studios
+                gallery.
+            </p>
+
+        </section>
+
+
+        <form id="artworkForm">
+
+            <div class="form-layout">
+
+                <!-- LEFT -->
+
+                <section class="card">
+
+                    <h2 class="card-title">
+                        Artwork Details
+                    </h2>
+
+
+                    <div class="field">
+
+                        <label for="title">
+                            Artwork Title
+                        </label>
+
+                        <input
+                            type="text"
+                            id="title"
+                            placeholder="e.g. Silent Expression"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label for="medium">
+                            Medium
+                        </label>
+
+                        <input
+                            type="text"
+                            id="medium"
+                            placeholder="e.g. Graphite"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label for="category">
+                            Category
+                        </label>
+
+                        <select
+                            id="category"
+                            required>
+
+                            <option value="">
+                                Select category
+                            </option>
+
+                            <option value="portrait">
+                                Portrait
+                            </option>
+
+                            <option value="charcoal">
+                                Charcoal
+                            </option>
+
+                            <option value="graphite">
+                                Graphite
+                            </option>
+
+                            <option value="couple">
+                                Couple Portrait
+                            </option>
+
+                            <option value="pet">
+                                Pet Portrait
+                            </option>
+
+                            <option value="custom">
+                                Custom Artwork
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label for="description">
+                            Description
+                        </label>
+
+                        <textarea
+                            id="description"
+                            placeholder="Tell the story behind this artwork..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Publication Status
+                        </label>
+
+                        <div class="status-options">
+
+                            <div class="status-option">
+
+                                <input
+                                    type="radio"
+                                    id="published"
+                                    name="status"
+                                    value="published"
+                                    checked
+                                >
+
+                                <label for="published">
+                                    Published
+                                </label>
+
+                            </div>
+
+
+                            <div class="status-option">
+
+                                <input
+                                    type="radio"
+                                    id="draft"
+                                    name="status"
+                                    value="draft"
+                                >
+
+                                <label for="draft">
+                                    Draft
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- RIGHT -->
+
+                <section class="card">
+
+                    <h2 class="card-title">
+                        Artwork Image
+                    </h2>
+
+
+                    <label
+                        for="artworkImage"
+                        class="upload-box">
+
+                        <div class="upload-icon">
+                            +
+                        </div>
+
+                        <strong>
+                            Choose artwork
+                        </strong>
+
+                        <span>
+                            JPG, PNG or WEBP<br>
+                            Recommended: high resolution
+                        </span>
+
+                    </label>
+
+
+                    <input
+                        type="file"
+                        id="artworkImage"
+                        accept="image/jpeg,image/png,image/webp"
+                    >
+
+
+                    <div
+                        class="preview"
+                        id="preview">
+
+                        <img
+                            id="previewImage"
+                            alt="Artwork preview"
+                        >
+
+                    </div>
+
+
+                    <div
+                        class="message"
+                        id="message">
+
+                        Artwork details are ready.
+                        Database connection will be added
+                        in the next stage.
+
+                    </div>
+
+                </section>
+
+            </div>
+
+
+            <!-- ACTIONS -->
+
+            <div class="actions">
+
+                <button
+                    type="button"
+                    class="button button-secondary"
+                    id="cancelButton">
+
+                    Cancel
+
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="button button-primary">
+
+                    Save Artwork
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </main>
+
+
+    <script>
+
+        const form =
+            document.getElementById("artworkForm");
+
+        const imageInput =
+            document.getElementById("artworkImage");
+
+        const preview =
+            document.getElementById("preview");
+
+        const previewImage =
+            document.getElementById("previewImage");
+
+        const message =
+            document.getElementById("message");
+
+        const cancelButton =
+            document.getElementById("cancelButton");
+
+
+        /*
+         * IMAGE PREVIEW
+         */
+
+        imageInput.addEventListener(
+            "change",
+            function () {
+
+                const file =
+                    this.files[0];
+
+                if (!file) {
+                    return;
+                }
+
+                const allowedTypes = [
+                    "image/jpeg",
+                    "image/png",
+                    "image/webp"
+                ];
+
+                if (
+                    !allowedTypes.includes(
+                        file.type
+                    )
+                ) {
+
+                    alert(
+                        "Please choose a JPG, PNG or WEBP image."
+                    );
+
+                    this.value = "";
+
+                    return;
+                }
+
+
+                const reader =
+                    new FileReader();
+
+
+                reader.onload =
+                    function (event) {
+
+                        previewImage.src =
+                            event.target.result;
+
+                        preview.style.display =
+                            "block";
+
+                    };
+
+
+                reader.readAsDataURL(file);
+
+            }
+        );
+
+
+        /*
+         * SAVE — TEMPORARY
+         */
+
+        form.addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+
+                const title =
+                    document
+                        .getElementById("title")
+                        .value
+                        .trim();
+
+
+                if (!title) {
+
+                    alert(
+                        "Please enter an artwork title."
+                    );
+
+                    return;
+                }
+
+
+                message.style.display =
+                    "block";
+
+                message.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+            }
+        );
+
+
+        /*
+         * CANCEL
+         */
+
+        cancelButton.addEventListener(
+            "click",
+            function () {
+
+                window.location.href =
+                    "dashboard.html";
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>
