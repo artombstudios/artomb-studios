@@ -32,7 +32,6 @@
 
         body {
             min-height: 100vh;
-
             background: var(--bg);
             color: var(--text);
 
@@ -43,20 +42,13 @@
         }
 
         button,
-        input,
-        select,
-        textarea {
+        input {
             font: inherit;
         }
 
         button {
             cursor: pointer;
         }
-
-
-        /* =========================
-           HEADER
-        ========================= */
 
         .admin-header {
             position: sticky;
@@ -71,8 +63,7 @@
 
             padding: 0 5vw;
 
-            background:
-                rgba(247, 244, 238, .94);
+            background: rgba(247, 244, 238, .94);
 
             border-bottom:
                 1px solid var(--border);
@@ -83,7 +74,6 @@
         .brand {
             text-decoration: none;
             color: var(--text);
-
             line-height: 1;
         }
 
@@ -118,7 +108,6 @@
 
         .view-site {
             color: var(--text);
-
             text-decoration: none;
 
             font-size: 10px;
@@ -143,18 +132,12 @@
             text-transform: uppercase;
         }
 
-
-        /* =========================
-           MAIN
-        ========================= */
-
         .dashboard {
             width: min(1200px, 90%);
 
             margin: 0 auto;
 
-            padding:
-                70px 0 90px;
+            padding: 70px 0 90px;
         }
 
         .dashboard-intro {
@@ -205,11 +188,6 @@
             line-height: 1.7;
         }
 
-
-        /* =========================
-           STATS
-        ========================= */
-
         .stats-grid {
             display: grid;
 
@@ -256,11 +234,6 @@
             text-transform: uppercase;
         }
 
-
-        /* =========================
-           SECTION HEADER
-        ========================= */
-
         .section-header {
             display: flex;
 
@@ -287,11 +260,6 @@
             letter-spacing: 2px;
             text-transform: uppercase;
         }
-
-
-        /* =========================
-           ARTWORK MANAGEMENT
-        ========================= */
 
         .management-card {
             background: var(--card);
@@ -336,11 +304,7 @@
             text-transform: uppercase;
         }
 
-
-        /* =========================
-           EMPTY STATE
-        ========================= */
-
+        .loading-state,
         .empty-state {
             padding: 75px 25px;
 
@@ -355,8 +319,7 @@
             align-items: center;
             justify-content: center;
 
-            margin:
-                0 auto 22px;
+            margin: 0 auto 22px;
 
             border:
                 1px solid var(--border);
@@ -392,10 +355,70 @@
             line-height: 1.7;
         }
 
+        .artwork-list {
+            display: grid;
 
-        /* =========================
-           QUICK ACTIONS
-        ========================= */
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 1px;
+
+            background: var(--border);
+        }
+
+        .artwork-item {
+            padding: 20px;
+
+            background: var(--card);
+        }
+
+        .artwork-image {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+
+            object-fit: cover;
+
+            display: block;
+
+            margin-bottom: 18px;
+
+            background: #eeeae2;
+        }
+
+        .artwork-title {
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 21px;
+            font-weight: 400;
+
+            margin-bottom: 7px;
+        }
+
+        .artwork-category {
+            color: var(--muted);
+
+            font-size: 10px;
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+        }
+
+        .artwork-status {
+            display: inline-block;
+
+            margin-top: 12px;
+
+            padding: 6px 9px;
+
+            border: 1px solid var(--border);
+
+            font-size: 9px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
 
         .quick-section {
             margin-top: 60px;
@@ -466,18 +489,12 @@
             line-height: 1.6;
         }
 
-
-        /* =========================
-           FOOTER
-        ========================= */
-
         .admin-footer {
             width: min(1200px, 90%);
 
             margin: 0 auto;
 
-            padding:
-                25px 0 35px;
+            padding: 25px 0 35px;
 
             border-top:
                 1px solid var(--border);
@@ -494,16 +511,27 @@
             letter-spacing: 1px;
         }
 
+        .error-box {
+            display: none;
 
-        /* =========================
-           MOBILE
-        ========================= */
+            margin-bottom: 25px;
+
+            padding: 14px;
+
+            background: #fff4f4;
+
+            border: 1px solid #e1bebe;
+
+            color: #9b3d3d;
+
+            font-size: 12px;
+            line-height: 1.5;
+        }
 
         @media (max-width: 700px) {
 
             .admin-header {
                 height: 65px;
-
                 padding: 0 5%;
             }
 
@@ -513,21 +541,17 @@
 
             .dashboard {
                 width: 90%;
-
                 padding-top: 55px;
             }
 
             .dashboard-intro {
                 display: block;
-
                 margin-bottom: 35px;
             }
 
             h1 {
                 font-size: 46px;
-
                 letter-spacing: -1.5px;
-
                 margin-bottom: 20px;
             }
 
@@ -541,12 +565,15 @@
 
             .management-top {
                 align-items: flex-start;
-
                 flex-direction: column;
             }
 
             .add-button {
                 width: 100%;
+            }
+
+            .artwork-list {
+                grid-template-columns: 1fr;
             }
 
             .quick-grid {
@@ -557,192 +584,453 @@
                 flex-direction: column;
             }
         }
-
     </style>
 </head>
 
-
 <body>
 
-    <!-- =========================
-         HEADER
-    ========================== -->
+<header class="admin-header">
 
-    <header class="admin-header">
+    <a href="../index.html" class="brand">
+
+        <span class="brand-main">
+            ARTOMB
+        </span>
+
+        <span class="brand-sub">
+            STUDIOS
+        </span>
+
+    </a>
+
+    <div class="header-actions">
 
         <a
             href="../index.html"
-            class="brand">
+            class="view-site">
 
-            <span class="brand-main">
-                ARTOMB
-            </span>
-
-            <span class="brand-sub">
-                STUDIOS
-            </span>
+            View Website ↗
 
         </a>
 
+        <button
+            class="logout-button"
+            id="logoutButton">
 
-        <div class="header-actions">
+            Logout
+
+        </button>
+
+    </div>
+
+</header>
+
+
+<main class="dashboard">
+
+    <div
+        class="error-box"
+        id="errorBox">
+    </div>
+
+
+    <section class="dashboard-intro">
+
+        <div>
+
+            <p class="eyebrow">
+                Private Studio
+            </p>
+
+            <h1>
+                Welcome<br>
+                back.
+            </h1>
+
+        </div>
+
+        <p class="intro-text">
+            Manage your Artomb Studios collection,
+            update artwork and control what appears
+            on the public website.
+        </p>
+
+    </section>
+
+
+    <section class="stats-grid">
+
+        <div class="stat-card">
+
+            <span
+                class="stat-number"
+                id="artworkCount">
+
+                0
+
+            </span>
+
+            <span class="stat-label">
+                Total Artworks
+            </span>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span
+                class="stat-number"
+                id="publishedCount">
+
+                0
+
+            </span>
+
+            <span class="stat-label">
+                Featured
+            </span>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span
+                class="stat-number"
+                id="draftCount">
+
+                0
+
+            </span>
+
+            <span class="stat-label">
+                Other Artworks
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <div class="section-header">
+
+            <h2>
+                Artwork
+            </h2>
+
+            <span class="section-label">
+                Collection
+            </span>
+
+        </div>
+
+
+        <div class="management-card">
+
+            <div class="management-top">
+
+                <p>
+                    Your artwork collection is connected
+                    directly to the Artomb Studios database.
+                </p>
+
+                <button
+                    class="add-button"
+                    id="addArtworkButton">
+
+                    + Add Artwork
+
+                </button>
+
+            </div>
+
+
+            <div
+                id="artworkContainer">
+
+                <div class="loading-state">
+
+                    Loading artworks...
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="quick-section">
+
+        <div class="section-header">
+
+            <h2>
+                Quick Actions
+            </h2>
+
+            <span class="section-label">
+                Studio Tools
+            </span>
+
+        </div>
+
+
+        <div class="quick-grid">
 
             <a
-                href="../index.html"
-                class="view-site">
+                href="#"
+                class="quick-card"
+                id="quickAdd">
 
-                View Website ↗
+                <span class="quick-number">
+                    01
+                </span>
+
+                <h3>
+                    Add Artwork
+                </h3>
+
+                <p>
+                    Create a new artwork entry
+                    for your collection.
+                </p>
 
             </a>
 
 
-            <button
-                class="logout-button"
-                id="logoutButton">
+            <a
+                href="#"
+                class="quick-card"
+                onclick="loadArtworks(); return false;">
 
-                Logout
+                <span class="quick-number">
+                    02
+                </span>
 
-            </button>
+                <h3>
+                    Refresh Gallery
+                </h3>
+
+                <p>
+                    Reload the latest artwork
+                    data from Supabase.
+                </p>
+
+            </a>
+
+
+            <a
+                href="../index.html#contact"
+                class="quick-card">
+
+                <span class="quick-number">
+                    03
+                </span>
+
+                <h3>
+                    View Website
+                </h3>
+
+                <p>
+                    Open the public Artomb Studios
+                    website.
+                </p>
+
+            </a>
 
         </div>
 
-    </header>
+    </section>
+
+</main>
 
 
+<footer class="admin-footer">
 
-    <!-- =========================
-         DASHBOARD
-    ========================== -->
+    <span>
+        © 2026 Artomb Studios
+    </span>
 
-    <main class="dashboard">
+    <span>
+        Private Studio Dashboard
+    </span>
 
-        <section class="dashboard-intro">
+</footer>
 
-            <div>
 
-                <p class="eyebrow">
-                    Private Studio
-                </p>
+<!-- Supabase -->
 
-                <h1>
-                    Welcome<br>
-                    back.
-                </h1>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+
+<script>
+
+    const SUPABASE_URL =
+        "https://pdopupcnmvjzombukcpi.supabase.co";
+
+    const SUPABASE_KEY =
+        "sb_publishable_AbIdZemk0Mq7f1jNNM5zdQ_pYIzZNlU";
+
+    const {
+        createClient
+    } = supabase;
+
+    const supabaseClient =
+        createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+
+    const artworkCount =
+        document.getElementById(
+            "artworkCount"
+        );
+
+    const publishedCount =
+        document.getElementById(
+            "publishedCount"
+        );
+
+    const draftCount =
+        document.getElementById(
+            "draftCount"
+        );
+
+    const artworkContainer =
+        document.getElementById(
+            "artworkContainer"
+        );
+
+    const errorBox =
+        document.getElementById(
+            "errorBox"
+        );
+
+
+    function showError(message) {
+
+        errorBox.textContent = message;
+
+        errorBox.style.display = "block";
+
+    }
+
+
+    async function checkLogin() {
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient.auth.getSession();
+
+
+        if (error) {
+
+            showError(
+                "Unable to check login session."
+            );
+
+            return false;
+        }
+
+
+        if (!data.session) {
+
+            window.location.href =
+                "login.html";
+
+            return false;
+        }
+
+
+        return true;
+    }
+
+
+    async function loadArtworks() {
+
+        errorBox.style.display = "none";
+
+        artworkContainer.innerHTML = `
+            <div class="loading-state">
+                Loading artworks...
             </div>
+        `;
 
 
-            <p class="intro-text">
-                Manage your Artomb Studios collection,
-                update artwork and control what appears
-                on the public website.
-            </p>
-
-        </section>
-
-
-
-        <!-- =========================
-             STATS
-        ========================== -->
-
-        <section class="stats-grid">
-
-            <div class="stat-card">
-
-                <span
-                    class="stat-number"
-                    id="artworkCount">
-
-                    0
-
-                </span>
-
-                <span class="stat-label">
-                    Total Artworks
-                </span>
-
-            </div>
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from("artworks")
+                .select("*")
+                .order(
+                    "created_at",
+                    {
+                        ascending: false
+                    }
+                );
 
 
-            <div class="stat-card">
+        if (error) {
 
-                <span
-                    class="stat-number"
-                    id="publishedCount">
+            console.error(error);
 
-                    0
+            showError(
+                "Could not load artworks: " +
+                error.message
+            );
 
-                </span>
-
-                <span class="stat-label">
-                    Published
-                </span>
-
-            </div>
-
-
-            <div class="stat-card">
-
-                <span
-                    class="stat-number"
-                    id="draftCount">
-
-                    0
-
-                </span>
-
-                <span class="stat-label">
-                    Drafts
-                </span>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================
-             ARTWORK MANAGEMENT
-        ========================== -->
-
-        <section>
-
-            <div class="section-header">
-
-                <h2>
-                    Artwork
-                </h2>
-
-                <span class="section-label">
-                    Collection
-                </span>
-
-            </div>
-
-
-            <div class="management-card">
-
-                <div class="management-top">
-
+            artworkContainer.innerHTML = `
+                <div class="empty-state">
+                    <h3>
+                        Something went wrong
+                    </h3>
                     <p>
-                        Your artwork collection will appear
-                        here once the management system is
-                        connected.
+                        Check your Supabase RLS policy
+                        and try again.
                     </p>
-
-
-                    <button
-                        class="add-button"
-                        id="addArtworkButton">
-
-                        + Add Artwork
-
-                    </button>
-
                 </div>
+            `;
+
+            return;
+        }
 
 
+        const artworks =
+            data || [];
+
+
+        artworkCount.textContent =
+            artworks.length;
+
+
+        const featured =
+            artworks.filter(
+                artwork =>
+                    artwork.featured === true
+            );
+
+
+        publishedCount.textContent =
+            featured.length;
+
+
+        draftCount.textContent =
+            artworks.length -
+            featured.length;
+
+
+        if (artworks.length === 0) {
+
+            artworkContainer.innerHTML = `
                 <div class="empty-state">
 
                     <div class="empty-symbol">
@@ -759,168 +1047,162 @@
                     </p>
 
                 </div>
+            `;
+
+            return;
+        }
+
+
+        artworkContainer.innerHTML = `
+
+            <div class="artwork-list">
+
+                ${artworks.map(artwork => `
+
+                    <article
+                        class="artwork-item">
+
+                        ${
+                            artwork.image_url
+                            ?
+                            `
+                            <img
+                                class="artwork-image"
+                                src="${escapeHtml(
+                                    artwork.image_url
+                                )}"
+                                alt="${escapeHtml(
+                                    artwork.title ||
+                                    "Artwork"
+                                )}"
+                            >
+                            `
+                            :
+                            `
+                            <div
+                                class="artwork-image">
+                            </div>
+                            `
+                        }
+
+                        <h3
+                            class="artwork-title">
+
+                            ${escapeHtml(
+                                artwork.title ||
+                                "Untitled Artwork"
+                            )}
+
+                        </h3>
+
+                        <p
+                            class="artwork-category">
+
+                            ${escapeHtml(
+                                artwork.category ||
+                                "Uncategorized"
+                            )}
+
+                        </p>
+
+                        <span
+                            class="artwork-status">
+
+                            ${
+                                artwork.featured
+                                ? "Featured"
+                                : "Not Featured"
+                            }
+
+                        </span>
+
+                    </article>
+
+                `).join("")}
 
             </div>
-
-        </section>
-
-
-
-        <!-- =========================
-             QUICK ACTIONS
-        ========================== -->
-
-        <section class="quick-section">
-
-            <div class="section-header">
-
-                <h2>
-                    Quick Actions
-                </h2>
-
-                <span class="section-label">
-                    Studio Tools
-                </span>
-
-            </div>
+        `;
+    }
 
 
-            <div class="quick-grid">
+    function escapeHtml(value) {
 
-                <a
-                    href="#"
-                    class="quick-card">
-
-                    <span class="quick-number">
-                        01
-                    </span>
-
-                    <h3>
-                        Add Artwork
-                    </h3>
-
-                    <p>
-                        Create a new artwork entry
-                        for your collection.
-                    </p>
-
-                </a>
+        return String(value)
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#039;");
+    }
 
 
-                <a
-                    href="#"
-                    class="quick-card">
+    async function logout() {
 
-                    <span class="quick-number">
-                        02
-                    </span>
+        await supabaseClient.auth.signOut();
 
-                    <h3>
-                        Gallery
-                    </h3>
-
-                    <p>
-                        Manage which artworks appear
-                        in the public gallery.
-                    </p>
-
-                </a>
+        window.location.href =
+            "login.html";
+    }
 
 
-                <a
-                    href="../index.html#contact"
-                    class="quick-card">
-
-                    <span class="quick-number">
-                        03
-                    </span>
-
-                    <h3>
-                        View Website
-                    </h3>
-
-                    <p>
-                        Open the public Artomb Studios
-                        website.
-                    </p>
-
-                </a>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
-    <footer class="admin-footer">
-
-        <span>
-            © 2026 Artomb Studios
-        </span>
-
-        <span>
-            Private Studio Dashboard
-        </span>
-
-    </footer>
-
-
-
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
-
-    <script>
-
-        /*
-         * TEMPORARY DASHBOARD UI
-         *
-         * The artwork database and secure
-         * authentication will be connected later.
-         */
-
-
-        const logoutButton =
-            document.getElementById(
-                "logoutButton"
-            );
-
-
-        logoutButton.addEventListener(
+    document
+        .getElementById("logoutButton")
+        .addEventListener(
             "click",
-            function () {
-
-                window.location.href =
-                    "login.html";
-
-            }
+            logout
         );
 
 
-        const addArtworkButton =
-            document.getElementById(
-                "addArtworkButton"
-            );
-
-
-        addArtworkButton.addEventListener(
+    document
+        .getElementById("addArtworkButton")
+        .addEventListener(
             "click",
             function () {
 
                 alert(
-                    "Artwork management will be connected in the next step."
+                    "Add Artwork form hum next step mein banayenge."
                 );
 
             }
         );
 
-    </script>
+
+    document
+        .getElementById("quickAdd")
+        .addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+
+                document
+                    .getElementById(
+                        "addArtworkButton"
+                    )
+                    .click();
+
+            }
+        );
+
+
+    async function startDashboard() {
+
+        const loggedIn =
+            await checkLogin();
+
+
+        if (!loggedIn) {
+            return;
+        }
+
+
+        await loadArtworks();
+    }
+
+
+    startDashboard();
+
+</script>
 
 </body>
-  </html>
+</html>
