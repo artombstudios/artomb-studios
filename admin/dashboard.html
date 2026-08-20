@@ -782,7 +782,7 @@
         <div class="quick-grid">
 
             <a
-                href="#"
+                href="add-artwork.html"
                 class="quick-card"
                 id="quickAdd">
 
@@ -1153,19 +1153,26 @@
         );
 
 
+    /*
+     * ADD ARTWORK
+     */
+
     document
         .getElementById("addArtworkButton")
         .addEventListener(
             "click",
             function () {
 
-                alert(
-                    "Add Artwork form hum next step mein banayenge."
-                );
+                window.location.href =
+                    "add-artwork.html";
 
             }
         );
 
+
+    /*
+     * QUICK ADD ARTWORK
+     */
 
     document
         .getElementById("quickAdd")
@@ -1175,11 +1182,8 @@
 
                 event.preventDefault();
 
-                document
-                    .getElementById(
-                        "addArtworkButton"
-                    )
-                    .click();
+                window.location.href =
+                    "add-artwork.html";
 
             }
         );
