@@ -33,9 +33,11 @@
             --text: #171717;
             --muted: #77736c;
             --border: rgba(23, 23, 23, .12);
+
             --success-bg: #f3faf4;
             --success-border: #b8d2bd;
             --success-text: #38603e;
+
             --error-bg: #fff4f4;
             --error-border: #e1bebe;
             --error-text: #9b3d3d;
@@ -44,8 +46,12 @@
 
         body {
             min-height: 100vh;
-            background: var(--bg);
-            color: var(--text);
+
+            background:
+                var(--bg);
+
+            color:
+                var(--text);
 
             font-family:
                 Arial,
@@ -73,7 +79,9 @@
         }
 
 
-        /* HEADER */
+        /* ================================
+           HEADER
+        ================================= */
 
         .header {
             height: 72px;
@@ -94,7 +102,8 @@
             top: 0;
             z-index: 10;
 
-            backdrop-filter: blur(12px);
+            backdrop-filter:
+                blur(12px);
         }
 
 
@@ -107,7 +116,9 @@
                 serif;
 
             font-size: 21px;
-            letter-spacing: 3px;
+
+            letter-spacing:
+                3px;
         }
 
 
@@ -117,7 +128,9 @@
             margin-top: 4px;
 
             font-size: 7px;
-            letter-spacing: 4px;
+
+            letter-spacing:
+                4px;
 
             opacity: .55;
         }
@@ -125,19 +138,28 @@
 
         .back-link {
             font-size: 10px;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
 
-            color: var(--muted);
+            letter-spacing:
+                1.5px;
+
+            text-transform:
+                uppercase;
+
+            color:
+                var(--muted);
         }
 
 
-        /* MAIN */
+        /* ================================
+           MAIN
+        ================================= */
 
         .page {
-            width: min(1100px, 90%);
+            width:
+                min(1100px, 90%);
 
-            margin: auto;
+            margin:
+                auto;
 
             padding:
                 65px 0 90px;
@@ -145,18 +167,26 @@
 
 
         .intro {
-            margin-bottom: 40px;
+            margin-bottom:
+                40px;
         }
 
 
         .eyebrow {
-            margin-bottom: 14px;
+            margin-bottom:
+                14px;
 
-            color: var(--muted);
+            color:
+                var(--muted);
 
-            font-size: 10px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
+            font-size:
+                10px;
+
+            letter-spacing:
+                3px;
+
+            text-transform:
+                uppercase;
         }
 
 
@@ -169,83 +199,112 @@
             font-size:
                 clamp(42px, 7vw, 68px);
 
-            font-weight: 400;
+            font-weight:
+                400;
 
-            line-height: .98;
+            line-height:
+                .98;
 
-            letter-spacing: -2px;
+            letter-spacing:
+                -2px;
         }
 
 
         .intro p:last-child {
-            max-width: 520px;
+            max-width:
+                520px;
 
-            margin-top: 18px;
+            margin-top:
+                18px;
 
-            color: var(--muted);
+            color:
+                var(--muted);
 
-            font-size: 14px;
-            line-height: 1.7;
+            font-size:
+                14px;
+
+            line-height:
+                1.7;
         }
 
 
-        /* FORM */
+        /* ================================
+           FORM
+        ================================= */
 
         .form-layout {
-            display: grid;
+            display:
+                grid;
 
             grid-template-columns:
                 1.1fr .9fr;
 
-            gap: 25px;
+            gap:
+                25px;
         }
 
 
         .card {
-            background: var(--card);
+            background:
+                var(--card);
 
             border:
                 1px solid var(--border);
 
-            padding: 28px;
+            padding:
+                28px;
         }
 
 
         .card-title {
-            margin-bottom: 25px;
+            margin-bottom:
+                25px;
 
             font-family:
                 Georgia,
                 "Times New Roman",
                 serif;
 
-            font-size: 25px;
-            font-weight: 400;
+            font-size:
+                25px;
+
+            font-weight:
+                400;
         }
 
 
         .field {
-            margin-bottom: 22px;
+            margin-bottom:
+                22px;
         }
 
 
         label {
-            display: block;
+            display:
+                block;
 
-            margin-bottom: 9px;
+            margin-bottom:
+                9px;
 
-            font-size: 10px;
-            letter-spacing: 1.8px;
-            text-transform: uppercase;
+            font-size:
+                10px;
 
-            color: #555;
+            letter-spacing:
+                1.8px;
+
+            text-transform:
+                uppercase;
+
+            color:
+                #555;
         }
 
 
         input,
         textarea,
         select {
-            width: 100%;
+            width:
+                100%;
 
             border:
                 1px solid #d8d4cc;
@@ -256,9 +315,11 @@
             color:
                 var(--text);
 
-            outline: none;
+            outline:
+                none;
 
-            padding: 14px;
+            padding:
+                14px;
 
             transition:
                 border-color .2s ease,
@@ -267,21 +328,26 @@
 
 
         input {
-            height: 50px;
+            height:
+                50px;
         }
 
 
         textarea {
-            min-height: 135px;
+            min-height:
+                135px;
 
-            resize: vertical;
+            resize:
+                vertical;
 
-            line-height: 1.6;
+            line-height:
+                1.6;
         }
 
 
         select {
-            height: 50px;
+            height:
+                50px;
         }
 
 
@@ -298,18 +364,28 @@
         }
 
 
-        /* IMAGE */
+        /* ================================
+           IMAGE UPLOAD
+        ================================= */
 
         .upload-box {
-            min-height: 250px;
+            min-height:
+                250px;
 
-            display: flex;
-            flex-direction: column;
+            display:
+                flex;
 
-            align-items: center;
-            justify-content: center;
+            flex-direction:
+                column;
 
-            text-align: center;
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            text-align:
+                center;
 
             border:
                 1px dashed #bcb8b0;
@@ -317,9 +393,11 @@
             background:
                 #f7f4ee;
 
-            padding: 25px;
+            padding:
+                25px;
 
-            cursor: pointer;
+            cursor:
+                pointer;
 
             transition:
                 border-color .2s ease,
@@ -328,7 +406,8 @@
 
 
         .upload-box:hover {
-            border-color: #171717;
+            border-color:
+                #171717;
 
             background:
                 #f3efe8;
@@ -336,34 +415,49 @@
 
 
         .upload-icon {
-            width: 52px;
-            height: 52px;
+            width:
+                52px;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            height:
+                52px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
 
             border:
                 1px solid var(--border);
 
-            margin-bottom: 18px;
+            margin-bottom:
+                18px;
 
-            font-size: 23px;
+            font-size:
+                23px;
         }
 
 
         .upload-box strong {
-            display: block;
+            display:
+                block;
 
-            margin-bottom: 7px;
+            margin-bottom:
+                7px;
 
             font-family:
                 Georgia,
                 "Times New Roman",
                 serif;
 
-            font-size: 20px;
-            font-weight: 400;
+            font-size:
+                20px;
+
+            font-weight:
+                400;
         }
 
 
@@ -371,79 +465,105 @@
             color:
                 var(--muted);
 
-            font-size: 11px;
+            font-size:
+                11px;
 
-            line-height: 1.6;
+            line-height:
+                1.6;
         }
 
 
         #artworkImage {
-            display: none;
+            display:
+                none;
         }
 
 
         .preview {
-            display: none;
+            display:
+                none;
 
-            width: 100%;
+            width:
+                100%;
 
-            margin-top: 15px;
+            margin-top:
+                15px;
         }
 
 
         .preview img {
-            display: block;
+            display:
+                block;
 
-            width: 100%;
-            max-height: 360px;
+            width:
+                100%;
 
-            object-fit: contain;
+            max-height:
+                360px;
+
+            object-fit:
+                contain;
 
             background:
                 #eeeae2;
         }
 
 
-        /* STATUS */
+        /* ================================
+           STATUS
+        ================================= */
 
         .status-options {
-            display: grid;
+            display:
+                grid;
 
             grid-template-columns:
                 1fr 1fr;
 
-            gap: 10px;
+            gap:
+                10px;
         }
 
 
         .status-option {
-            position: relative;
+            position:
+                relative;
         }
 
 
         .status-option input {
-            position: absolute;
+            position:
+                absolute;
 
-            opacity: 0;
+            opacity:
+                0;
 
-            pointer-events: none;
+            pointer-events:
+                none;
         }
 
 
         .status-option label {
-            height: 50px;
+            height:
+                50px;
 
-            display: flex;
+            display:
+                flex;
 
-            align-items: center;
-            justify-content: center;
+            align-items:
+                center;
 
-            margin: 0;
+            justify-content:
+                center;
+
+            margin:
+                0;
 
             border:
                 1px solid #d8d4cc;
 
-            cursor: pointer;
+            cursor:
+                pointer;
 
             color:
                 var(--muted);
@@ -459,22 +579,38 @@
             background:
                 var(--text);
 
-            color: white;
+            color:
+                white;
 
             border-color:
                 var(--text);
         }
 
 
-        /* MESSAGES */
+        /* ================================
+           MESSAGES
+        ================================= */
+
+        .message,
+        .error-message {
+            display:
+                none;
+
+            margin-top:
+                20px;
+
+            padding:
+                14px;
+
+            font-size:
+                12px;
+
+            line-height:
+                1.6;
+        }
+
 
         .message {
-            display: none;
-
-            margin-top: 20px;
-
-            padding: 14px;
-
             border:
                 1px solid var(--success-border);
 
@@ -483,20 +619,10 @@
 
             color:
                 var(--success-text);
-
-            font-size: 12px;
-
-            line-height: 1.5;
         }
 
 
         .error-message {
-            display: none;
-
-            margin-top: 20px;
-
-            padding: 14px;
-
             border:
                 1px solid var(--error-border);
 
@@ -506,51 +632,69 @@
             color:
                 var(--error-text);
 
-            font-size: 12px;
-
-            line-height: 1.5;
+            word-break:
+                break-word;
         }
 
 
-        /* PROGRESS */
+        /* ================================
+           PROGRESS
+        ================================= */
 
         .progress {
-            display: none;
+            display:
+                none;
 
-            margin-top: 15px;
+            margin-top:
+                15px;
         }
 
 
         .progress-text {
-            margin-bottom: 8px;
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            margin-bottom:
+                8px;
 
             color:
                 var(--muted);
 
-            font-size: 11px;
+            font-size:
+                11px;
 
-            letter-spacing: 1px;
+            letter-spacing:
+                1px;
 
-            text-transform: uppercase;
+            text-transform:
+                uppercase;
         }
 
 
         .progress-bar {
-            width: 100%;
+            width:
+                100%;
 
-            height: 4px;
+            height:
+                4px;
 
             background:
                 #e2ded6;
 
-            overflow: hidden;
+            overflow:
+                hidden;
         }
 
 
         .progress-fill {
-            width: 0%;
+            width:
+                0%;
 
-            height: 100%;
+            height:
+                100%;
 
             background:
                 var(--text);
@@ -560,34 +704,46 @@
         }
 
 
-        /* ACTIONS */
+        /* ================================
+           ACTIONS
+        ================================= */
 
         .actions {
-            display: flex;
+            display:
+                flex;
 
-            justify-content: flex-end;
+            justify-content:
+                flex-end;
 
-            gap: 10px;
+            gap:
+                10px;
 
-            margin-top: 25px;
+            margin-top:
+                25px;
         }
 
 
         .button {
-            min-height: 50px;
+            min-height:
+                50px;
 
-            padding: 0 22px;
+            padding:
+                0 22px;
 
             border:
                 1px solid var(--text);
 
-            font-size: 10px;
+            font-size:
+                10px;
 
-            letter-spacing: 1.5px;
+            letter-spacing:
+                1.5px;
 
-            text-transform: uppercase;
+            text-transform:
+                uppercase;
 
-            cursor: pointer;
+            cursor:
+                pointer;
         }
 
 
@@ -610,34 +766,41 @@
 
 
         .button-primary:disabled {
-            opacity: .5;
+            opacity:
+                .5;
 
             cursor:
                 not-allowed;
         }
 
 
-        /* MOBILE */
+        /* ================================
+           MOBILE
+        ================================= */
 
         @media (max-width: 760px) {
 
             .header {
-                height: 65px;
+                height:
+                    65px;
             }
 
 
             .page {
-                padding-top: 50px;
+                padding-top:
+                    50px;
             }
 
 
             .form-layout {
-                grid-template-columns: 1fr;
+                grid-template-columns:
+                    1fr;
             }
 
 
             .card {
-                padding: 22px;
+                padding:
+                    22px;
             }
 
 
@@ -648,7 +811,8 @@
 
 
             .button {
-                width: 100%;
+                width:
+                    100%;
             }
 
         }
@@ -657,17 +821,20 @@
         @media (max-width: 420px) {
 
             .back-link {
-                font-size: 9px;
+                font-size:
+                    9px;
             }
 
 
             h1 {
-                font-size: 43px;
+                font-size:
+                    43px;
             }
 
 
             .status-options {
-                grid-template-columns: 1fr;
+                grid-template-columns:
+                    1fr;
             }
 
         }
@@ -738,11 +905,12 @@
 
     <form id="artworkForm">
 
-
         <div class="form-layout">
 
 
-            <!-- ARTWORK DETAILS -->
+            <!-- ============================
+                 ARTWORK DETAILS
+            ============================= -->
 
             <section class="card">
 
@@ -853,7 +1021,6 @@
 
                     <div class="status-options">
 
-
                         <div class="status-option">
 
                             <input
@@ -871,7 +1038,6 @@
                         </div>
 
 
-
                         <div class="status-option">
 
                             <input
@@ -887,7 +1053,6 @@
 
                         </div>
 
-
                     </div>
 
                 </div>
@@ -896,7 +1061,9 @@
 
 
 
-            <!-- IMAGE -->
+            <!-- ============================
+                 IMAGE
+            ============================= -->
 
             <section class="card">
 
@@ -921,7 +1088,7 @@
 
                     <span>
                         JPG, PNG or WEBP<br>
-                        Recommended: high resolution
+                        Maximum 20 MB
                     </span>
 
                 </label>
@@ -955,8 +1122,17 @@
                     id="progress">
 
                     <div class="progress-text">
-                        Uploading artwork...
+
+                        <span id="progressStatus">
+                            Uploading artwork...
+                        </span>
+
+                        <span id="progressPercent">
+                            0%
+                        </span>
+
                     </div>
+
 
                     <div class="progress-bar">
 
@@ -989,7 +1165,9 @@
 
 
 
-        <!-- ACTIONS -->
+        <!-- ============================
+             ACTIONS
+        ============================= -->
 
         <div class="actions">
 
@@ -1021,18 +1199,21 @@
 
 
 
-<!-- SUPABASE -->
+<!-- ================================
+     SUPABASE
+================================= -->
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+</script>
 
 
 
 <script>
 
-
-    /* ================================
+    /* =========================================
        SUPABASE CONFIG
-    ================================= */
+    ========================================= */
 
     const SUPABASE_URL =
         "https://pdopupcnmvjzombukcpi.supabase.co";
@@ -1050,14 +1231,21 @@
     const supabaseClient =
         createClient(
             SUPABASE_URL,
-            SUPABASE_KEY
+            SUPABASE_KEY,
+            {
+                auth: {
+                    persistSession: true,
+                    autoRefreshToken: true,
+                    detectSessionInUrl: true
+                }
+            }
         );
 
 
 
-    /* ================================
+    /* =========================================
        ELEMENTS
-    ================================= */
+    ========================================= */
 
     const form =
         document.getElementById(
@@ -1107,6 +1295,18 @@
         );
 
 
+    const progressPercent =
+        document.getElementById(
+            "progressPercent"
+        );
+
+
+    const progressStatus =
+        document.getElementById(
+            "progressStatus"
+        );
+
+
     const saveButton =
         document.getElementById(
             "saveButton"
@@ -1120,9 +1320,9 @@
 
 
 
-    /* ================================
-       MESSAGE FUNCTIONS
-    ================================= */
+    /* =========================================
+       MESSAGE HELPERS
+    ========================================= */
 
     function showMessage(text) {
 
@@ -1148,16 +1348,49 @@
         message.style.display =
             "none";
 
-        console.error(text);
+        console.error(
+            "ARTOMB ERROR:",
+            text
+        );
+    }
+
+
+    function setProgress(percent, text) {
+
+        const safePercent =
+            Math.max(
+                0,
+                Math.min(
+                    100,
+                    percent
+                )
+            );
+
+
+        progressFill.style.width =
+            safePercent + "%";
+
+
+        progressPercent.textContent =
+            Math.round(safePercent) + "%";
+
+
+        if (text) {
+
+            progressStatus.textContent =
+                text;
+
+        }
+
     }
 
 
 
-    /* ================================
+    /* =========================================
        LOGIN CHECK
-    ================================= */
+    ========================================= */
 
-    async function checkLogin() {
+    async function getCurrentSession() {
 
         const {
             data,
@@ -1170,11 +1403,14 @@
 
         if (error) {
 
-            showError(
-                "Unable to check your login session."
+            console.error(
+                "SESSION ERROR:",
+                error
             );
 
-            return false;
+            throw new Error(
+                "Unable to check your login session."
+            );
         }
 
 
@@ -1183,18 +1419,18 @@
             window.location.href =
                 "login.html";
 
-            return false;
+            return null;
         }
 
 
-        return true;
+        return data.session;
     }
 
 
 
-    /* ================================
+    /* =========================================
        IMAGE PREVIEW
-    ================================= */
+    ========================================= */
 
     imageInput.addEventListener(
         "change",
@@ -1205,14 +1441,20 @@
 
 
             if (!file) {
+
+                preview.style.display =
+                    "none";
+
                 return;
             }
 
 
             const allowedTypes = [
+
                 "image/jpeg",
                 "image/png",
                 "image/webp"
+
             ];
 
 
@@ -1236,16 +1478,18 @@
 
 
             /*
-             * 50 MB safety limit
+             * Keep uploads reliable.
+             * Supabase recommends resumable uploads
+             * for files larger than about 6 MB.
              */
 
             if (
                 file.size >
-                50 * 1024 * 1024
+                20 * 1024 * 1024
             ) {
 
                 alert(
-                    "Image must be smaller than 50 MB."
+                    "Image must be smaller than 20 MB."
                 );
 
                 this.value = "";
@@ -1280,9 +1524,307 @@
 
 
 
-    /* ================================
+    /* =========================================
+       CREATE SAFE FILE PATH
+    ========================================= */
+
+    function createFilePath(
+        userId,
+        title,
+        file
+    ) {
+
+        let extension =
+            file.name
+                .split(".")
+                .pop()
+                .toLowerCase();
+
+
+        if (
+            extension !== "jpg" &&
+            extension !== "jpeg" &&
+            extension !== "png" &&
+            extension !== "webp"
+        ) {
+
+            extension =
+                "jpg";
+        }
+
+
+        let safeTitle =
+            title
+                .toLowerCase()
+                .replace(
+                    /[^a-z0-9]+/g,
+                    "-"
+                )
+                .replace(
+                    /^-+|-+$/g,
+                    ""
+                );
+
+
+        if (!safeTitle) {
+
+            safeTitle =
+                "artwork";
+        }
+
+
+        return (
+            userId +
+            "/" +
+            Date.now() +
+            "-" +
+            safeTitle +
+            "." +
+            extension
+        );
+    }
+
+
+
+    /* =========================================
+       DIRECT XHR STORAGE UPLOAD
+       
+       This avoids the browser fetch layer that
+       can produce a generic "Failed to fetch"
+       on some Android/PWA setups.
+    ========================================= */
+
+    function uploadImageDirect(
+        filePath,
+        file,
+        accessToken
+    ) {
+
+        return new Promise(
+            function (resolve, reject) {
+
+                const xhr =
+                    new XMLHttpRequest();
+
+
+                const uploadUrl =
+                    SUPABASE_URL +
+                    "/storage/v1/object/artworks/" +
+                    filePath
+                        .split("/")
+                        .map(
+                            encodeURIComponent
+                        )
+                        .join("/");
+
+
+                xhr.open(
+                    "POST",
+                    uploadUrl,
+                    true
+                );
+
+
+                /*
+                 * Supabase authentication
+                 */
+
+                xhr.setRequestHeader(
+                    "apikey",
+                    SUPABASE_KEY
+                );
+
+
+                xhr.setRequestHeader(
+                    "Authorization",
+                    "Bearer " +
+                    accessToken
+                );
+
+
+                xhr.setRequestHeader(
+                    "Content-Type",
+                    file.type
+                );
+
+
+                xhr.setRequestHeader(
+                    "x-upsert",
+                    "false"
+                );
+
+
+                xhr.setRequestHeader(
+                    "cache-control",
+                    "3600"
+                );
+
+
+                /*
+                 * Real upload progress
+                 */
+
+                xhr.upload.onprogress =
+                    function (event) {
+
+                        if (
+                            event.lengthComputable
+                        ) {
+
+                            const percent =
+                                event.loaded /
+                                event.total *
+                                100;
+
+
+                            setProgress(
+                                percent,
+                                "Uploading artwork..."
+                            );
+
+                        }
+
+                    };
+
+
+                xhr.onload =
+                    function () {
+
+                        let response = null;
+
+
+                        try {
+
+                            response =
+                                xhr.responseText
+                                    ? JSON.parse(
+                                        xhr.responseText
+                                    )
+                                    : null;
+
+                        } catch (e) {
+
+                            response =
+                                xhr.responseText;
+
+                        }
+
+
+                        if (
+                            xhr.status >= 200 &&
+                            xhr.status < 300
+                        ) {
+
+                            resolve(
+                                response
+                            );
+
+                            return;
+                        }
+
+
+                        let serverMessage =
+                            "";
+
+
+                        if (
+                            response &&
+                            typeof response ===
+                            "object"
+                        ) {
+
+                            serverMessage =
+                                response.message ||
+                                response.error ||
+                                response.statusCode ||
+                                "";
+
+                        }
+
+
+                        reject(
+                            new Error(
+                                "Storage upload failed (" +
+                                xhr.status +
+                                "): " +
+                                (
+                                    serverMessage ||
+                                    xhr.statusText ||
+                                    "Unknown Supabase Storage error"
+                                )
+                            )
+                        );
+
+                    };
+
+
+                xhr.onerror =
+                    function () {
+
+                        reject(
+                            new Error(
+                                "Storage network request failed. " +
+                                "The browser could not connect to Supabase Storage. " +
+                                "Please check your internet connection and reload the page."
+                            )
+                        );
+
+                    };
+
+
+                xhr.ontimeout =
+                    function () {
+
+                        reject(
+                            new Error(
+                                "Storage upload timed out. " +
+                                "Please try again with a smaller image."
+                            )
+                        );
+
+                    };
+
+
+                xhr.onabort =
+                    function () {
+
+                        reject(
+                            new Error(
+                                "Storage upload was cancelled."
+                            )
+                        );
+
+                    };
+
+
+                xhr.timeout =
+                    120000;
+
+
+                try {
+
+                    xhr.send(file);
+
+                } catch (error) {
+
+                    reject(
+                        new Error(
+                            "Could not start the storage upload: " +
+                            error.message
+                        )
+                    );
+
+                }
+
+            }
+        );
+    }
+
+
+
+    /* =========================================
        SAVE ARTWORK
-    ================================= */
+    ========================================= */
 
     form.addEventListener(
         "submit",
@@ -1291,33 +1833,12 @@
             event.preventDefault();
 
 
-            /*
-             * Hide old messages
-             */
-
             message.style.display =
                 "none";
 
             errorMessage.style.display =
                 "none";
 
-
-            /*
-             * Check login
-             */
-
-            const loggedIn =
-                await checkLogin();
-
-
-            if (!loggedIn) {
-                return;
-            }
-
-
-            /*
-             * Get form values
-             */
 
             const title =
                 document
@@ -1358,9 +1879,9 @@
                 imageInput.files[0];
 
 
-            /*
-             * Validation
-             */
+            /* =================================
+               VALIDATION
+            ================================= */
 
             if (!title) {
 
@@ -1402,9 +1923,22 @@
             }
 
 
-            /*
-             * Disable button
-             */
+            if (
+                file.size >
+                20 * 1024 * 1024
+            ) {
+
+                showError(
+                    "Image must be smaller than 20 MB."
+                );
+
+                return;
+            }
+
+
+            /* =================================
+               BUTTON
+            ================================= */
 
             saveButton.disabled =
                 true;
@@ -1416,167 +1950,108 @@
             progress.style.display =
                 "block";
 
-            progressFill.style.width =
-                "10%";
+
+            setProgress(
+                0,
+                "Preparing upload..."
+            );
 
 
             try {
 
+                /* =============================
+                   GET SESSION
+                ============================= */
 
-                /* ================================
-                   GET CURRENT USER
-                ================================= */
-
-                const {
-                    data: userData,
-                    error: userError
-                } =
-                    await supabaseClient
-                        .auth
-                        .getUser();
+                const session =
+                    await getCurrentSession();
 
 
-                if (userError) {
-                    throw userError;
-                }
-
-
-                if (!userData.user) {
-
-                    window.location.href =
-                        "login.html";
+                if (!session) {
 
                     return;
                 }
 
 
                 const userId =
-                    userData.user.id;
+                    session.user.id;
 
 
-                progressFill.style.width =
-                    "20%";
+                const accessToken =
+                    session.access_token;
 
 
-
-                /* ================================
-                   CREATE UNIQUE FILE NAME
-                ================================= */
-
-                const fileExtension =
-                    file.name
-                        .split(".")
-                        .pop()
-                        .toLowerCase();
+                setProgress(
+                    5,
+                    "Preparing artwork..."
+                );
 
 
-                const safeTitle =
-                    title
-                        .toLowerCase()
-                        .replace(
-                            /[^a-z0-9]+/g,
-                            "-"
-                        )
-                        .replace(
-                            /^-+|-+$/g,
-                            ""
-                        );
-
-
-                const fileName =
-                    Date.now() +
-                    "-" +
-                    safeTitle +
-                    "." +
-                    fileExtension;
-
+                /* =============================
+                   CREATE PATH
+                ============================= */
 
                 const filePath =
-                    userId +
-                    "/" +
-                    fileName;
-
-
-                progressFill.style.width =
-                    "30%";
-
-
-
-                /* ================================
-                   UPLOAD IMAGE
-                ================================= */
-
-                const {
-                    error: uploadError
-                } =
-                    await supabaseClient
-                        .storage
-                        .from("artworks")
-                        .upload(
-                            filePath,
-                            file,
-                            {
-                                cacheControl:
-                                    "3600",
-
-                                upsert:
-                                    false,
-
-                                contentType:
-                                    file.type
-                            }
-                        );
-
-
-                if (uploadError) {
-
-                    throw new Error(
-                        "Image upload failed: " +
-                        uploadError.message
+                    createFilePath(
+                        userId,
+                        title,
+                        file
                     );
-                }
 
 
-                progressFill.style.width =
-                    "65%";
+                console.log(
+                    "Artwork file path:",
+                    filePath
+                );
 
 
+                /* =============================
+                   UPLOAD IMAGE
+                ============================= */
 
-                /* ================================
-                   GET PUBLIC IMAGE URL
-                ================================= */
+                await uploadImageDirect(
+                    filePath,
+                    file,
+                    accessToken
+                );
 
-                const {
-                    data: publicUrlData
-                } =
-                    supabaseClient
-                        .storage
-                        .from("artworks")
-                        .getPublicUrl(
-                            filePath
-                        );
 
+                setProgress(
+                    100,
+                    "Image uploaded successfully."
+                );
+
+
+                /* =============================
+                   PUBLIC IMAGE URL
+                ============================= */
 
                 const imageUrl =
-                    publicUrlData.publicUrl;
+                    SUPABASE_URL +
+                    "/storage/v1/object/public/artworks/" +
+                    filePath
+                        .split("/")
+                        .map(
+                            encodeURIComponent
+                        )
+                        .join("/");
 
 
-                if (!imageUrl) {
-
-                    throw new Error(
-                        "Could not create image URL."
-                    );
-                }
+                console.log(
+                    "Artwork image URL:",
+                    imageUrl
+                );
 
 
-                progressFill.style.width =
-                    "80%";
+                /* =============================
+                   DATABASE
+                ============================= */
 
+                setProgress(
+                    100,
+                    "Saving artwork details..."
+                );
 
-
-                /* ================================
-                   SAVE ARTWORK TO DATABASE
-                ================================= */
 
                 const {
                     data: artworkData,
@@ -1584,56 +2059,90 @@
                 } =
                     await supabaseClient
                         .from("artworks")
-                        .insert([
-                            {
-                                title:
-                                    title,
+                        .insert({
 
-                                medium:
-                                    medium,
+                            title:
+                                title,
 
-                                category:
-                                    category,
+                            medium:
+                                medium,
 
-                                description:
-                                    description,
+                            category:
+                                category,
 
-                                image_url:
-                                    imageUrl,
+                            description:
+                                description,
 
-                                featured:
-                                    status ===
-                                    "published"
-                            }
-                        ])
+                            image_url:
+                                imageUrl,
+
+                            featured:
+                                status ===
+                                "published"
+
+                        })
                         .select()
                         .single();
 
 
                 if (insertError) {
 
+                    console.error(
+                        "DATABASE ERROR:",
+                        insertError
+                    );
+
+
                     /*
-                     * Remove uploaded image
-                     * if database insert fails.
+                     * Try to remove the uploaded
+                     * image if database save fails.
                      */
 
-                    await supabaseClient
-                        .storage
-                        .from("artworks")
-                        .remove([
-                            filePath
-                        ]);
+                    try {
+
+                        await supabaseClient
+                            .storage
+                            .from("artworks")
+                            .remove([
+                                filePath
+                            ]);
+
+                    } catch (
+                        cleanupError
+                    ) {
+
+                        console.error(
+                            "Cleanup error:",
+                            cleanupError
+                        );
+
+                    }
 
 
                     throw new Error(
                         "Artwork database save failed: " +
-                        insertError.message
+                        (
+                            insertError.message ||
+                            "Unknown database error"
+                        )
                     );
                 }
 
 
-                progressFill.style.width =
-                    "100%";
+                console.log(
+                    "Artwork saved:",
+                    artworkData
+                );
+
+
+                /* =============================
+                   SUCCESS
+                ============================= */
+
+                setProgress(
+                    100,
+                    "Artwork saved successfully."
+                );
 
 
                 saveButton.textContent =
@@ -1645,10 +2154,6 @@
                 );
 
 
-                /*
-                 * Redirect after successful save
-                 */
-
                 setTimeout(
                     function () {
 
@@ -1656,14 +2161,14 @@
                             "dashboard.html";
 
                     },
-                    1200
+                    1500
                 );
 
 
             } catch (error) {
 
                 console.error(
-                    "SAVE ERROR:",
+                    "COMPLETE SAVE ERROR:",
                     error
                 );
 
@@ -1692,9 +2197,9 @@
 
 
 
-    /* ================================
+    /* =========================================
        CANCEL
-    ================================= */
+    ========================================= */
 
     cancelButton.addEventListener(
         "click",
@@ -1708,18 +2213,27 @@
 
 
 
-    /* ================================
-       START
-    ================================= */
+    /* =========================================
+       PAGE START
+    ========================================= */
 
     async function startPage() {
 
-        const loggedIn =
-            await checkLogin();
+        try {
 
+            await getCurrentSession();
 
-        if (!loggedIn) {
-            return;
+        } catch (error) {
+
+            console.error(
+                "PAGE START ERROR:",
+                error
+            );
+
+            showError(
+                error.message
+            );
+
         }
 
     }
@@ -1731,4 +2245,5 @@
 
 
 </body>
+
 </html>
