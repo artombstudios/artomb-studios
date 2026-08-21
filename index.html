@@ -1,30 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <meta name="description"
-          content="Artomb Studios — Premium handcrafted charcoal, graphite and custom artwork.">
+    <meta
+        name="description"
+        content="Artomb Studios — Premium handcrafted charcoal, graphite and custom artwork."
+    >
 
-    <meta name="theme-color" content="#f7f4ee">
+    <meta
+        name="theme-color"
+        content="#f7f4ee"
+    >
 
     <title>Artomb Studios — Art Beyond Imagination</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* =========================
+           SUPABASE ARTWORK STYLES
+        ========================== */
+
+        .dynamic-art-image {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .dynamic-gallery-image {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .dynamic-art-placeholder {
+            padding: 0 !important;
+            overflow: hidden;
+        }
+
+        .dynamic-gallery-placeholder {
+            padding: 0 !important;
+            overflow: hidden;
+        }
+
+        .art-loading,
+        .gallery-loading {
+            width: 100%;
+            min-height: 250px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #77736c;
+
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+
+            border: 1px solid rgba(23,23,23,.11);
+        }
+
+        .art-error,
+        .gallery-error {
+            width: 100%;
+            padding: 30px;
+
+            color: #77736c;
+
+            font-size: 12px;
+            line-height: 1.6;
+
+            border: 1px solid rgba(23,23,23,.11);
+        }
+
+    </style>
+
 </head>
 
 <body>
+
 
     <!-- =========================
          PAGE LOADER
     ========================== -->
 
     <div class="page-loader" id="pageLoader">
-        <div class="loader-logo">ARTOMB</div>
+
+        <div class="loader-logo">
+            ARTOMB
+        </div>
+
         <div class="loader-line"></div>
+
     </div>
 
 
@@ -37,28 +115,49 @@
         <div class="nav-container">
 
             <a href="#home" class="brand">
-                <span class="brand-main">ARTOMB</span>
-                <span class="brand-sub">STUDIOS</span>
+
+                <span class="brand-main">
+                    ARTOMB
+                </span>
+
+                <span class="brand-sub">
+                    STUDIOS
+                </span>
+
             </a>
 
 
             <nav class="desktop-nav">
 
-                <a href="#home">Home</a>
+                <a href="#home">
+                    Home
+                </a>
 
-                <a href="#works">Works</a>
+                <a href="#works">
+                    Works
+                </a>
 
-                <a href="#studio">Studio</a>
+                <a href="#studio">
+                    Studio
+                </a>
 
-                <a href="#commission">Commission</a>
+                <a href="#commission">
+                    Commission
+                </a>
 
-                <a href="#contact">Contact</a>
+                <a href="#contact">
+                    Contact
+                </a>
 
             </nav>
 
 
-            <a href="#commission" class="nav-cta">
+            <a
+                href="#commission"
+                class="nav-cta">
+
                 Start a Commission
+
             </a>
 
 
@@ -77,20 +176,36 @@
 
         <!-- MOBILE MENU -->
 
-        <div class="mobile-menu" id="mobileMenu">
+        <div
+            class="mobile-menu"
+            id="mobileMenu">
 
-            <a href="#home">Home</a>
+            <a href="#home">
+                Home
+            </a>
 
-            <a href="#works">Works</a>
+            <a href="#works">
+                Works
+            </a>
 
-            <a href="#studio">Studio</a>
+            <a href="#studio">
+                Studio
+            </a>
 
-            <a href="#commission">Commission</a>
+            <a href="#commission">
+                Commission
+            </a>
 
-            <a href="#contact">Contact</a>
+            <a href="#contact">
+                Contact
+            </a>
 
-            <a href="#commission" class="mobile-menu-cta">
+            <a
+                href="#commission"
+                class="mobile-menu-cta">
+
                 Start a Commission
+
             </a>
 
         </div>
@@ -101,13 +216,17 @@
 
     <main>
 
+
         <!-- =========================
              HERO
         ========================== -->
 
-        <section class="hero" id="home">
+        <section
+            class="hero"
+            id="home">
 
             <div class="hero-background"></div>
+
 
             <div class="hero-content">
 
@@ -118,7 +237,9 @@
 
                 <h1>
                     Art that makes
-                    <span>memories timeless.</span>
+                    <span>
+                        memories timeless.
+                    </span>
                 </h1>
 
 
@@ -130,13 +251,25 @@
 
                 <div class="hero-buttons">
 
-                    <a href="#works" class="button button-dark">
+                    <a
+                        href="#works"
+                        class="button button-dark">
+
                         Explore Works
-                        <span>↗</span>
+
+                        <span>
+                            ↗
+                        </span>
+
                     </a>
 
-                    <a href="#commission" class="button button-outline">
+
+                    <a
+                        href="#commission"
+                        class="button button-outline">
+
                         Commission Artwork
+
                     </a>
 
                 </div>
@@ -146,11 +279,15 @@
 
             <div class="hero-bottom">
 
-                <span>SCROLL TO EXPLORE</span>
+                <span>
+                    SCROLL TO EXPLORE
+                </span>
 
                 <div class="scroll-line"></div>
 
-                <span>01 / 05</span>
+                <span>
+                    01 / 05
+                </span>
 
             </div>
 
@@ -162,11 +299,19 @@
              INTRO STATEMENT
         ========================== -->
 
-        <section class="statement section-padding">
+        <section
+            class="statement section-padding">
 
             <div class="section-label">
-                <span>01</span>
-                <span>THE ARTOMB PHILOSOPHY</span>
+
+                <span>
+                    01
+                </span>
+
+                <span>
+                    THE ARTOMB PHILOSOPHY
+                </span>
+
             </div>
 
 
@@ -194,90 +339,53 @@
              FEATURED WORKS
         ========================== -->
 
-        <section class="works section-padding" id="works">
+        <section
+            class="works section-padding"
+            id="works">
 
             <div class="section-heading">
 
                 <div>
-                    <p class="eyebrow">SELECTED WORKS</p>
+
+                    <p class="eyebrow">
+                        SELECTED WORKS
+                    </p>
 
                     <h2>
                         Made by hand.<br>
                         Made to last.
                     </h2>
+
                 </div>
 
 
-                <a href="#gallery" class="text-link">
+                <a
+                    href="#gallery"
+                    class="text-link">
+
                     View Gallery
-                    <span>↗</span>
+
+                    <span>
+                        ↗
+                    </span>
+
                 </a>
 
             </div>
 
 
-            <div class="works-grid">
+            <!--
+                Supabase will automatically
+                insert featured artworks here.
+            -->
 
-                <article class="art-card art-card-large">
+            <div
+                class="works-grid"
+                id="featuredWorks">
 
-                    <div class="art-placeholder">
-                        <span>ARTWORK 01</span>
-                    </div>
-
-                    <div class="art-info">
-
-                        <div>
-                            <h3>Portrait Study</h3>
-                            <p>Graphite • Original Artwork</p>
-                        </div>
-
-                        <span class="art-number">01</span>
-
-                    </div>
-
-                </article>
-
-
-
-                <article class="art-card">
-
-                    <div class="art-placeholder placeholder-two">
-                        <span>ARTWORK 02</span>
-                    </div>
-
-                    <div class="art-info">
-
-                        <div>
-                            <h3>Silent Expression</h3>
-                            <p>Charcoal • Portrait</p>
-                        </div>
-
-                        <span class="art-number">02</span>
-
-                    </div>
-
-                </article>
-
-
-
-                <article class="art-card">
-
-                    <div class="art-placeholder placeholder-three">
-                        <span>ARTWORK 03</span>
-                    </div>
-
-                    <div class="art-info">
-
-                        <div>
-                            <h3>Human Form</h3>
-                            <p>Graphite • Study</p>
-                        </div>
-
-                        <span class="art-number">03</span>
-
-                    </div>
-
-                </article>
+                <div class="art-loading">
+                    Loading selected works...
+                </div>
 
             </div>
 
@@ -289,7 +397,9 @@
              STUDIO
         ========================== -->
 
-        <section class="studio section-padding" id="studio">
+        <section
+            class="studio section-padding"
+            id="studio">
 
             <div class="studio-grid">
 
@@ -298,7 +408,12 @@
                     <div class="studio-frame">
 
                         <div class="studio-placeholder">
-                            <span>ARTOMB<br>STUDIOS</span>
+
+                            <span>
+                                ARTOMB<br>
+                                STUDIOS
+                            </span>
+
                         </div>
 
                     </div>
@@ -315,6 +430,7 @@
                     <p class="eyebrow">
                         THE STUDIO
                     </p>
+
 
                     <h2>
                         Where patience
@@ -337,9 +453,16 @@
                     </p>
 
 
-                    <a href="#commission" class="button button-dark">
+                    <a
+                        href="#commission"
+                        class="button button-dark">
+
                         Work With Us
-                        <span>↗</span>
+
+                        <span>
+                            ↗
+                        </span>
+
                     </a>
 
                 </div>
@@ -354,11 +477,19 @@
              SERVICES
         ========================== -->
 
-        <section class="services section-padding">
+        <section
+            class="services section-padding">
 
             <div class="section-label">
-                <span>02</span>
-                <span>WHAT WE CREATE</span>
+
+                <span>
+                    02
+                </span>
+
+                <span>
+                    WHAT WE CREATE
+                </span>
+
             </div>
 
 
@@ -366,8 +497,11 @@
 
                 <h2>
                     Artwork made
-                    <span>for you.</span>
+                    <span>
+                        for you.
+                    </span>
                 </h2>
+
 
                 <p>
                     From a single portrait to a completely custom
@@ -381,85 +515,130 @@
 
                 <div class="service-item">
 
-                    <span class="service-number">01</span>
+                    <span class="service-number">
+                        01
+                    </span>
 
                     <div>
-                        <h3>Graphite Portraits</h3>
+
+                        <h3>
+                            Graphite Portraits
+                        </h3>
+
                         <p>
                             Detailed graphite portraits with
                             realistic textures and subtle tones.
                         </p>
+
                     </div>
 
-                    <span class="service-arrow">↗</span>
+                    <span class="service-arrow">
+                        ↗
+                    </span>
 
                 </div>
 
 
                 <div class="service-item">
 
-                    <span class="service-number">02</span>
+                    <span class="service-number">
+                        02
+                    </span>
 
                     <div>
-                        <h3>Charcoal Artwork</h3>
+
+                        <h3>
+                            Charcoal Artwork
+                        </h3>
+
                         <p>
                             Expressive charcoal artwork built around
                             depth, contrast and emotion.
                         </p>
+
                     </div>
 
-                    <span class="service-arrow">↗</span>
+                    <span class="service-arrow">
+                        ↗
+                    </span>
 
                 </div>
 
 
                 <div class="service-item">
 
-                    <span class="service-number">03</span>
+                    <span class="service-number">
+                        03
+                    </span>
 
                     <div>
-                        <h3>Couple Portraits</h3>
+
+                        <h3>
+                            Couple Portraits
+                        </h3>
+
                         <p>
                             Meaningful portraits created to preserve
                             a special connection.
                         </p>
+
                     </div>
 
-                    <span class="service-arrow">↗</span>
+                    <span class="service-arrow">
+                        ↗
+                    </span>
 
                 </div>
 
 
                 <div class="service-item">
 
-                    <span class="service-number">04</span>
+                    <span class="service-number">
+                        04
+                    </span>
 
                     <div>
-                        <h3>Pet Portraits</h3>
+
+                        <h3>
+                            Pet Portraits
+                        </h3>
+
                         <p>
                             A detailed hand-drawn tribute to
                             someone who is always part of the family.
                         </p>
+
                     </div>
 
-                    <span class="service-arrow">↗</span>
+                    <span class="service-arrow">
+                        ↗
+                    </span>
 
                 </div>
 
 
                 <div class="service-item">
 
-                    <span class="service-number">05</span>
+                    <span class="service-number">
+                        05
+                    </span>
 
                     <div>
-                        <h3>Custom Artwork</h3>
+
+                        <h3>
+                            Custom Artwork
+                        </h3>
+
                         <p>
                             Your idea, your reference, your story —
                             transformed into an original artwork.
                         </p>
+
                     </div>
 
-                    <span class="service-arrow">↗</span>
+                    <span class="service-arrow">
+                        ↗
+                    </span>
 
                 </div>
 
@@ -473,7 +652,9 @@
              COMMISSION PROCESS
         ========================== -->
 
-        <section class="process section-padding" id="commission">
+        <section
+            class="process section-padding"
+            id="commission">
 
             <div class="process-top">
 
@@ -503,7 +684,9 @@
 
                 <div class="process-card">
 
-                    <span>01</span>
+                    <span>
+                        01
+                    </span>
 
                     <h3>
                         Share your idea
@@ -519,7 +702,9 @@
 
                 <div class="process-card">
 
-                    <span>02</span>
+                    <span>
+                        02
+                    </span>
 
                     <h3>
                         Artwork begins
@@ -535,7 +720,9 @@
 
                 <div class="process-card">
 
-                    <span>03</span>
+                    <span>
+                        03
+                    </span>
 
                     <h3>
                         Review
@@ -551,7 +738,9 @@
 
                 <div class="process-card">
 
-                    <span>04</span>
+                    <span>
+                        04
+                    </span>
 
                     <h3>
                         Final artwork
@@ -573,9 +762,15 @@
                     HAVE AN IDEA IN MIND?
                 </p>
 
-                <a href="mailto:artombstudios.co@gmail.com">
+                <a
+                    href="mailto:artombstudios.co@gmail.com">
+
                     Start Your Commission
-                    <span>↗</span>
+
+                    <span>
+                        ↗
+                    </span>
+
                 </a>
 
             </div>
@@ -588,7 +783,9 @@
              GALLERY
         ========================== -->
 
-        <section class="gallery section-padding" id="gallery">
+        <section
+            class="gallery section-padding"
+            id="gallery">
 
             <div class="section-heading">
 
@@ -607,40 +804,23 @@
 
 
                 <p class="gallery-description">
-                    More artwork will be added here as the
-                    Artomb Studios collection grows.
+                    Explore the latest artworks from
+                    the Artomb Studios collection.
                 </p>
 
             </div>
 
 
-            <div class="gallery-grid">
+            <!--
+                Supabase artworks will appear here.
+            -->
 
-                <div class="gallery-item gallery-large">
-                    <div class="gallery-placeholder">
-                        <span>GALLERY 01</span>
-                    </div>
-                </div>
+            <div
+                class="gallery-grid"
+                id="publicGallery">
 
-
-                <div class="gallery-item">
-                    <div class="gallery-placeholder gallery-two">
-                        <span>GALLERY 02</span>
-                    </div>
-                </div>
-
-
-                <div class="gallery-item">
-                    <div class="gallery-placeholder gallery-three">
-                        <span>GALLERY 03</span>
-                    </div>
-                </div>
-
-
-                <div class="gallery-item">
-                    <div class="gallery-placeholder gallery-four">
-                        <span>GALLERY 04</span>
-                    </div>
+                <div class="gallery-loading">
+                    Loading gallery...
                 </div>
 
             </div>
@@ -653,7 +833,8 @@
              SHOP COMING SOON
         ========================== -->
 
-        <section class="coming-soon section-padding">
+        <section
+            class="coming-soon section-padding">
 
             <div class="coming-inner">
 
@@ -661,16 +842,19 @@
                     ARTOMB SHOP
                 </p>
 
+
                 <h2>
                     Something special
                     is coming.
                 </h2>
+
 
                 <p>
                     Original artworks, prints and selected
                     pieces will soon be available through
                     the Artomb Studios shop.
                 </p>
+
 
                 <span class="coming-label">
                     COMING SOON
@@ -686,7 +870,9 @@
              INSTAGRAM / CONTACT
         ========================== -->
 
-        <section class="contact section-padding" id="contact">
+        <section
+            class="contact section-padding"
+            id="contact">
 
             <div class="contact-grid">
 
@@ -719,23 +905,28 @@
 
                         artombstudios.co@gmail.com
 
-                        <span>↗</span>
+                        <span>
+                            ↗
+                        </span>
 
                     </a>
 
 
                     <div class="social-links">
 
-                       <a
-    href="https://instagram.com/_shivam._.here__"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Visit Artomb Studios on Instagram">
+                        <a
+                            href="https://instagram.com/_shivam._.here__"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Visit Artomb Studios on Instagram">
 
-    Instagram
-    <span>↗</span>
+                            Instagram
 
-</a>
+                            <span>
+                                ↗
+                            </span>
+
+                        </a>
 
                     </div>
 
@@ -794,10 +985,373 @@
 
 
     <!-- =========================
-         JAVASCRIPT
+         SUPABASE
     ========================== -->
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+    <!-- Existing Website JavaScript -->
+
     <script src="script.js"></script>
+
+
+
+    <!-- =========================
+         SUPABASE GALLERY SYSTEM
+    ========================== -->
+
+    <script>
+
+        const SUPABASE_URL =
+            "https://pdopupcnmvjzombukcpi.supabase.co";
+
+        const SUPABASE_KEY =
+            "sb_publishable_AbIdZemk0Mq7f1jNNM5zdQ_pYIzZNlU";
+
+
+        const {
+            createClient
+        } = supabase;
+
+
+        const supabaseClient =
+            createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY
+            );
+
+
+
+        /*
+         * Escape HTML
+         */
+
+        function escapeHtml(value) {
+
+            return String(value || "")
+                .replaceAll("&", "&amp;")
+                .replaceAll("<", "&lt;")
+                .replaceAll(">", "&gt;")
+                .replaceAll('"', "&quot;")
+                .replaceAll("'", "&#039;");
+
+        }
+
+
+
+        /*
+         * Load public artworks
+         */
+
+        async function loadPublicArtworks() {
+
+            const featuredContainer =
+                document.getElementById(
+                    "featuredWorks"
+                );
+
+
+            const galleryContainer =
+                document.getElementById(
+                    "publicGallery"
+                );
+
+
+            try {
+
+                /*
+                 * Only artworks marked
+                 * Featured are visible publicly.
+                 */
+
+                const {
+                    data,
+                    error
+                } =
+                    await supabaseClient
+                        .from("artworks")
+                        .select(
+                            "id,title,medium,category,description,image_url,featured,created_at"
+                        )
+                        .eq(
+                            "featured",
+                            true
+                        )
+                        .order(
+                            "created_at",
+                            {
+                                ascending: false
+                            }
+                        );
+
+
+                if (error) {
+
+                    console.error(
+                        "Supabase Gallery Error:",
+                        error
+                    );
+
+
+                    featuredContainer.innerHTML = `
+                        <div class="art-error">
+                            Unable to load selected works.
+                        </div>
+                    `;
+
+
+                    galleryContainer.innerHTML = `
+                        <div class="gallery-error">
+                            Unable to load gallery artwork.
+                        </div>
+                    `;
+
+
+                    return;
+                }
+
+
+                const artworks =
+                    data || [];
+
+
+
+                /*
+                 * No artwork
+                 */
+
+                if (
+                    artworks.length === 0
+                ) {
+
+                    featuredContainer.innerHTML = `
+                        <div class="art-error">
+                            New artwork will appear here soon.
+                        </div>
+                    `;
+
+
+                    galleryContainer.innerHTML = `
+                        <div class="gallery-error">
+                            The Artomb Studios collection is
+                            currently being updated.
+                        </div>
+                    `;
+
+
+                    return;
+                }
+
+
+
+                /*
+                 * =========================
+                 * FEATURED WORKS
+                 * =========================
+                 */
+
+                const featuredArtworks =
+                    artworks.slice(0, 3);
+
+
+                featuredContainer.innerHTML =
+                    featuredArtworks
+                        .map(
+                            function (
+                                artwork,
+                                index
+                            ) {
+
+                                const number =
+                                    String(
+                                        index + 1
+                                    ).padStart(
+                                        2,
+                                        "0"
+                                    );
+
+
+                                return `
+
+                                    <article
+                                        class="art-card ${
+                                            index === 0
+                                            ? "art-card-large"
+                                            : ""
+                                        }">
+
+                                        <div
+                                            class="art-placeholder dynamic-art-placeholder">
+
+                                            <img
+                                                src="${escapeHtml(
+                                                    artwork.image_url
+                                                )}"
+                                                class="dynamic-art-image"
+                                                alt="${escapeHtml(
+                                                    artwork.title ||
+                                                    "Artomb Studios Artwork"
+                                                )}"
+                                                loading="${
+                                                    index === 0
+                                                    ? "eager"
+                                                    : "lazy"
+                                                }"
+                                            >
+
+                                        </div>
+
+
+                                        <div class="art-info">
+
+                                            <div>
+
+                                                <h3>
+                                                    ${escapeHtml(
+                                                        artwork.title ||
+                                                        "Untitled Artwork"
+                                                    )}
+                                                </h3>
+
+                                                <p>
+                                                    ${escapeHtml(
+                                                        artwork.medium ||
+                                                        ""
+                                                    )}
+
+                                                    ${
+                                                        artwork.medium &&
+                                                        artwork.category
+                                                        ? " • "
+                                                        : ""
+                                                    }
+
+                                                    ${escapeHtml(
+                                                        artwork.category ||
+                                                        "Artwork"
+                                                    )}
+                                                </p>
+
+                                            </div>
+
+
+                                            <span
+                                                class="art-number">
+
+                                                ${number}
+
+                                            </span>
+
+                                        </div>
+
+                                    </article>
+
+                                `;
+
+                            }
+                        )
+                        .join("");
+
+
+
+                /*
+                 * =========================
+                 * PUBLIC GALLERY
+                 * =========================
+                 */
+
+                galleryContainer.innerHTML =
+                    artworks
+                        .map(
+                            function (
+                                artwork,
+                                index
+                            ) {
+
+                                const largeClass =
+                                    index === 0
+                                    ? "gallery-large"
+                                    : "";
+
+
+                                return `
+
+                                    <div
+                                        class="gallery-item ${largeClass}">
+
+                                        <div
+                                            class="gallery-placeholder dynamic-gallery-placeholder">
+
+                                            <img
+                                                src="${escapeHtml(
+                                                    artwork.image_url
+                                                )}"
+                                                class="dynamic-gallery-image"
+                                                alt="${escapeHtml(
+                                                    artwork.title ||
+                                                    "Artomb Studios Artwork"
+                                                )}"
+                                                loading="${
+                                                    index < 2
+                                                    ? "eager"
+                                                    : "lazy"
+                                                }"
+                                            >
+
+                                        </div>
+
+                                    </div>
+
+                                `;
+
+                            }
+                        )
+                        .join("");
+
+
+            } catch (error) {
+
+                console.error(
+                    "Gallery loading failed:",
+                    error
+                );
+
+
+                featuredContainer.innerHTML = `
+                    <div class="art-error">
+                        Unable to connect to the artwork gallery.
+                    </div>
+                `;
+
+
+                galleryContainer.innerHTML = `
+                    <div class="gallery-error">
+                        Unable to connect to the artwork gallery.
+                    </div>
+                `;
+
+            }
+
+        }
+
+
+
+        /*
+         * Start Supabase gallery
+         */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                loadPublicArtworks();
+
+            }
+        );
+
+    </script>
+
 
 </body>
 </html>
