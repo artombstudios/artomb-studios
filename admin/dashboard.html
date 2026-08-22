@@ -28,17 +28,15 @@
             --text: #171717;
             --muted: #77736c;
             --border: rgba(23, 23, 23, .11);
+            --danger: #9b3d3d;
+            --danger-bg: #fff4f4;
         }
 
         body {
             min-height: 100vh;
             background: var(--bg);
             color: var(--text);
-
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         button,
@@ -65,8 +63,7 @@
 
             background: rgba(247, 244, 238, .94);
 
-            border-bottom:
-                1px solid var(--border);
+            border-bottom: 1px solid var(--border);
 
             backdrop-filter: blur(12px);
         }
@@ -200,8 +197,7 @@
 
             background: var(--border);
 
-            border:
-                1px solid var(--border);
+            border: 1px solid var(--border);
         }
 
         .stat-card {
@@ -264,8 +260,7 @@
         .management-card {
             background: var(--card);
 
-            border:
-                1px solid var(--border);
+            border: 1px solid var(--border);
         }
 
         .management-top {
@@ -278,8 +273,7 @@
 
             padding: 22px;
 
-            border-bottom:
-                1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
 
         .management-top p {
@@ -321,8 +315,7 @@
 
             margin: 0 auto 22px;
 
-            border:
-                1px solid var(--border);
+            border: 1px solid var(--border);
 
             font-family:
                 Georgia,
@@ -420,6 +413,61 @@
             text-transform: uppercase;
         }
 
+        /* =========================
+           DELETE ACTION
+        ========================= */
+
+        .artwork-actions {
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            margin-top: 18px;
+
+            padding-top: 15px;
+
+            border-top: 1px solid var(--border);
+        }
+
+        .delete-button {
+            width: 100%;
+
+            border: 1px solid rgba(155, 61, 61, .28);
+
+            background: transparent;
+
+            color: var(--danger);
+
+            padding: 11px 12px;
+
+            font-size: 9px;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+
+            transition:
+                background .25s ease,
+                color .25s ease,
+                border-color .25s ease;
+        }
+
+        .delete-button:hover {
+            background: var(--danger);
+
+            border-color: var(--danger);
+
+            color: white;
+        }
+
+        .delete-button:disabled {
+            opacity: .5;
+
+            cursor: not-allowed;
+        }
+
         .quick-section {
             margin-top: 60px;
         }
@@ -444,8 +492,7 @@
 
             background: var(--card);
 
-            border:
-                1px solid var(--border);
+            border: 1px solid var(--border);
 
             transition:
                 transform .25s ease,
@@ -496,8 +543,7 @@
 
             padding: 25px 0 35px;
 
-            border-top:
-                1px solid var(--border);
+            border-top: 1px solid var(--border);
 
             display: flex;
 
@@ -525,6 +571,7 @@
             color: #9b3d3d;
 
             font-size: 12px;
+
             line-height: 1.5;
         }
 
@@ -748,8 +795,7 @@
             </div>
 
 
-            <div
-                id="artworkContainer">
+            <div id="artworkContainer">
 
                 <div class="loading-state">
 
@@ -861,8 +907,6 @@
 
 </footer>
 
-
-<!-- Supabase -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -993,6 +1037,7 @@
                     <h3>
                         Something went wrong
                     </h3>
+
                     <p>
                         Check your Supabase RLS policy
                         and try again.
@@ -1116,12 +1161,114 @@
 
                         </span>
 
+
+                        <!-- DELETE BUTTON -->
+
+                        <div class="artwork-actions">
+
+                            <button
+                                type="button"
+                                class="delete-button"
+                                onclick="deleteArtwork('${escapeHtml(
+                                    artwork.id
+                                )}', '${escapeHtml(
+                                    artwork.title ||
+                                    "Untitled Artwork"
+                                )}')">
+
+                                Delete Artwork
+
+                            </button>
+
+                        </div>
+
                     </article>
 
                 `).join("")}
 
             </div>
         `;
+    }
+
+
+    /*
+     * DELETE ARTWORK
+     */
+
+    async function deleteArtwork(
+        artworkId,
+        artworkTitle
+    ) {
+
+        if (!artworkId) {
+
+            showError(
+                "Unable to delete this artwork because its ID is missing."
+            );
+
+            return;
+        }
+
+
+        const confirmed =
+            window.confirm(
+                `Delete "${artworkTitle}"?\n\nThis action cannot be undone.`
+            );
+
+
+        if (!confirmed) {
+            return;
+        }
+
+
+        errorBox.style.display = "none";
+
+
+        const buttons =
+            document.querySelectorAll(
+                ".delete-button"
+            );
+
+
+        buttons.forEach(
+            button => {
+                button.disabled = true;
+            }
+        );
+
+
+        const {
+            error
+        } =
+            await supabaseClient
+                .from("artworks")
+                .delete()
+                .eq(
+                    "id",
+                    artworkId
+                );
+
+
+        if (error) {
+
+            console.error(error);
+
+            buttons.forEach(
+                button => {
+                    button.disabled = false;
+                }
+            );
+
+            showError(
+                "Could not delete artwork: " +
+                error.message
+            );
+
+            return;
+        }
+
+
+        await loadArtworks();
     }
 
 
@@ -1153,10 +1300,6 @@
         );
 
 
-    /*
-     * ADD ARTWORK
-     */
-
     document
         .getElementById("addArtworkButton")
         .addEventListener(
@@ -1169,10 +1312,6 @@
             }
         );
 
-
-    /*
-     * QUICK ADD ARTWORK
-     */
 
     document
         .getElementById("quickAdd")
