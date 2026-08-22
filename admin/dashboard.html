@@ -28,15 +28,21 @@
             --text: #171717;
             --muted: #77736c;
             --border: rgba(23, 23, 23, .11);
+
             --danger: #9b3d3d;
             --danger-bg: #fff4f4;
         }
 
         body {
             min-height: 100vh;
+
             background: var(--bg);
             color: var(--text);
-            font-family: Arial, Helvetica, sans-serif;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
         }
 
         button,
@@ -47,6 +53,10 @@
         button {
             cursor: pointer;
         }
+
+        /* =========================
+           HEADER
+        ========================= */
 
         .admin-header {
             position: sticky;
@@ -63,7 +73,8 @@
 
             background: rgba(247, 244, 238, .94);
 
-            border-bottom: 1px solid var(--border);
+            border-bottom:
+                1px solid var(--border);
 
             backdrop-filter: blur(12px);
         }
@@ -100,6 +111,7 @@
         .header-actions {
             display: flex;
             align-items: center;
+
             gap: 10px;
         }
 
@@ -113,7 +125,8 @@
 
             padding: 11px 14px;
 
-            border: 1px solid var(--border);
+            border:
+                1px solid var(--border);
         }
 
         .logout-button {
@@ -128,6 +141,10 @@
             letter-spacing: 1.5px;
             text-transform: uppercase;
         }
+
+        /* =========================
+           DASHBOARD
+        ========================= */
 
         .dashboard {
             width: min(1200px, 90%);
@@ -185,6 +202,10 @@
             line-height: 1.7;
         }
 
+        /* =========================
+           STATS
+        ========================= */
+
         .stats-grid {
             display: grid;
 
@@ -197,7 +218,8 @@
 
             background: var(--border);
 
-            border: 1px solid var(--border);
+            border:
+                1px solid var(--border);
         }
 
         .stat-card {
@@ -230,6 +252,10 @@
             text-transform: uppercase;
         }
 
+        /* =========================
+           SECTION
+        ========================= */
+
         .section-header {
             display: flex;
 
@@ -257,10 +283,15 @@
             text-transform: uppercase;
         }
 
+        /* =========================
+           MANAGEMENT
+        ========================= */
+
         .management-card {
             background: var(--card);
 
-            border: 1px solid var(--border);
+            border:
+                1px solid var(--border);
         }
 
         .management-top {
@@ -273,7 +304,8 @@
 
             padding: 22px;
 
-            border-bottom: 1px solid var(--border);
+            border-bottom:
+                1px solid var(--border);
         }
 
         .management-top p {
@@ -298,6 +330,10 @@
             text-transform: uppercase;
         }
 
+        /* =========================
+           STATES
+        ========================= */
+
         .loading-state,
         .empty-state {
             padding: 75px 25px;
@@ -315,7 +351,8 @@
 
             margin: 0 auto 22px;
 
-            border: 1px solid var(--border);
+            border:
+                1px solid var(--border);
 
             font-family:
                 Georgia,
@@ -348,6 +385,10 @@
             line-height: 1.7;
         }
 
+        /* =========================
+           ARTWORK LIST
+        ========================= */
+
         .artwork-list {
             display: grid;
 
@@ -367,6 +408,7 @@
 
         .artwork-image {
             width: 100%;
+
             aspect-ratio: 1 / 1;
 
             object-fit: cover;
@@ -406,7 +448,8 @@
 
             padding: 6px 9px;
 
-            border: 1px solid var(--border);
+            border:
+                1px solid var(--border);
 
             font-size: 9px;
             letter-spacing: 1px;
@@ -414,7 +457,7 @@
         }
 
         /* =========================
-           DELETE ACTION
+           ARTWORK ACTIONS
         ========================= */
 
         .artwork-actions {
@@ -428,17 +471,13 @@
 
             padding-top: 15px;
 
-            border-top: 1px solid var(--border);
+            border-top:
+                1px solid var(--border);
         }
 
+        .edit-button,
         .delete-button {
             width: 100%;
-
-            border: 1px solid rgba(155, 61, 61, .28);
-
-            background: transparent;
-
-            color: var(--danger);
 
             padding: 11px 12px;
 
@@ -451,22 +490,56 @@
             transition:
                 background .25s ease,
                 color .25s ease,
-                border-color .25s ease;
+                border-color .25s ease,
+                opacity .25s ease;
+        }
+
+        .edit-button {
+            border:
+                1px solid var(--border);
+
+            background: transparent;
+
+            color: var(--text);
+        }
+
+        .edit-button:hover {
+            background: var(--text);
+
+            border-color:
+                var(--text);
+
+            color: white;
+        }
+
+        .delete-button {
+            border:
+                1px solid rgba(155, 61, 61, .28);
+
+            background: transparent;
+
+            color: var(--danger);
         }
 
         .delete-button:hover {
             background: var(--danger);
 
-            border-color: var(--danger);
+            border-color:
+                var(--danger);
 
             color: white;
         }
 
+        .edit-button:disabled,
         .delete-button:disabled {
             opacity: .5;
 
             cursor: not-allowed;
         }
+
+        /* =========================
+           QUICK ACTIONS
+        ========================= */
 
         .quick-section {
             margin-top: 60px;
@@ -492,7 +565,8 @@
 
             background: var(--card);
 
-            border: 1px solid var(--border);
+            border:
+                1px solid var(--border);
 
             transition:
                 transform .25s ease,
@@ -536,6 +610,10 @@
             line-height: 1.6;
         }
 
+        /* =========================
+           FOOTER
+        ========================= */
+
         .admin-footer {
             width: min(1200px, 90%);
 
@@ -543,7 +621,8 @@
 
             padding: 25px 0 35px;
 
-            border-top: 1px solid var(--border);
+            border-top:
+                1px solid var(--border);
 
             display: flex;
 
@@ -557,6 +636,10 @@
             letter-spacing: 1px;
         }
 
+        /* =========================
+           ERROR
+        ========================= */
+
         .error-box {
             display: none;
 
@@ -564,21 +647,27 @@
 
             padding: 14px;
 
-            background: #fff4f4;
+            background: var(--danger-bg);
 
-            border: 1px solid #e1bebe;
+            border:
+                1px solid #e1bebe;
 
-            color: #9b3d3d;
+            color: var(--danger);
 
             font-size: 12px;
 
             line-height: 1.5;
         }
 
+        /* =========================
+           MOBILE
+        ========================= */
+
         @media (max-width: 700px) {
 
             .admin-header {
                 height: 65px;
+
                 padding: 0 5%;
             }
 
@@ -588,17 +677,21 @@
 
             .dashboard {
                 width: 90%;
+
                 padding-top: 55px;
             }
 
             .dashboard-intro {
                 display: block;
+
                 margin-bottom: 35px;
             }
 
             h1 {
                 font-size: 46px;
+
                 letter-spacing: -1.5px;
+
                 margin-bottom: 20px;
             }
 
@@ -612,6 +705,7 @@
 
             .management-top {
                 align-items: flex-start;
+
                 flex-direction: column;
             }
 
@@ -623,12 +717,28 @@
                 grid-template-columns: 1fr;
             }
 
+            .artwork-actions {
+                flex-direction: row;
+            }
+
             .quick-grid {
                 grid-template-columns: 1fr;
             }
 
             .admin-footer {
                 flex-direction: column;
+            }
+        }
+
+        @media (max-width: 420px) {
+
+            .artwork-actions {
+                flex-direction: column;
+            }
+
+            .edit-button,
+            .delete-button {
+                width: 100%;
             }
         }
     </style>
@@ -638,7 +748,9 @@
 
 <header class="admin-header">
 
-    <a href="../index.html" class="brand">
+    <a
+        href="../index.html"
+        class="brand">
 
         <span class="brand-main">
             ARTOMB
@@ -908,6 +1020,10 @@
 </footer>
 
 
+<!-- =========================
+     SUPABASE
+========================= -->
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
@@ -919,9 +1035,11 @@
     const SUPABASE_KEY =
         "sb_publishable_AbIdZemk0Mq7f1jNNM5zdQ_pYIzZNlU";
 
+
     const {
         createClient
     } = supabase;
+
 
     const supabaseClient =
         createClient(
@@ -929,6 +1047,10 @@
             SUPABASE_KEY
         );
 
+
+    /* =========================
+       DOM ELEMENTS
+    ========================= */
 
     const artworkCount =
         document.getElementById(
@@ -956,14 +1078,23 @@
         );
 
 
+    /* =========================
+       ERROR
+    ========================= */
+
     function showError(message) {
 
-        errorBox.textContent = message;
+        errorBox.textContent =
+            message;
 
-        errorBox.style.display = "block";
-
+        errorBox.style.display =
+            "block";
     }
 
+
+    /* =========================
+       LOGIN CHECK
+    ========================= */
 
     async function checkLogin() {
 
@@ -997,9 +1128,15 @@
     }
 
 
+    /* =========================
+       LOAD ARTWORKS
+    ========================= */
+
     async function loadArtworks() {
 
-        errorBox.style.display = "none";
+        errorBox.style.display =
+            "none";
+
 
         artworkContainer.innerHTML = `
             <div class="loading-state">
@@ -1027,13 +1164,16 @@
 
             console.error(error);
 
+
             showError(
                 "Could not load artworks: " +
                 error.message
             );
 
+
             artworkContainer.innerHTML = `
                 <div class="empty-state">
+
                     <h3>
                         Something went wrong
                     </h3>
@@ -1042,6 +1182,7 @@
                         Check your Supabase RLS policy
                         and try again.
                     </p>
+
                 </div>
             `;
 
@@ -1052,6 +1193,10 @@
         const artworks =
             data || [];
 
+
+        /* =========================
+           UPDATE STATS
+        ========================= */
 
         artworkCount.textContent =
             artworks.length;
@@ -1072,6 +1217,10 @@
             artworks.length -
             featured.length;
 
+
+        /* =========================
+           EMPTY STATE
+        ========================= */
 
         if (artworks.length === 0) {
 
@@ -1098,14 +1247,20 @@
         }
 
 
+        /* =========================
+           ARTWORK CARDS
+        ========================= */
+
         artworkContainer.innerHTML = `
 
             <div class="artwork-list">
 
-                ${artworks.map(artwork => `
+                ${artworks.map(
+                    artwork => `
 
                     <article
                         class="artwork-item">
+
 
                         ${
                             artwork.image_url
@@ -1130,6 +1285,7 @@
                             `
                         }
 
+
                         <h3
                             class="artwork-title">
 
@@ -1140,6 +1296,7 @@
 
                         </h3>
 
+
                         <p
                             class="artwork-category">
 
@@ -1149,6 +1306,7 @@
                             )}
 
                         </p>
+
 
                         <span
                             class="artwork-status">
@@ -1162,38 +1320,81 @@
                         </span>
 
 
-                        <!-- DELETE BUTTON -->
+                        <!-- ACTION BUTTONS -->
 
-                        <div class="artwork-actions">
+                        <div
+                            class="artwork-actions">
+
+
+                            <!-- EDIT -->
+
+                            <button
+                                type="button"
+                                class="edit-button"
+                                onclick="editArtwork('${encodeURIComponent(
+                                    String(artwork.id)
+                                )}')">
+
+                                Edit
+
+                            </button>
+
+
+                            <!-- DELETE -->
 
                             <button
                                 type="button"
                                 class="delete-button"
                                 onclick="deleteArtwork('${escapeHtml(
-                                    artwork.id
+                                    String(artwork.id)
                                 )}', '${escapeHtml(
                                     artwork.title ||
                                     "Untitled Artwork"
                                 )}')">
 
-                                Delete Artwork
+                                Delete
 
                             </button>
 
+
                         </div>
+
 
                     </article>
 
-                `).join("")}
+                `
+                ).join("")}
 
             </div>
         `;
     }
 
 
-    /*
-     * DELETE ARTWORK
-     */
+    /* =========================
+       EDIT ARTWORK
+    ========================= */
+
+    function editArtwork(artworkId) {
+
+        if (!artworkId) {
+
+            showError(
+                "Unable to edit this artwork because its ID is missing."
+            );
+
+            return;
+        }
+
+
+        window.location.href =
+            "edit-artwork.html?id=" +
+            artworkId;
+    }
+
+
+    /* =========================
+       DELETE ARTWORK
+    ========================= */
 
     async function deleteArtwork(
         artworkId,
@@ -1221,18 +1422,22 @@
         }
 
 
-        errorBox.style.display = "none";
+        errorBox.style.display =
+            "none";
 
 
         const buttons =
             document.querySelectorAll(
-                ".delete-button"
+                ".edit-button, .delete-button"
             );
 
 
         buttons.forEach(
             button => {
-                button.disabled = true;
+
+                button.disabled =
+                    true;
+
             }
         );
 
@@ -1253,11 +1458,16 @@
 
             console.error(error);
 
+
             buttons.forEach(
                 button => {
-                    button.disabled = false;
+
+                    button.disabled =
+                        false;
+
                 }
             );
+
 
             showError(
                 "Could not delete artwork: " +
@@ -1272,20 +1482,44 @@
     }
 
 
+    /* =========================
+       ESCAPE HTML
+    ========================= */
+
     function escapeHtml(value) {
 
         return String(value)
-            .replaceAll("&", "&amp;")
-            .replaceAll("<", "&lt;")
-            .replaceAll(">", "&gt;")
-            .replaceAll('"', "&quot;")
-            .replaceAll("'", "&#039;");
+            .replaceAll(
+                "&",
+                "&amp;"
+            )
+            .replaceAll(
+                "<",
+                "&lt;"
+            )
+            .replaceAll(
+                ">",
+                "&gt;"
+            )
+            .replaceAll(
+                '"',
+                "&quot;"
+            )
+            .replaceAll(
+                "'",
+                "&#039;"
+            );
     }
 
+
+    /* =========================
+       LOGOUT
+    ========================= */
 
     async function logout() {
 
         await supabaseClient.auth.signOut();
+
 
         window.location.href =
             "login.html";
@@ -1293,15 +1527,23 @@
 
 
     document
-        .getElementById("logoutButton")
+        .getElementById(
+            "logoutButton"
+        )
         .addEventListener(
             "click",
             logout
         );
 
 
+    /* =========================
+       ADD ARTWORK
+    ========================= */
+
     document
-        .getElementById("addArtworkButton")
+        .getElementById(
+            "addArtworkButton"
+        )
         .addEventListener(
             "click",
             function () {
@@ -1313,13 +1555,20 @@
         );
 
 
+    /* =========================
+       QUICK ADD
+    ========================= */
+
     document
-        .getElementById("quickAdd")
+        .getElementById(
+            "quickAdd"
+        )
         .addEventListener(
             "click",
             function (event) {
 
                 event.preventDefault();
+
 
                 window.location.href =
                     "add-artwork.html";
@@ -1327,6 +1576,10 @@
             }
         );
 
+
+    /* =========================
+       START DASHBOARD
+    ========================= */
 
     async function startDashboard() {
 
