@@ -17,7 +17,6 @@
 
     <title>Edit Artwork — Artomb Studios</title>
 
-
     <style>
 
         * {
@@ -26,97 +25,62 @@
             padding: 0;
         }
 
-
         :root {
-
             --bg: #f7f4ee;
             --card: #fffdf9;
             --text: #171717;
             --muted: #77736c;
             --border: rgba(23, 23, 23, .11);
-
             --danger: #9b3d3d;
             --success: #416341;
-
         }
-
 
         body {
-
             min-height: 100vh;
-
             background: var(--bg);
-
             color: var(--text);
-
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-
+            font-family: Arial, Helvetica, sans-serif;
         }
-
 
         button,
         input,
         textarea,
         select {
-
             font: inherit;
-
         }
-
 
         button {
-
             cursor: pointer;
-
         }
 
-
         .admin-header {
-
             position: sticky;
-
             top: 0;
-
             z-index: 50;
 
             height: 72px;
 
             display: flex;
-
             align-items: center;
-
             justify-content: space-between;
 
             padding: 0 5vw;
 
-            background:
-                rgba(247, 244, 238, .94);
+            background: rgba(247, 244, 238, .94);
 
             border-bottom:
                 1px solid var(--border);
 
-            backdrop-filter:
-                blur(12px);
-
+            backdrop-filter: blur(12px);
         }
-
 
         .brand {
-
             text-decoration: none;
-
             color: var(--text);
-
             line-height: 1;
-
         }
 
-
         .brand-main {
-
             display: block;
 
             font-family:
@@ -125,83 +89,56 @@
                 serif;
 
             font-size: 21px;
-
             letter-spacing: 3px;
-
         }
 
-
         .brand-sub {
-
             display: block;
 
             margin-top: 4px;
 
             font-size: 7px;
-
             letter-spacing: 4px;
 
             opacity: .55;
-
         }
 
-
         .back-button {
-
             color: var(--text);
-
             text-decoration: none;
 
             font-size: 10px;
-
             letter-spacing: 1.5px;
-
             text-transform: uppercase;
 
             padding: 11px 14px;
 
-            border:
-                1px solid var(--border);
-
+            border: 1px solid var(--border);
         }
 
-
         .page {
-
-            width:
-                min(850px, 90%);
+            width: min(850px, 90%);
 
             margin: 0 auto;
 
             padding: 70px 0 90px;
-
         }
-
 
         .intro {
-
             margin-bottom: 40px;
-
         }
 
-
         .eyebrow {
-
             margin-bottom: 14px;
 
             color: var(--muted);
 
             font-size: 10px;
-
             letter-spacing: 3px;
-
             text-transform: uppercase;
-
         }
 
-
         h1 {
-
             font-family:
                 Georgia,
                 "Times New Roman",
@@ -215,12 +152,9 @@
             line-height: .98;
 
             letter-spacing: -2px;
-
         }
 
-
         .intro-text {
-
             max-width: 550px;
 
             margin-top: 20px;
@@ -228,41 +162,28 @@
             color: var(--muted);
 
             font-size: 14px;
-
             line-height: 1.7;
-
         }
 
-
         .form-card {
-
             background: var(--card);
 
             border:
                 1px solid var(--border);
-
         }
 
-
         .form-section {
-
             padding: 30px;
 
             border-bottom:
                 1px solid var(--border);
-
         }
-
 
         .form-section:last-child {
-
             border-bottom: 0;
-
         }
 
-
         .section-title {
-
             margin-bottom: 25px;
 
             font-family:
@@ -271,28 +192,18 @@
                 serif;
 
             font-size: 25px;
-
             font-weight: 400;
-
         }
-
 
         .form-group {
-
             margin-bottom: 24px;
-
         }
-
 
         .form-group:last-child {
-
             margin-bottom: 0;
-
         }
 
-
         label {
-
             display: block;
 
             margin-bottom: 9px;
@@ -300,18 +211,12 @@
             color: var(--muted);
 
             font-size: 10px;
-
             letter-spacing: 1.8px;
-
             text-transform: uppercase;
-
         }
 
-
         input,
-        textarea,
-        select {
-
+        textarea {
             width: 100%;
 
             padding: 14px 15px;
@@ -326,71 +231,94 @@
             outline: none;
 
             border-radius: 0;
-
         }
 
-
         input:focus,
-        textarea:focus,
-        select:focus {
-
+        textarea:focus {
             border-color:
                 rgba(23, 23, 23, .4);
 
             box-shadow:
-                0 0 0 3px
-                rgba(23, 23, 23, .04);
-
+                0 0 0 3px rgba(23, 23, 23, .04);
         }
 
-
         textarea {
-
             min-height: 150px;
 
             resize: vertical;
 
             line-height: 1.6;
-
         }
 
+        /* IMAGE PICKER */
 
-        /* =========================
-           IMAGE UPLOAD
-        ========================= */
-
-
-        .image-upload-box {
+        .image-picker {
+            position: relative;
 
             border:
-                1px dashed
-                rgba(23, 23, 23, .22);
+                1px dashed rgba(23, 23, 23, .25);
 
-            background:
-                #faf8f3;
+            background: #faf8f3;
 
-            padding: 25px;
+            padding: 30px 20px;
 
             text-align: center;
 
+            transition:
+                border-color .2s ease,
+                background .2s ease;
         }
 
+        .image-picker:hover {
+            border-color:
+                rgba(23, 23, 23, .5);
 
-        .image-upload-box p {
+            background: #f7f4ee;
+        }
 
-            margin-bottom: 16px;
+        .image-picker-icon {
+            width: 55px;
+            height: 55px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin: 0 auto 15px;
+
+            border:
+                1px solid var(--border);
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 24px;
+        }
+
+        .image-picker h3 {
+            margin-bottom: 7px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 20px;
+            font-weight: 400;
+        }
+
+        .image-picker p {
+            margin-bottom: 18px;
 
             color: var(--muted);
 
             font-size: 12px;
-
             line-height: 1.6;
-
         }
 
-
         .choose-image-button {
-
             display: inline-block;
 
             padding: 13px 18px;
@@ -399,142 +327,86 @@
 
             color: white;
 
-            border: 0;
-
             font-size: 10px;
-
             letter-spacing: 1.5px;
 
             text-transform: uppercase;
-
         }
-
 
         #imageFile {
+            position: absolute;
 
-            display: none;
+            width: 1px;
+            height: 1px;
 
+            opacity: 0;
+
+            pointer-events: none;
         }
 
-
         .selected-file {
-
             display: none;
 
             margin-top: 15px;
+
+            padding: 11px;
+
+            background: #f2efe8;
+
+            border:
+                1px solid var(--border);
 
             color: var(--muted);
 
             font-size: 11px;
 
-            line-height: 1.5;
-
+            word-break: break-word;
         }
-
 
         .selected-file.show {
-
             display: block;
-
         }
 
-
         .image-preview {
-
             display: none;
 
-            margin-top: 20px;
+            margin-top: 18px;
 
             border:
                 1px solid var(--border);
 
-            background:
-                #eeeae2;
-
+            background: #eeeae2;
         }
-
 
         .image-preview.show {
-
             display: block;
-
         }
 
-
         .image-preview img {
-
             width: 100%;
 
-            max-height: 450px;
+            max-height: 420px;
 
             display: block;
 
             object-fit: contain;
-
         }
 
-
         .current-image-label {
-
-            margin-top: 20px;
-
+            margin-top: 18px;
             margin-bottom: 9px;
 
             color: var(--muted);
 
             font-size: 10px;
-
-            letter-spacing: 1.8px;
+            letter-spacing: 1.5px;
 
             text-transform: uppercase;
-
         }
 
-
-        .current-image {
-
-            border:
-                1px solid var(--border);
-
-            background:
-                #eeeae2;
-
-        }
-
-
-        .current-image img {
-
-            width: 100%;
-
-            max-height: 400px;
-
-            display: block;
-
-            object-fit: contain;
-
-        }
-
-
-        .upload-note {
-
-            margin-top: 12px;
-
-            color: var(--muted);
-
-            font-size: 10px;
-
-            line-height: 1.5;
-
-        }
-
-
-        /* =========================
-           FEATURED
-        ========================= */
-
+        /* FEATURED */
 
         .featured-row {
-
             display: flex;
 
             align-items: center;
@@ -549,12 +421,9 @@
                 1px solid var(--border);
 
             background: #fff;
-
         }
 
-
         .featured-info h3 {
-
             margin-bottom: 5px;
 
             font-family:
@@ -563,49 +432,35 @@
                 serif;
 
             font-size: 18px;
-
             font-weight: 400;
-
         }
 
-
         .featured-info p {
-
             color: var(--muted);
 
             font-size: 12px;
-
             line-height: 1.5;
-
         }
 
-
         .toggle {
-
             position: relative;
 
             width: 50px;
-
             height: 28px;
 
             flex-shrink: 0;
 
+            margin: 0;
         }
 
-
         .toggle input {
-
             width: 0;
-
             height: 0;
 
             opacity: 0;
-
         }
 
-
         .toggle-slider {
-
             position: absolute;
 
             inset: 0;
@@ -614,83 +469,58 @@
 
             cursor: pointer;
 
+            transition:
+                background .25s ease;
         }
 
-
         .toggle-slider::before {
-
             content: "";
 
             position: absolute;
 
             width: 20px;
-
             height: 20px;
 
             left: 4px;
-
             top: 4px;
 
             background: white;
 
             transition:
                 transform .25s ease;
-
         }
 
-
-        .toggle input:checked
-        + .toggle-slider {
-
+        .toggle input:checked + .toggle-slider {
             background: var(--text);
-
         }
 
-
-        .toggle input:checked
-        + .toggle-slider::before {
-
-            transform:
-                translateX(22px);
-
+        .toggle input:checked + .toggle-slider::before {
+            transform: translateX(22px);
         }
 
-
-        /* =========================
-           ACTIONS
-        ========================= */
-
+        /* ACTIONS */
 
         .actions {
-
             display: flex;
 
-            justify-content:
-                space-between;
+            justify-content: space-between;
 
             align-items: center;
 
             gap: 15px;
-
         }
-
 
         .cancel-button,
         .save-button {
-
             padding: 14px 20px;
 
             font-size: 10px;
-
             letter-spacing: 1.5px;
 
             text-transform: uppercase;
-
         }
 
-
         .cancel-button {
-
             color: var(--text);
 
             background: transparent;
@@ -699,39 +529,26 @@
                 1px solid var(--border);
 
             text-decoration: none;
-
         }
 
-
         .save-button {
-
-            min-width: 160px;
+            min-width: 170px;
 
             background: var(--text);
-
             color: white;
 
             border: 0;
-
         }
 
-
         .save-button:disabled {
-
             opacity: .5;
 
             cursor: not-allowed;
-
         }
 
-
-        /* =========================
-           MESSAGE
-        ========================= */
-
+        /* MESSAGE */
 
         .message {
-
             display: none;
 
             margin-bottom: 25px;
@@ -740,13 +557,10 @@
 
             font-size: 12px;
 
-            line-height: 1.5;
-
+            line-height: 1.6;
         }
 
-
         .message.error {
-
             display: block;
 
             background: #fff4f4;
@@ -755,12 +569,9 @@
                 1px solid #e1bebe;
 
             color: var(--danger);
-
         }
 
-
         .message.success {
-
             display: block;
 
             background: #f2f7f2;
@@ -769,27 +580,20 @@
                 1px solid #bfd1bf;
 
             color: var(--success);
-
         }
 
-
         .loading {
-
-            padding: 30px;
+            padding: 40px;
 
             text-align: center;
 
             color: var(--muted);
 
             font-size: 13px;
-
         }
 
-
         .admin-footer {
-
-            width:
-                min(850px, 90%);
+            width: min(850px, 90%);
 
             margin: 0 auto;
 
@@ -800,8 +604,7 @@
 
             display: flex;
 
-            justify-content:
-                space-between;
+            justify-content: space-between;
 
             gap: 20px;
 
@@ -810,70 +613,47 @@
             font-size: 10px;
 
             letter-spacing: 1px;
-
         }
-
 
         @media (max-width: 600px) {
 
             .admin-header {
-
                 height: 65px;
 
                 padding: 0 5%;
-
             }
 
-
             .page {
-
                 width: 90%;
 
                 padding-top: 50px;
-
             }
 
-
             h1 {
-
                 font-size: 45px;
 
                 letter-spacing: -1.5px;
-
             }
-
 
             .form-section {
-
                 padding: 22px;
-
             }
-
 
             .actions {
-
-                flex-direction:
-                    column-reverse;
+                flex-direction: column-reverse;
 
                 align-items: stretch;
-
             }
-
 
             .cancel-button,
             .save-button {
-
                 width: 100%;
 
                 text-align: center;
-
             }
 
-
             .admin-footer {
-
                 flex-direction: column;
-
             }
 
         }
@@ -932,11 +712,9 @@
         </h1>
 
         <p class="intro-text">
-
-            Update your artwork details
-            and replace the artwork image
-            directly from your phone gallery.
-
+            Update your artwork details and
+            choose a new image directly from
+            your phone gallery.
         </p>
 
     </section>
@@ -946,7 +724,8 @@
     <div
         class="message"
         id="message"
-    ></div>
+    >
+    </div>
 
 
 
@@ -956,9 +735,7 @@
     >
 
         <div class="loading">
-
             Loading artwork...
-
         </div>
 
     </div>
@@ -989,351 +766,315 @@
 <script>
 
 
-    /* =========================
-       SUPABASE
-    ========================= */
+/* =========================================
+   SUPABASE
+========================================= */
+
+const SUPABASE_URL =
+    "https://pdopupcnmvjzombukcpi.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_AbIdZemk0Mq7f1jNNM5zdQ_pYIzZNlU";
+
+const {
+    createClient
+} = supabase;
+
+const supabaseClient =
+    createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
 
 
-    const SUPABASE_URL =
-        "https://pdopupcnmvjzombukcpi.supabase.co";
+/* =========================================
+   ELEMENTS
+========================================= */
+
+const formCard =
+    document.getElementById(
+        "formCard"
+    );
+
+const message =
+    document.getElementById(
+        "message"
+    );
 
 
-    const SUPABASE_KEY =
-        "sb_publishable_AbIdZemk0Mq7f1jNNM5zdQ_pYIzZNlU";
+/* =========================================
+   ARTWORK ID
+========================================= */
+
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+const artworkId =
+    params.get("id");
+
+
+/* =========================================
+   CURRENT ARTWORK
+========================================= */
+
+let currentArtwork = null;
+
+
+/* =========================================
+   ESCAPE HTML
+========================================= */
+
+function escapeHtml(value) {
+
+    return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+}
+
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+function showMessage(
+    text,
+    type
+) {
+
+    message.textContent = text;
+
+    message.className =
+        "message " + type;
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================================
+   LOGIN CHECK
+========================================= */
+
+async function checkLogin() {
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient.auth.getSession();
+
+
+    if (error) {
+
+        showMessage(
+            "Unable to check login session: " +
+            error.message,
+            "error"
+        );
+
+        return false;
+
+    }
+
+
+    if (!data.session) {
+
+        window.location.href =
+            "login.html";
+
+        return false;
+
+    }
+
+
+    return true;
+
+}
+
+
+/* =========================================
+   LOAD ARTWORK
+========================================= */
+
+async function loadArtwork() {
+
+    if (!artworkId) {
+
+        showMessage(
+            "No artwork was selected. Please return to the dashboard and choose an artwork to edit.",
+            "error"
+        );
+
+        formCard.innerHTML = `
+            <div class="loading">
+                Artwork ID is missing.
+            </div>
+        `;
+
+        return;
+
+    }
 
 
     const {
-        createClient
-    } = supabase;
-
-
-    const supabaseClient =
-        createClient(
-            SUPABASE_URL,
-            SUPABASE_KEY
-        );
-
-
-    /* =========================
-       ELEMENTS
-    ========================= */
-
-
-    const formCard =
-        document.getElementById(
-            "formCard"
-        );
-
-
-    const message =
-        document.getElementById(
-            "message"
-        );
-
-
-    /* =========================
-       ARTWORK ID
-    ========================= */
-
-
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
-
-
-    const artworkId =
-        params.get("id");
-
-
-    /* =========================
-       STORAGE BUCKET
-    ========================= */
-
-
-    const STORAGE_BUCKET =
-        "artworks";
-
-
-    /* =========================
-       HELPERS
-    ========================= */
-
-
-    function escapeHtml(value) {
-
-        return String(value ?? "")
-            .replaceAll(
-                "&",
-                "&amp;"
+        data,
+        error
+    } =
+        await supabaseClient
+            .from("artworks")
+            .select("*")
+            .eq(
+                "id",
+                artworkId
             )
-            .replaceAll(
-                "<",
-                "&lt;"
-            )
-            .replaceAll(
-                ">",
-                "&gt;"
-            )
-            .replaceAll(
-                '"',
-                "&quot;"
-            )
-            .replaceAll(
-                "'",
-                "&#039;"
-            );
-
-    }
+            .single();
 
 
-    function showMessage(
-        text,
-        type
-    ) {
+    if (error) {
 
-        message.textContent =
-            text;
-
-        message.className =
-            "message " + type;
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-    }
-
-
-    /* =========================
-       LOGIN CHECK
-    ========================= */
-
-
-    async function checkLogin() {
-
-        const {
-            data,
+        console.error(
+            "LOAD ARTWORK ERROR:",
             error
-        } =
-            await supabaseClient
-                .auth
-                .getSession();
+        );
 
-
-        if (error) {
-
-            showMessage(
-                "Unable to check login session.",
-                "error"
-            );
-
-            return false;
-
-        }
-
-
-        if (!data.session) {
-
-            window.location.href =
-                "login.html";
-
-            return false;
-
-        }
-
-
-        return true;
-
-    }
-
-
-    /* =========================
-       LOAD ARTWORK
-    ========================= */
-
-
-    async function loadArtwork() {
-
-
-        if (!artworkId) {
-
-            showMessage(
-                "No artwork was selected. Please return to the dashboard and choose an artwork to edit.",
-                "error"
-            );
-
-
-            formCard.innerHTML = `
-
-                <div class="loading">
-
-                    Artwork ID is missing.
-
-                </div>
-
-            `;
-
-            return;
-
-        }
-
-
-        const {
-            data,
-            error
-        } =
-            await supabaseClient
-                .from("artworks")
-                .select("*")
-                .eq(
-                    "id",
-                    artworkId
-                )
-                .single();
-
-
-        if (error) {
-
-            console.error(error);
-
-
-            showMessage(
-                "Could not load artwork: " +
-                error.message,
-                "error"
-            );
-
-
-            formCard.innerHTML = `
-
-                <div class="loading">
-
-                    Unable to load artwork.
-
-                </div>
-
-            `;
-
-            return;
-
-        }
-
-
-        renderForm(data);
-
-    }
-
-
-    /* =========================
-       RENDER FORM
-    ========================= */
-
-
-    function renderForm(artwork) {
-
+        showMessage(
+            "Could not load artwork: " +
+            error.message,
+            "error"
+        );
 
         formCard.innerHTML = `
+            <div class="loading">
+                Unable to load artwork.
+            </div>
+        `;
 
-            <form id="editForm">
+        return;
 
-
-                <!-- ARTWORK DETAILS -->
-
-                <div class="form-section">
-
-                    <h2 class="section-title">
-
-                        Artwork Details
-
-                    </h2>
+    }
 
 
-                    <div class="form-group">
+    currentArtwork = data;
 
-                        <label for="title">
+    renderForm(data);
 
-                            Artwork Title
-
-                        </label>
+}
 
 
-                        <input
-                            type="text"
-                            id="title"
-                            value="${escapeHtml(
-                                artwork.title || ""
-                            )}"
-                            required
-                        >
+/* =========================================
+   RENDER FORM
+========================================= */
 
-                    </div>
+function renderForm(artwork) {
 
+    formCard.innerHTML = `
+
+        <form id="editForm">
 
 
-                    <div class="form-group">
+            <!-- ARTWORK DETAILS -->
 
-                        <label for="category">
+            <div class="form-section">
 
-                            Category
-
-                        </label>
-
-
-                        <input
-                            type="text"
-                            id="category"
-                            value="${escapeHtml(
-                                artwork.category || ""
-                            )}"
-                            placeholder="e.g. Charcoal, Graphite, Portrait"
-                        >
-
-                    </div>
+                <h2 class="section-title">
+                    Artwork Details
+                </h2>
 
 
+                <div class="form-group">
 
-                    <div class="form-group">
+                    <label for="title">
+                        Artwork Title
+                    </label>
 
-                        <label for="description">
-
-                            Description
-
-                        </label>
-
-
-                        <textarea
-                            id="description"
-                            placeholder="Write something about this artwork..."
-                        >${escapeHtml(
-                            artwork.description || ""
-                        )}</textarea>
-
-                    </div>
+                    <input
+                        type="text"
+                        id="title"
+                        value="${escapeHtml(
+                            artwork.title || ""
+                        )}"
+                        required
+                    >
 
                 </div>
 
 
+                <div class="form-group">
 
-                <!-- IMAGE -->
+                    <label for="category">
+                        Category
+                    </label>
 
-                <div class="form-section">
+                    <input
+                        type="text"
+                        id="category"
+                        value="${escapeHtml(
+                            artwork.category || ""
+                        )}"
+                        placeholder="e.g. Charcoal, Graphite, Portrait"
+                    >
 
-                    <h2 class="section-title">
-
-                        Artwork Image
-
-                    </h2>
+                </div>
 
 
-                    <div class="image-upload-box">
+                <div class="form-group">
+
+                    <label for="description">
+                        Description
+                    </label>
+
+                    <textarea
+                        id="description"
+                        placeholder="Write something about this artwork..."
+                    >${escapeHtml(
+                        artwork.description || ""
+                    )}</textarea>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- IMAGE -->
+
+            <div class="form-section">
+
+                <h2 class="section-title">
+                    Artwork Image
+                </h2>
+
+
+                <div class="form-group">
+
+
+                    <label>
+                        Choose Image
+                    </label>
+
+
+                    <div class="image-picker">
+
+                        <div class="image-picker-icon">
+                            +
+                        </div>
+
+                        <h3>
+                            Select from Gallery
+                        </h3>
 
                         <p>
-
                             Choose a new artwork image
-                            directly from your phone gallery.
-
+                            directly from your phone.
                         </p>
 
 
@@ -1342,7 +1083,7 @@
                             class="choose-image-button"
                         >
 
-                            Choose From Gallery
+                            Choose Image
 
                         </label>
 
@@ -1357,19 +1098,7 @@
                         <div
                             class="selected-file"
                             id="selectedFile"
-                        ></div>
-
-
-                        <div
-                            class="image-preview"
-                            id="imagePreview"
                         >
-
-                            <img
-                                id="previewImage"
-                                alt="New artwork preview"
-                            >
-
                         </div>
 
                     </div>
@@ -1380,570 +1109,420 @@
                         artwork.image_url
                         ?
                         `
-
-                        <div
-                            class="current-image-label"
-                        >
-
+                        <p class="current-image-label">
                             Current Image
-
-                        </div>
-
+                        </p>
 
                         <div
-                            class="current-image"
+                            class="image-preview show"
+                            id="currentImagePreview"
                         >
 
                             <img
                                 src="${escapeHtml(
                                     artwork.image_url
                                 )}"
-                                alt="${escapeHtml(
-                                    artwork.title ||
-                                    "Current artwork"
-                                )}"
+                                alt="Current artwork"
                             >
 
                         </div>
-
                         `
                         :
                         ""
                     }
 
 
-                    <p class="upload-note">
 
-                        If you do not select a new image,
-                        the current image will remain unchanged.
+                    <div
+                        class="image-preview"
+                        id="newImagePreview"
+                    >
 
-                    </p>
-
-                </div>
-
-
-
-                <!-- FEATURED -->
-
-                <div class="form-section">
-
-                    <h2 class="section-title">
-
-                        Publishing
-
-                    </h2>
-
-
-                    <div class="featured-row">
-
-
-                        <div class="featured-info">
-
-                            <h3>
-
-                                Featured Artwork
-
-                            </h3>
-
-
-                            <p>
-
-                                Show this artwork in
-                                your featured collection.
-
-                            </p>
-
-                        </div>
-
-
-
-                        <label class="toggle">
-
-                            <input
-                                type="checkbox"
-                                id="featured"
-                                ${
-                                    artwork.featured
-                                    ? "checked"
-                                    : ""
-                                }
-                            >
-
-                            <span
-                                class="toggle-slider"
-                            ></span>
-
-                        </label>
-
+                        <img
+                            id="newPreviewImage"
+                            src=""
+                            alt="New artwork preview"
+                        >
 
                     </div>
 
                 </div>
 
-
-
-                <!-- ACTIONS -->
-
-                <div class="form-section">
-
-                    <div class="actions">
-
-
-                        <a
-                            href="dashboard.html"
-                            class="cancel-button"
-                        >
-
-                            Cancel
-
-                        </a>
+            </div>
 
 
 
-                        <button
-                            type="submit"
-                            class="save-button"
-                            id="saveButton"
-                        >
+            <!-- FEATURED -->
 
-                            Save Changes
+            <div class="form-section">
 
-                        </button>
+                <h2 class="section-title">
+                    Publishing
+                </h2>
 
+
+                <div class="featured-row">
+
+                    <div class="featured-info">
+
+                        <h3>
+                            Featured Artwork
+                        </h3>
+
+                        <p>
+                            Show this artwork in
+                            your featured collection.
+                        </p>
 
                     </div>
 
+
+                    <label class="toggle">
+
+                        <input
+                            type="checkbox"
+                            id="featured"
+                            ${
+                                artwork.featured
+                                ? "checked"
+                                : ""
+                            }
+                        >
+
+                        <span
+                            class="toggle-slider"
+                        >
+                        </span>
+
+                    </label>
+
                 </div>
 
-
-            </form>
-
-        `;
+            </div>
 
 
-        setupImagePicker();
+
+            <!-- ACTIONS -->
+
+            <div class="form-section">
+
+                <div class="actions">
 
 
-        document
-            .getElementById("editForm")
-            .addEventListener(
-                "submit",
-                saveArtwork
-            );
+                    <a
+                        href="dashboard.html"
+                        class="cancel-button"
+                    >
 
-    }
+                        Cancel
 
-
-    /* =========================
-       IMAGE PICKER
-    ========================= */
+                    </a>
 
 
-    function setupImagePicker() {
+                    <button
+                        type="submit"
+                        class="save-button"
+                        id="saveButton"
+                    >
+
+                        Save Changes
+
+                    </button>
+
+                </div>
+
+            </div>
 
 
-        const imageFile =
-            document.getElementById(
-                "imageFile"
-            );
+        </form>
+
+    `;
 
 
-        const selectedFile =
-            document.getElementById(
-                "selectedFile"
-            );
+    setupImagePicker();
 
 
-        const imagePreview =
-            document.getElementById(
-                "imagePreview"
-            );
+    document
+        .getElementById("editForm")
+        .addEventListener(
+            "submit",
+            saveArtwork
+        );
+
+}
 
 
-        const previewImage =
-            document.getElementById(
-                "previewImage"
-            );
+/* =========================================
+   IMAGE PICKER
+========================================= */
+
+function setupImagePicker() {
+
+    const imageFile =
+        document.getElementById(
+            "imageFile"
+        );
+
+    const selectedFile =
+        document.getElementById(
+            "selectedFile"
+        );
+
+    const newPreview =
+        document.getElementById(
+            "newImagePreview"
+        );
+
+    const newPreviewImage =
+        document.getElementById(
+            "newPreviewImage"
+        );
 
 
-        imageFile.addEventListener(
-            "change",
-            function () {
+    imageFile.addEventListener(
+        "change",
+        function () {
+
+            const file =
+                imageFile.files[0];
 
 
-                const file =
-                    imageFile.files[0];
+            if (!file) {
 
+                selectedFile.classList.remove(
+                    "show"
+                );
 
-                if (!file) {
+                newPreview.classList.remove(
+                    "show"
+                );
 
-                    selectedFile.classList
-                        .remove("show");
-
-                    imagePreview.classList
-                        .remove("show");
-
-                    return;
-
-                }
-
-
-                if (!file.type.startsWith("image/")) {
-
-                    showMessage(
-                        "Please select an image file.",
-                        "error"
-                    );
-
-                    imageFile.value = "";
-
-                    return;
-
-                }
-
-
-                const maxSize =
-                    10 * 1024 * 1024;
-
-
-                if (file.size > maxSize) {
-
-                    showMessage(
-                        "Image is too large. Please choose an image smaller than 10 MB.",
-                        "error"
-                    );
-
-                    imageFile.value = "";
-
-                    return;
-
-                }
-
-
-                selectedFile.textContent =
-                    "Selected: " +
-                    file.name +
-                    " • " +
-                    formatFileSize(
-                        file.size
-                    );
-
-
-                selectedFile.classList
-                    .add("show");
-
-
-                const objectUrl =
-                    URL.createObjectURL(
-                        file
-                    );
-
-
-                previewImage.src =
-                    objectUrl;
-
-
-                imagePreview.classList
-                    .add("show");
+                return;
 
             }
+
+
+            if (!file.type.startsWith("image/")) {
+
+                showMessage(
+                    "Please select an image file.",
+                    "error"
+                );
+
+                imageFile.value = "";
+
+                return;
+
+            }
+
+
+            const maxSize =
+                10 * 1024 * 1024;
+
+
+            if (file.size > maxSize) {
+
+                showMessage(
+                    "Image is too large. Please choose an image smaller than 10 MB.",
+                    "error"
+                );
+
+                imageFile.value = "";
+
+                return;
+
+            }
+
+
+            selectedFile.textContent =
+                "Selected: " +
+                file.name;
+
+
+            selectedFile.classList.add(
+                "show"
+            );
+
+
+            const objectUrl =
+                URL.createObjectURL(
+                    file
+                );
+
+
+            newPreviewImage.src =
+                objectUrl;
+
+
+            newPreview.classList.add(
+                "show"
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   CREATE SAFE FILE NAME
+========================================= */
+
+function createFileName(file) {
+
+    const extension =
+        file.name
+            .split(".")
+            .pop()
+            .toLowerCase();
+
+
+    const cleanId =
+        String(artworkId)
+            .replace(
+                /[^a-zA-Z0-9-_]/g,
+                ""
+            );
+
+
+    const timestamp =
+        Date.now();
+
+
+    return (
+        cleanId +
+        "-" +
+        timestamp +
+        "." +
+        extension
+    );
+
+}
+
+
+/* =========================================
+   UPLOAD NEW IMAGE
+========================================= */
+
+async function uploadNewImage(file) {
+
+    const fileName =
+        createFileName(file);
+
+
+    const filePath =
+        fileName;
+
+
+    const {
+        error
+    } =
+        await supabaseClient
+            .storage
+            .from("artworks")
+            .upload(
+                filePath,
+                file,
+                {
+                    cacheControl: "3600",
+                    upsert: false,
+                    contentType: file.type
+                }
+            );
+
+
+    if (error) {
+
+        console.error(
+            "IMAGE UPLOAD ERROR:",
+            error
+        );
+
+        throw new Error(
+            "Image upload failed: " +
+            error.message
         );
 
     }
 
 
-    /* =========================
-       FILE SIZE
-    ========================= */
-
-
-    function formatFileSize(
-        bytes
-    ) {
-
-        if (bytes < 1024) {
-
-            return bytes + " B";
-
-        }
-
-
-        if (bytes < 1024 * 1024) {
-
-            return (
-                bytes / 1024
-            ).toFixed(1) +
-            " KB";
-
-        }
-
-
-        return (
-            bytes /
-            (1024 * 1024)
-        ).toFixed(1) +
-        " MB";
-
-    }
-
-
-    /* =========================
-       UPLOAD IMAGE
-    ========================= */
-
-
-    async function uploadImage(
-        file
-    ) {
-
-
-        if (!file) {
-
-            return null;
-
-        }
-
-
-        const extension =
-            getFileExtension(
-                file.name,
-                file.type
+    const {
+        data
+    } =
+        supabaseClient
+            .storage
+            .from("artworks")
+            .getPublicUrl(
+                filePath
             );
 
 
-        const fileName =
-            "artwork-" +
-            artworkId +
-            "-" +
-            Date.now() +
-            "." +
-            extension;
+    if (
+        !data ||
+        !data.publicUrl
+    ) {
+
+        throw new Error(
+            "Image uploaded but public URL could not be created."
+        );
+
+    }
 
 
-        const filePath =
-            fileName;
+    return {
+        path: filePath,
+        url: data.publicUrl
+    };
+
+}
 
 
-        const {
-            error: uploadError
-        } =
-            await supabaseClient
-                .storage
-                .from(
-                    STORAGE_BUCKET
-                )
-                .upload(
-                    filePath,
-                    file,
-                    {
-                        cacheControl:
-                            "3600",
+/* =========================================
+   DELETE OLD IMAGE
+========================================= */
 
-                        upsert:
-                            false,
+async function deleteOldImage(
+    oldUrl
+) {
 
-                        contentType:
-                            file.type
-                    }
-                );
+    if (!oldUrl) {
+        return;
+    }
 
 
-        if (uploadError) {
+    try {
 
-            throw uploadError;
-
-        }
-
-
-        const {
-            data
-        } =
-            supabaseClient
-                .storage
-                .from(
-                    STORAGE_BUCKET
-                )
-                .getPublicUrl(
-                    filePath
-                );
+        const marker =
+            "/storage/v1/object/public/artworks/";
 
 
-        if (!data ||
-            !data.publicUrl) {
-
-            throw new Error(
-                "Could not create public image URL."
+        const index =
+            oldUrl.indexOf(
+                marker
             );
 
-        }
 
+        if (index === -1) {
 
-        return {
-
-            path: filePath,
-
-            url: data.publicUrl
-
-        };
-
-    }
-
-
-    /* =========================
-       FILE EXTENSION
-    ========================= */
-
-
-    function getFileExtension(
-        fileName,
-        mimeType
-    ) {
-
-
-        const parts =
-            fileName.split(".");
-
-
-        if (
-            parts.length > 1
-        ) {
-
-            const extension =
-                parts.pop()
-                    .toLowerCase();
-
-
-            if (
-                /^[a-z0-9]+$/i
-                    .test(extension)
-            ) {
-
-                return extension;
-
-            }
-
-        }
-
-
-        if (
-            mimeType ===
-            "image/jpeg"
-        ) {
-
-            return "jpg";
-
-        }
-
-
-        if (
-            mimeType ===
-            "image/png"
-        ) {
-
-            return "png";
-
-        }
-
-
-        if (
-            mimeType ===
-            "image/webp"
-        ) {
-
-            return "webp";
-
-        }
-
-
-        return "jpg";
-
-    }
-
-
-    /* =========================
-       GET OLD STORAGE PATH
-    ========================= */
-
-
-    function getStoragePath(
-        imageUrl
-    ) {
-
-
-        if (!imageUrl) {
-
-            return null;
-
-        }
-
-
-        try {
-
-
-            const url =
-                new URL(
-                    imageUrl
-                );
-
-
-            const marker =
-                "/storage/v1/object/public/" +
-                STORAGE_BUCKET +
-                "/";
-
-
-            const index =
-                url.pathname.indexOf(
-                    marker
-                );
-
-
-            if (
-                index === -1
-            ) {
-
-                return null;
-
-            }
-
-
-            return decodeURIComponent(
-                url.pathname.substring(
-                    index +
-                    marker.length
-                )
+            console.log(
+                "Old image path could not be detected."
             );
 
-        }
-        catch (error) {
-
-            return null;
+            return;
 
         }
-
-    }
-
-
-    /* =========================
-       DELETE OLD IMAGE
-    ========================= */
-
-
-    async function deleteOldImage(
-        imageUrl
-    ) {
 
 
         const oldPath =
-            getStoragePath(
-                imageUrl
+            decodeURIComponent(
+                oldUrl.substring(
+                    index + marker.length
+                )
             );
 
 
         if (!oldPath) {
-
             return;
-
         }
 
 
@@ -1952,9 +1531,7 @@
         } =
             await supabaseClient
                 .storage
-                .from(
-                    STORAGE_BUCKET
-                )
+                .from("artworks")
                 .remove([
                     oldPath
                 ]);
@@ -1963,333 +1540,324 @@
         if (error) {
 
             console.warn(
-                "Old image could not be removed:",
-                error.message
+                "Old image delete warning:",
+                error
             );
 
         }
 
     }
 
+    catch (error) {
 
-    /* =========================
-       SAVE ARTWORK
-    ========================= */
+        console.warn(
+            "Old image cleanup warning:",
+            error
+        );
 
+    }
 
-    async function saveArtwork(
-        event
-    ) {
-
-
-        event.preventDefault();
+}
 
 
-        const saveButton =
+/* =========================================
+   SAVE ARTWORK
+========================================= */
+
+async function saveArtwork(
+    event
+) {
+
+    event.preventDefault();
+
+
+    const saveButton =
+        document.getElementById(
+            "saveButton"
+        );
+
+
+    saveButton.disabled = true;
+
+    saveButton.textContent =
+        "Saving...";
+
+
+    try {
+
+
+        /* =========================
+           GET FORM VALUES
+        ========================= */
+
+        const title =
             document.getElementById(
-                "saveButton"
-            );
+                "title"
+            ).value.trim();
+
+
+        const category =
+            document.getElementById(
+                "category"
+            ).value.trim();
+
+
+        const description =
+            document.getElementById(
+                "description"
+            ).value.trim();
+
+
+        const featured =
+            document.getElementById(
+                "featured"
+            ).checked;
 
 
         const imageFile =
             document.getElementById(
                 "imageFile"
-            );
+            ).files[0];
 
 
-        saveButton.disabled =
-            true;
+        if (!title) {
 
-
-        saveButton.textContent =
-            "Saving...";
-
-
-        try {
-
-
-            const title =
-                document
-                    .getElementById(
-                        "title"
-                    )
-                    .value
-                    .trim();
-
-
-            const category =
-                document
-                    .getElementById(
-                        "category"
-                    )
-                    .value
-                    .trim();
-
-
-            const description =
-                document
-                    .getElementById(
-                        "description"
-                    )
-                    .value
-                    .trim();
-
-
-            const featured =
-                document
-                    .getElementById(
-                        "featured"
-                    )
-                    .checked;
-
-
-            if (!title) {
-
-                throw new Error(
-                    "Artwork title is required."
-                );
-
-            }
-
-
-            /* =========================
-               GET CURRENT ARTWORK
-            ========================= */
-
-
-            const {
-                data: currentArtwork,
-                error:
-                    currentArtworkError
-            } =
-                await supabaseClient
-                    .from("artworks")
-                    .select(
-                        "image_url"
-                    )
-                    .eq(
-                        "id",
-                        artworkId
-                    )
-                    .single();
-
-
-            if (
-                currentArtworkError
-            ) {
-
-                throw currentArtworkError;
-
-            }
-
-
-            let newImageUrl =
-                currentArtwork.image_url;
-
-
-            let uploadedImage =
-                null;
-
-
-            /* =========================
-               UPLOAD NEW IMAGE
-            ========================= */
-
-
-            if (
-                imageFile.files.length
-                > 0
-            ) {
-
-
-                saveButton.textContent =
-                    "Uploading...";
-
-
-                uploadedImage =
-                    await uploadImage(
-                        imageFile.files[0]
-                    );
-
-
-                newImageUrl =
-                    uploadedImage.url;
-
-            }
-
-
-            /* =========================
-               UPDATE DATABASE
-            ========================= */
-
-
-            saveButton.textContent =
-                "Saving...";
-
-
-            const {
-                error: updateError
-            } =
-                await supabaseClient
-                    .from("artworks")
-                    .update({
-
-                        title:
-                            title,
-
-                        category:
-                            category,
-
-                        description:
-                            description,
-
-                        image_url:
-                            newImageUrl,
-
-                        featured:
-                            featured
-
-                    })
-                    .eq(
-                        "id",
-                        artworkId
-                    );
-
-
-            if (updateError) {
-
-
-                /*
-
-                   If database update fails
-                   after image upload, remove
-                   the newly uploaded image
-                   so there is no unnecessary
-                   file left in storage.
-
-                */
-
-
-                if (
-                    uploadedImage
-                ) {
-
-                    await supabaseClient
-                        .storage
-                        .from(
-                            STORAGE_BUCKET
-                        )
-                        .remove([
-                            uploadedImage.path
-                        ]);
-
-                }
-
-
-                throw updateError;
-
-            }
-
-
-            /* =========================
-               DELETE OLD IMAGE
-            ========================= */
-
-
-            if (
-                uploadedImage &&
-                currentArtwork.image_url
-            ) {
-
-                await deleteOldImage(
-                    currentArtwork.image_url
-                );
-
-            }
-
-
-            /* =========================
-               SUCCESS
-            ========================= */
-
-
-            showMessage(
-                "Artwork updated successfully.",
-                "success"
-            );
-
-
-            saveButton.textContent =
-                "Saved ✓";
-
-
-            setTimeout(
-                function () {
-
-                    window.location.href =
-                        "dashboard.html";
-
-                },
-                900
-            );
-
-
-        }
-        catch (error) {
-
-
-            console.error(
-                error
-            );
-
-
-            saveButton.disabled =
-                false;
-
-
-            saveButton.textContent =
-                "Save Changes";
-
-
-            showMessage(
-                "Could not save changes: " +
-                (
-                    error.message ||
-                    "Unknown error"
-                ),
-                "error"
+            throw new Error(
+                "Please enter an artwork title."
             );
 
         }
 
-    }
+
+        /* =========================
+           CHECK SESSION AGAIN
+        ========================= */
+
+        const {
+            data: sessionData
+        } =
+            await supabaseClient.auth.getSession();
 
 
-    /* =========================
-       START
-    ========================= */
+        if (!sessionData.session) {
 
-
-    async function start() {
-
-
-        const loggedIn =
-            await checkLogin();
-
-
-        if (!loggedIn) {
+            window.location.href =
+                "login.html";
 
             return;
 
         }
 
 
-        await loadArtwork();
+        /* =========================
+           IMAGE URL
+        ========================= */
+
+        let imageUrl =
+            currentArtwork.image_url || "";
+
+
+        let newUploadedPath =
+            null;
+
+
+        /* =========================
+           UPLOAD NEW IMAGE
+        ========================= */
+
+        if (imageFile) {
+
+            saveButton.textContent =
+                "Uploading Image...";
+
+
+            const uploaded =
+                await uploadNewImage(
+                    imageFile
+                );
+
+
+            imageUrl =
+                uploaded.url;
+
+
+            newUploadedPath =
+                uploaded.path;
+
+        }
+
+
+        /* =========================
+           UPDATE DATABASE
+        ========================= */
+
+        saveButton.textContent =
+            "Saving Artwork...";
+
+
+        const {
+            error
+        } =
+            await supabaseClient
+                .from("artworks")
+                .update({
+                    title: title,
+                    category: category,
+                    description: description,
+                    image_url: imageUrl,
+                    featured: featured
+                })
+                .eq(
+                    "id",
+                    artworkId
+                );
+
+
+        if (error) {
+
+            console.error(
+                "DATABASE UPDATE ERROR:",
+                error
+            );
+
+
+            /*
+             * If image was uploaded but
+             * database update failed,
+             * remove the newly uploaded image
+             * so we don't leave an orphan file.
+             */
+
+            if (newUploadedPath) {
+
+                await supabaseClient
+                    .storage
+                    .from("artworks")
+                    .remove([
+                        newUploadedPath
+                    ]);
+
+            }
+
+
+            throw new Error(
+                "Artwork database update failed: " +
+                error.message
+            );
+
+        }
+
+
+        /* =========================
+           DELETE OLD IMAGE
+        ========================= */
+
+        if (
+            imageFile &&
+            currentArtwork.image_url &&
+            currentArtwork.image_url !== imageUrl
+        ) {
+
+            await deleteOldImage(
+                currentArtwork.image_url
+            );
+
+        }
+
+
+        /* =========================
+           SUCCESS
+        ========================= */
+
+        showMessage(
+            "Artwork updated successfully.",
+            "success"
+        );
+
+
+        saveButton.textContent =
+            "Saved ✓";
+
+
+        setTimeout(
+            function () {
+
+                window.location.href =
+                    "dashboard.html";
+
+            },
+            1000
+        );
+
 
     }
 
+    catch (error) {
 
-    start();
+        console.error(
+            "SAVE ERROR:",
+            error
+        );
+
+
+        saveButton.disabled = false;
+
+        saveButton.textContent =
+            "Save Changes";
+
+
+        let errorMessage =
+            error.message ||
+            "Something went wrong while saving.";
+
+
+        /*
+         * Better message for network errors
+         */
+
+        if (
+            errorMessage
+                .toLowerCase()
+                .includes("failed to fetch")
+        ) {
+
+            errorMessage =
+                "Connection to Supabase failed. Please check your internet connection and try again.";
+
+        }
+
+
+        showMessage(
+            errorMessage,
+            "error"
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   START
+========================================= */
+
+async function start() {
+
+    const loggedIn =
+        await checkLogin();
+
+
+    if (!loggedIn) {
+        return;
+    }
+
+
+    await loadArtwork();
+
+}
+
+
+start();
 
 
 </script>
