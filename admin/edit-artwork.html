@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -15,6 +17,7 @@
 
     <title>Edit Artwork — Artomb Studios</title>
 
+
     <style>
 
         * {
@@ -23,65 +26,97 @@
             padding: 0;
         }
 
+
         :root {
+
             --bg: #f7f4ee;
             --card: #fffdf9;
             --text: #171717;
             --muted: #77736c;
             --border: rgba(23, 23, 23, .11);
+
             --danger: #9b3d3d;
+            --success: #416341;
+
         }
 
+
         body {
+
             min-height: 100vh;
+
             background: var(--bg);
+
             color: var(--text);
 
             font-family:
                 Arial,
                 Helvetica,
                 sans-serif;
+
         }
+
 
         button,
         input,
         textarea,
         select {
+
             font: inherit;
+
         }
+
 
         button {
+
             cursor: pointer;
+
         }
 
+
         .admin-header {
+
             position: sticky;
+
             top: 0;
+
             z-index: 50;
 
             height: 72px;
 
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
 
             padding: 0 5vw;
 
-            background: rgba(247, 244, 238, .94);
+            background:
+                rgba(247, 244, 238, .94);
 
             border-bottom:
                 1px solid var(--border);
 
-            backdrop-filter: blur(12px);
+            backdrop-filter:
+                blur(12px);
+
         }
+
 
         .brand {
+
             text-decoration: none;
+
             color: var(--text);
+
             line-height: 1;
+
         }
 
+
         .brand-main {
+
             display: block;
 
             font-family:
@@ -90,65 +125,83 @@
                 serif;
 
             font-size: 21px;
+
             letter-spacing: 3px;
+
         }
 
+
         .brand-sub {
+
             display: block;
 
             margin-top: 4px;
 
             font-size: 7px;
+
             letter-spacing: 4px;
 
             opacity: .55;
+
         }
 
+
         .back-button {
+
             color: var(--text);
+
             text-decoration: none;
 
             font-size: 10px;
+
             letter-spacing: 1.5px;
+
             text-transform: uppercase;
 
             padding: 11px 14px;
 
-            border: 1px solid var(--border);
+            border:
+                1px solid var(--border);
 
-            transition:
-                background .2s ease,
-                border-color .2s ease;
         }
 
-        .back-button:hover {
-            background: var(--card);
-            border-color: rgba(23, 23, 23, .3);
-        }
 
         .page {
-            width: min(850px, 90%);
+
+            width:
+                min(850px, 90%);
 
             margin: 0 auto;
 
             padding: 70px 0 90px;
+
         }
+
 
         .intro {
+
             margin-bottom: 40px;
+
         }
 
+
         .eyebrow {
+
             margin-bottom: 14px;
 
             color: var(--muted);
 
             font-size: 10px;
+
             letter-spacing: 3px;
+
             text-transform: uppercase;
+
         }
 
+
         h1 {
+
             font-family:
                 Georgia,
                 "Times New Roman",
@@ -162,9 +215,12 @@
             line-height: .98;
 
             letter-spacing: -2px;
+
         }
 
+
         .intro-text {
+
             max-width: 550px;
 
             margin-top: 20px;
@@ -172,28 +228,41 @@
             color: var(--muted);
 
             font-size: 14px;
+
             line-height: 1.7;
+
         }
 
+
         .form-card {
+
             background: var(--card);
 
             border:
                 1px solid var(--border);
+
         }
 
+
         .form-section {
+
             padding: 30px;
 
             border-bottom:
                 1px solid var(--border);
+
         }
+
 
         .form-section:last-child {
+
             border-bottom: 0;
+
         }
 
+
         .section-title {
+
             margin-bottom: 25px;
 
             font-family:
@@ -202,18 +271,28 @@
                 serif;
 
             font-size: 25px;
+
             font-weight: 400;
+
         }
+
 
         .form-group {
+
             margin-bottom: 24px;
+
         }
+
 
         .form-group:last-child {
+
             margin-bottom: 0;
+
         }
 
+
         label {
+
             display: block;
 
             margin-bottom: 9px;
@@ -221,13 +300,18 @@
             color: var(--muted);
 
             font-size: 10px;
+
             letter-spacing: 1.8px;
+
             text-transform: uppercase;
+
         }
+
 
         input,
         textarea,
         select {
+
             width: 100%;
 
             padding: 14px 15px;
@@ -243,55 +327,214 @@
 
             border-radius: 0;
 
-            transition:
-                border-color .2s ease,
-                box-shadow .2s ease;
         }
+
 
         input:focus,
         textarea:focus,
         select:focus {
+
             border-color:
                 rgba(23, 23, 23, .4);
 
             box-shadow:
-                0 0 0 3px rgba(23, 23, 23, .04);
+                0 0 0 3px
+                rgba(23, 23, 23, .04);
+
         }
 
+
         textarea {
+
             min-height: 150px;
 
             resize: vertical;
 
             line-height: 1.6;
+
         }
 
-        .image-preview {
+
+        /* =========================
+           IMAGE UPLOAD
+        ========================= */
+
+
+        .image-upload-box {
+
+            border:
+                1px dashed
+                rgba(23, 23, 23, .22);
+
+            background:
+                #faf8f3;
+
+            padding: 25px;
+
+            text-align: center;
+
+        }
+
+
+        .image-upload-box p {
+
+            margin-bottom: 16px;
+
+            color: var(--muted);
+
+            font-size: 12px;
+
+            line-height: 1.6;
+
+        }
+
+
+        .choose-image-button {
+
+            display: inline-block;
+
+            padding: 13px 18px;
+
+            background: var(--text);
+
+            color: white;
+
+            border: 0;
+
+            font-size: 10px;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        #imageFile {
+
             display: none;
 
-            margin-top: 18px;
+        }
+
+
+        .selected-file {
+
+            display: none;
+
+            margin-top: 15px;
+
+            color: var(--muted);
+
+            font-size: 11px;
+
+            line-height: 1.5;
+
+        }
+
+
+        .selected-file.show {
+
+            display: block;
+
+        }
+
+
+        .image-preview {
+
+            display: none;
+
+            margin-top: 20px;
 
             border:
                 1px solid var(--border);
 
-            background: #eeeae2;
+            background:
+                #eeeae2;
+
         }
 
+
+        .image-preview.show {
+
+            display: block;
+
+        }
+
+
         .image-preview img {
+
             width: 100%;
 
-            max-height: 420px;
+            max-height: 450px;
 
             display: block;
 
             object-fit: contain;
+
         }
 
-        .image-preview.show {
-            display: block;
+
+        .current-image-label {
+
+            margin-top: 20px;
+
+            margin-bottom: 9px;
+
+            color: var(--muted);
+
+            font-size: 10px;
+
+            letter-spacing: 1.8px;
+
+            text-transform: uppercase;
+
         }
+
+
+        .current-image {
+
+            border:
+                1px solid var(--border);
+
+            background:
+                #eeeae2;
+
+        }
+
+
+        .current-image img {
+
+            width: 100%;
+
+            max-height: 400px;
+
+            display: block;
+
+            object-fit: contain;
+
+        }
+
+
+        .upload-note {
+
+            margin-top: 12px;
+
+            color: var(--muted);
+
+            font-size: 10px;
+
+            line-height: 1.5;
+
+        }
+
+
+        /* =========================
+           FEATURED
+        ========================= */
+
 
         .featured-row {
+
             display: flex;
 
             align-items: center;
@@ -306,9 +549,12 @@
                 1px solid var(--border);
 
             background: #fff;
+
         }
 
+
         .featured-info h3 {
+
             margin-bottom: 5px;
 
             font-family:
@@ -317,89 +563,134 @@
                 serif;
 
             font-size: 18px;
+
             font-weight: 400;
+
         }
 
+
         .featured-info p {
+
             color: var(--muted);
 
             font-size: 12px;
+
             line-height: 1.5;
+
         }
 
+
         .toggle {
+
             position: relative;
 
             width: 50px;
+
             height: 28px;
 
             flex-shrink: 0;
+
         }
 
+
         .toggle input {
+
             width: 0;
+
             height: 0;
 
             opacity: 0;
+
         }
 
+
         .toggle-slider {
+
             position: absolute;
+
             inset: 0;
 
             background: #ddd8cf;
 
             cursor: pointer;
 
-            transition:
-                background .25s ease;
         }
 
+
         .toggle-slider::before {
+
             content: "";
 
             position: absolute;
 
             width: 20px;
+
             height: 20px;
 
             left: 4px;
+
             top: 4px;
 
             background: white;
 
             transition:
                 transform .25s ease;
+
         }
 
-        .toggle input:checked + .toggle-slider {
+
+        .toggle input:checked
+        + .toggle-slider {
+
             background: var(--text);
+
         }
 
-        .toggle input:checked + .toggle-slider::before {
-            transform: translateX(22px);
+
+        .toggle input:checked
+        + .toggle-slider::before {
+
+            transform:
+                translateX(22px);
+
         }
+
+
+        /* =========================
+           ACTIONS
+        ========================= */
+
 
         .actions {
+
             display: flex;
 
-            justify-content: space-between;
+            justify-content:
+                space-between;
 
             align-items: center;
 
             gap: 15px;
+
         }
+
 
         .cancel-button,
         .save-button {
+
             padding: 14px 20px;
 
             font-size: 10px;
+
             letter-spacing: 1.5px;
+
             text-transform: uppercase;
+
         }
 
+
         .cancel-button {
+
             color: var(--text);
 
             background: transparent;
@@ -408,23 +699,39 @@
                 1px solid var(--border);
 
             text-decoration: none;
+
         }
 
+
         .save-button {
-            min-width: 150px;
+
+            min-width: 160px;
 
             background: var(--text);
+
             color: white;
 
             border: 0;
+
         }
+
 
         .save-button:disabled {
+
             opacity: .5;
+
             cursor: not-allowed;
+
         }
 
+
+        /* =========================
+           MESSAGE
+        ========================= */
+
+
         .message {
+
             display: none;
 
             margin-bottom: 25px;
@@ -434,9 +741,12 @@
             font-size: 12px;
 
             line-height: 1.5;
+
         }
 
+
         .message.error {
+
             display: block;
 
             background: #fff4f4;
@@ -445,9 +755,12 @@
                 1px solid #e1bebe;
 
             color: var(--danger);
+
         }
 
+
         .message.success {
+
             display: block;
 
             background: #f2f7f2;
@@ -455,10 +768,13 @@
             border:
                 1px solid #bfd1bf;
 
-            color: #416341;
+            color: var(--success);
+
         }
 
+
         .loading {
+
             padding: 30px;
 
             text-align: center;
@@ -466,10 +782,14 @@
             color: var(--muted);
 
             font-size: 13px;
+
         }
 
+
         .admin-footer {
-            width: min(850px, 90%);
+
+            width:
+                min(850px, 90%);
 
             margin: 0 auto;
 
@@ -480,67 +800,98 @@
 
             display: flex;
 
-            justify-content: space-between;
+            justify-content:
+                space-between;
 
             gap: 20px;
 
             color: var(--muted);
 
             font-size: 10px;
+
             letter-spacing: 1px;
+
         }
+
 
         @media (max-width: 600px) {
 
             .admin-header {
+
                 height: 65px;
 
                 padding: 0 5%;
+
             }
 
+
             .page {
+
                 width: 90%;
 
                 padding-top: 50px;
+
             }
 
+
             h1 {
+
                 font-size: 45px;
 
                 letter-spacing: -1.5px;
+
             }
+
 
             .form-section {
+
                 padding: 22px;
+
             }
 
+
             .actions {
-                flex-direction: column-reverse;
+
+                flex-direction:
+                    column-reverse;
+
                 align-items: stretch;
+
             }
+
 
             .cancel-button,
             .save-button {
+
                 width: 100%;
 
                 text-align: center;
+
             }
 
+
             .admin-footer {
+
                 flex-direction: column;
+
             }
+
         }
 
     </style>
+
 </head>
 
+
 <body>
+
 
 <header class="admin-header">
 
     <a
         href="dashboard.html"
-        class="brand">
+        class="brand"
+    >
 
         <span class="brand-main">
             ARTOMB
@@ -552,9 +903,11 @@
 
     </a>
 
+
     <a
         href="dashboard.html"
-        class="back-button">
+        class="back-button"
+    >
 
         ← Dashboard
 
@@ -563,7 +916,9 @@
 </header>
 
 
+
 <main class="page">
+
 
     <section class="intro">
 
@@ -577,31 +932,40 @@
         </h1>
 
         <p class="intro-text">
-            Update the details of your artwork
-            and save the changes directly to
-            your Artomb Studios collection.
+
+            Update your artwork details
+            and replace the artwork image
+            directly from your phone gallery.
+
         </p>
 
     </section>
 
 
+
     <div
         class="message"
-        id="message">
-    </div>
+        id="message"
+    ></div>
+
 
 
     <div
         class="form-card"
-        id="formCard">
+        id="formCard"
+    >
 
         <div class="loading">
+
             Loading artwork...
+
         </div>
 
     </div>
 
+
 </main>
+
 
 
 <footer class="admin-footer">
@@ -617,13 +981,22 @@
 </footer>
 
 
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 
 
 <script>
 
+
+    /* =========================
+       SUPABASE
+    ========================= */
+
+
     const SUPABASE_URL =
         "https://pdopupcnmvjzombukcpi.supabase.co";
+
 
     const SUPABASE_KEY =
         "sb_publishable_AbIdZemk0Mq7f1jNNM5zdQ_pYIzZNlU";
@@ -641,6 +1014,11 @@
         );
 
 
+    /* =========================
+       ELEMENTS
+    ========================= */
+
+
     const formCard =
         document.getElementById(
             "formCard"
@@ -653,6 +1031,11 @@
         );
 
 
+    /* =========================
+       ARTWORK ID
+    ========================= */
+
+
     const params =
         new URLSearchParams(
             window.location.search
@@ -663,14 +1046,44 @@
         params.get("id");
 
 
+    /* =========================
+       STORAGE BUCKET
+    ========================= */
+
+
+    const STORAGE_BUCKET =
+        "artworks";
+
+
+    /* =========================
+       HELPERS
+    ========================= */
+
+
     function escapeHtml(value) {
 
         return String(value ?? "")
-            .replaceAll("&", "&amp;")
-            .replaceAll("<", "&lt;")
-            .replaceAll(">", "&gt;")
-            .replaceAll('"', "&quot;")
-            .replaceAll("'", "&#039;");
+            .replaceAll(
+                "&",
+                "&amp;"
+            )
+            .replaceAll(
+                "<",
+                "&lt;"
+            )
+            .replaceAll(
+                ">",
+                "&gt;"
+            )
+            .replaceAll(
+                '"',
+                "&quot;"
+            )
+            .replaceAll(
+                "'",
+                "&#039;"
+            );
+
     }
 
 
@@ -679,7 +1092,8 @@
         type
     ) {
 
-        message.textContent = text;
+        message.textContent =
+            text;
 
         message.className =
             "message " + type;
@@ -688,7 +1102,13 @@
             top: 0,
             behavior: "smooth"
         });
+
     }
+
+
+    /* =========================
+       LOGIN CHECK
+    ========================= */
 
 
     async function checkLogin() {
@@ -697,7 +1117,9 @@
             data,
             error
         } =
-            await supabaseClient.auth.getSession();
+            await supabaseClient
+                .auth
+                .getSession();
 
 
         if (error) {
@@ -708,6 +1130,7 @@
             );
 
             return false;
+
         }
 
 
@@ -717,14 +1140,22 @@
                 "login.html";
 
             return false;
+
         }
 
 
         return true;
+
     }
 
 
+    /* =========================
+       LOAD ARTWORK
+    ========================= */
+
+
     async function loadArtwork() {
+
 
         if (!artworkId) {
 
@@ -733,13 +1164,19 @@
                 "error"
             );
 
+
             formCard.innerHTML = `
+
                 <div class="loading">
+
                     Artwork ID is missing.
+
                 </div>
+
             `;
 
             return;
+
         }
 
 
@@ -761,49 +1198,70 @@
 
             console.error(error);
 
+
             showMessage(
                 "Could not load artwork: " +
                 error.message,
                 "error"
             );
 
+
             formCard.innerHTML = `
+
                 <div class="loading">
+
                     Unable to load artwork.
+
                 </div>
+
             `;
 
             return;
+
         }
 
 
         renderForm(data);
+
     }
 
 
+    /* =========================
+       RENDER FORM
+    ========================= */
+
+
     function renderForm(artwork) {
+
 
         formCard.innerHTML = `
 
             <form id="editForm">
 
+
+                <!-- ARTWORK DETAILS -->
+
                 <div class="form-section">
 
                     <h2 class="section-title">
+
                         Artwork Details
+
                     </h2>
 
 
                     <div class="form-group">
 
                         <label for="title">
+
                             Artwork Title
+
                         </label>
+
 
                         <input
                             type="text"
                             id="title"
-                            name="title"
                             value="${escapeHtml(
                                 artwork.title || ""
                             )}"
@@ -813,16 +1271,19 @@
                     </div>
 
 
+
                     <div class="form-group">
 
                         <label for="category">
+
                             Category
+
                         </label>
+
 
                         <input
                             type="text"
                             id="category"
-                            name="category"
                             value="${escapeHtml(
                                 artwork.category || ""
                             )}"
@@ -832,15 +1293,18 @@
                     </div>
 
 
+
                     <div class="form-group">
 
                         <label for="description">
+
                             Description
+
                         </label>
+
 
                         <textarea
                             id="description"
-                            name="description"
                             placeholder="Write something about this artwork..."
                         >${escapeHtml(
                             artwork.description || ""
@@ -851,67 +1315,146 @@
                 </div>
 
 
+
+                <!-- IMAGE -->
+
                 <div class="form-section">
 
                     <h2 class="section-title">
+
                         Artwork Image
+
                     </h2>
 
 
-                    <div class="form-group">
+                    <div class="image-upload-box">
 
-                        <label for="imageUrl">
-                            Image URL
+                        <p>
+
+                            Choose a new artwork image
+                            directly from your phone gallery.
+
+                        </p>
+
+
+                        <label
+                            for="imageFile"
+                            class="choose-image-button"
+                        >
+
+                            Choose From Gallery
+
                         </label>
 
+
                         <input
-                            type="url"
-                            id="imageUrl"
-                            name="imageUrl"
-                            value="${escapeHtml(
-                                artwork.image_url || ""
-                            )}"
-                            placeholder="https://..."
+                            type="file"
+                            id="imageFile"
+                            accept="image/*"
                         >
+
+
+                        <div
+                            class="selected-file"
+                            id="selectedFile"
+                        ></div>
+
 
                         <div
                             class="image-preview"
-                            id="imagePreview">
+                            id="imagePreview"
+                        >
 
                             <img
                                 id="previewImage"
-                                src=""
-                                alt="Artwork preview"
+                                alt="New artwork preview"
                             >
 
                         </div>
 
                     </div>
 
+
+
+                    ${
+                        artwork.image_url
+                        ?
+                        `
+
+                        <div
+                            class="current-image-label"
+                        >
+
+                            Current Image
+
+                        </div>
+
+
+                        <div
+                            class="current-image"
+                        >
+
+                            <img
+                                src="${escapeHtml(
+                                    artwork.image_url
+                                )}"
+                                alt="${escapeHtml(
+                                    artwork.title ||
+                                    "Current artwork"
+                                )}"
+                            >
+
+                        </div>
+
+                        `
+                        :
+                        ""
+                    }
+
+
+                    <p class="upload-note">
+
+                        If you do not select a new image,
+                        the current image will remain unchanged.
+
+                    </p>
+
                 </div>
 
+
+
+                <!-- FEATURED -->
 
                 <div class="form-section">
 
                     <h2 class="section-title">
+
                         Publishing
+
                     </h2>
 
 
                     <div class="featured-row">
 
+
                         <div class="featured-info">
 
                             <h3>
+
                                 Featured Artwork
+
                             </h3>
 
+
                             <p>
+
                                 Show this artwork in
                                 your featured collection.
+
                             </p>
 
                         </div>
+
 
 
                         <label class="toggle">
@@ -927,47 +1470,58 @@
                             >
 
                             <span
-                                class="toggle-slider">
-                            </span>
+                                class="toggle-slider"
+                            ></span>
 
                         </label>
+
 
                     </div>
 
                 </div>
 
 
+
+                <!-- ACTIONS -->
+
                 <div class="form-section">
 
                     <div class="actions">
 
+
                         <a
                             href="dashboard.html"
-                            class="cancel-button">
+                            class="cancel-button"
+                        >
 
                             Cancel
 
                         </a>
 
 
+
                         <button
                             type="submit"
                             class="save-button"
-                            id="saveButton">
+                            id="saveButton"
+                        >
 
                             Save Changes
 
                         </button>
 
+
                     </div>
 
                 </div>
 
+
             </form>
+
         `;
 
 
-        setupPreview();
+        setupImagePicker();
 
 
         document
@@ -976,20 +1530,35 @@
                 "submit",
                 saveArtwork
             );
+
     }
 
 
-    function setupPreview() {
+    /* =========================
+       IMAGE PICKER
+    ========================= */
 
-        const imageUrl =
+
+    function setupImagePicker() {
+
+
+        const imageFile =
             document.getElementById(
-                "imageUrl"
+                "imageFile"
             );
 
-        const preview =
+
+        const selectedFile =
+            document.getElementById(
+                "selectedFile"
+            );
+
+
+        const imagePreview =
             document.getElementById(
                 "imagePreview"
             );
+
 
         const previewImage =
             document.getElementById(
@@ -997,56 +1566,421 @@
             );
 
 
-        function updatePreview() {
-
-            const url =
-                imageUrl.value.trim();
-
-
-            if (!url) {
-
-                preview.classList.remove(
-                    "show"
-                );
-
-                previewImage.removeAttribute(
-                    "src"
-                );
-
-                return;
-            }
-
-
-            previewImage.src = url;
-
-            preview.classList.add(
-                "show"
-            );
-        }
-
-
-        imageUrl.addEventListener(
-            "input",
-            updatePreview
-        );
-
-
-        previewImage.addEventListener(
-            "error",
+        imageFile.addEventListener(
+            "change",
             function () {
 
-                preview.classList.remove(
-                    "show"
-                );
+
+                const file =
+                    imageFile.files[0];
+
+
+                if (!file) {
+
+                    selectedFile.classList
+                        .remove("show");
+
+                    imagePreview.classList
+                        .remove("show");
+
+                    return;
+
+                }
+
+
+                if (!file.type.startsWith("image/")) {
+
+                    showMessage(
+                        "Please select an image file.",
+                        "error"
+                    );
+
+                    imageFile.value = "";
+
+                    return;
+
+                }
+
+
+                const maxSize =
+                    10 * 1024 * 1024;
+
+
+                if (file.size > maxSize) {
+
+                    showMessage(
+                        "Image is too large. Please choose an image smaller than 10 MB.",
+                        "error"
+                    );
+
+                    imageFile.value = "";
+
+                    return;
+
+                }
+
+
+                selectedFile.textContent =
+                    "Selected: " +
+                    file.name +
+                    " • " +
+                    formatFileSize(
+                        file.size
+                    );
+
+
+                selectedFile.classList
+                    .add("show");
+
+
+                const objectUrl =
+                    URL.createObjectURL(
+                        file
+                    );
+
+
+                previewImage.src =
+                    objectUrl;
+
+
+                imagePreview.classList
+                    .add("show");
+
             }
         );
 
-
-        updatePreview();
     }
 
 
-    async function saveArtwork(event) {
+    /* =========================
+       FILE SIZE
+    ========================= */
+
+
+    function formatFileSize(
+        bytes
+    ) {
+
+        if (bytes < 1024) {
+
+            return bytes + " B";
+
+        }
+
+
+        if (bytes < 1024 * 1024) {
+
+            return (
+                bytes / 1024
+            ).toFixed(1) +
+            " KB";
+
+        }
+
+
+        return (
+            bytes /
+            (1024 * 1024)
+        ).toFixed(1) +
+        " MB";
+
+    }
+
+
+    /* =========================
+       UPLOAD IMAGE
+    ========================= */
+
+
+    async function uploadImage(
+        file
+    ) {
+
+
+        if (!file) {
+
+            return null;
+
+        }
+
+
+        const extension =
+            getFileExtension(
+                file.name,
+                file.type
+            );
+
+
+        const fileName =
+            "artwork-" +
+            artworkId +
+            "-" +
+            Date.now() +
+            "." +
+            extension;
+
+
+        const filePath =
+            fileName;
+
+
+        const {
+            error: uploadError
+        } =
+            await supabaseClient
+                .storage
+                .from(
+                    STORAGE_BUCKET
+                )
+                .upload(
+                    filePath,
+                    file,
+                    {
+                        cacheControl:
+                            "3600",
+
+                        upsert:
+                            false,
+
+                        contentType:
+                            file.type
+                    }
+                );
+
+
+        if (uploadError) {
+
+            throw uploadError;
+
+        }
+
+
+        const {
+            data
+        } =
+            supabaseClient
+                .storage
+                .from(
+                    STORAGE_BUCKET
+                )
+                .getPublicUrl(
+                    filePath
+                );
+
+
+        if (!data ||
+            !data.publicUrl) {
+
+            throw new Error(
+                "Could not create public image URL."
+            );
+
+        }
+
+
+        return {
+
+            path: filePath,
+
+            url: data.publicUrl
+
+        };
+
+    }
+
+
+    /* =========================
+       FILE EXTENSION
+    ========================= */
+
+
+    function getFileExtension(
+        fileName,
+        mimeType
+    ) {
+
+
+        const parts =
+            fileName.split(".");
+
+
+        if (
+            parts.length > 1
+        ) {
+
+            const extension =
+                parts.pop()
+                    .toLowerCase();
+
+
+            if (
+                /^[a-z0-9]+$/i
+                    .test(extension)
+            ) {
+
+                return extension;
+
+            }
+
+        }
+
+
+        if (
+            mimeType ===
+            "image/jpeg"
+        ) {
+
+            return "jpg";
+
+        }
+
+
+        if (
+            mimeType ===
+            "image/png"
+        ) {
+
+            return "png";
+
+        }
+
+
+        if (
+            mimeType ===
+            "image/webp"
+        ) {
+
+            return "webp";
+
+        }
+
+
+        return "jpg";
+
+    }
+
+
+    /* =========================
+       GET OLD STORAGE PATH
+    ========================= */
+
+
+    function getStoragePath(
+        imageUrl
+    ) {
+
+
+        if (!imageUrl) {
+
+            return null;
+
+        }
+
+
+        try {
+
+
+            const url =
+                new URL(
+                    imageUrl
+                );
+
+
+            const marker =
+                "/storage/v1/object/public/" +
+                STORAGE_BUCKET +
+                "/";
+
+
+            const index =
+                url.pathname.indexOf(
+                    marker
+                );
+
+
+            if (
+                index === -1
+            ) {
+
+                return null;
+
+            }
+
+
+            return decodeURIComponent(
+                url.pathname.substring(
+                    index +
+                    marker.length
+                )
+            );
+
+        }
+        catch (error) {
+
+            return null;
+
+        }
+
+    }
+
+
+    /* =========================
+       DELETE OLD IMAGE
+    ========================= */
+
+
+    async function deleteOldImage(
+        imageUrl
+    ) {
+
+
+        const oldPath =
+            getStoragePath(
+                imageUrl
+            );
+
+
+        if (!oldPath) {
+
+            return;
+
+        }
+
+
+        const {
+            error
+        } =
+            await supabaseClient
+                .storage
+                .from(
+                    STORAGE_BUCKET
+                )
+                .remove([
+                    oldPath
+                ]);
+
+
+        if (error) {
+
+            console.warn(
+                "Old image could not be removed:",
+                error.message
+            );
+
+        }
+
+    }
+
+
+    /* =========================
+       SAVE ARTWORK
+    ========================= */
+
+
+    async function saveArtwork(
+        event
+    ) {
+
 
         event.preventDefault();
 
@@ -1057,119 +1991,310 @@
             );
 
 
-        saveButton.disabled = true;
+        const imageFile =
+            document.getElementById(
+                "imageFile"
+            );
+
+
+        saveButton.disabled =
+            true;
+
 
         saveButton.textContent =
             "Saving...";
 
 
-        const title =
-            document.getElementById(
-                "title"
-            ).value.trim();
+        try {
 
 
-        const category =
-            document.getElementById(
-                "category"
-            ).value.trim();
+            const title =
+                document
+                    .getElementById(
+                        "title"
+                    )
+                    .value
+                    .trim();
 
 
-        const description =
-            document.getElementById(
-                "description"
-            ).value.trim();
+            const category =
+                document
+                    .getElementById(
+                        "category"
+                    )
+                    .value
+                    .trim();
 
 
-        const imageUrl =
-            document.getElementById(
-                "imageUrl"
-            ).value.trim();
+            const description =
+                document
+                    .getElementById(
+                        "description"
+                    )
+                    .value
+                    .trim();
 
 
-        const featured =
-            document.getElementById(
-                "featured"
-            ).checked;
+            const featured =
+                document
+                    .getElementById(
+                        "featured"
+                    )
+                    .checked;
 
 
-        const {
-            error
-        } =
-            await supabaseClient
-                .from("artworks")
-                .update({
-                    title: title,
-                    category: category,
-                    description: description,
-                    image_url: imageUrl,
-                    featured: featured
-                })
-                .eq(
-                    "id",
-                    artworkId
+            if (!title) {
+
+                throw new Error(
+                    "Artwork title is required."
                 );
 
+            }
 
-        if (error) {
 
-            console.error(error);
+            /* =========================
+               GET CURRENT ARTWORK
+            ========================= */
 
-            saveButton.disabled = false;
+
+            const {
+                data: currentArtwork,
+                error:
+                    currentArtworkError
+            } =
+                await supabaseClient
+                    .from("artworks")
+                    .select(
+                        "image_url"
+                    )
+                    .eq(
+                        "id",
+                        artworkId
+                    )
+                    .single();
+
+
+            if (
+                currentArtworkError
+            ) {
+
+                throw currentArtworkError;
+
+            }
+
+
+            let newImageUrl =
+                currentArtwork.image_url;
+
+
+            let uploadedImage =
+                null;
+
+
+            /* =========================
+               UPLOAD NEW IMAGE
+            ========================= */
+
+
+            if (
+                imageFile.files.length
+                > 0
+            ) {
+
+
+                saveButton.textContent =
+                    "Uploading...";
+
+
+                uploadedImage =
+                    await uploadImage(
+                        imageFile.files[0]
+                    );
+
+
+                newImageUrl =
+                    uploadedImage.url;
+
+            }
+
+
+            /* =========================
+               UPDATE DATABASE
+            ========================= */
+
+
+            saveButton.textContent =
+                "Saving...";
+
+
+            const {
+                error: updateError
+            } =
+                await supabaseClient
+                    .from("artworks")
+                    .update({
+
+                        title:
+                            title,
+
+                        category:
+                            category,
+
+                        description:
+                            description,
+
+                        image_url:
+                            newImageUrl,
+
+                        featured:
+                            featured
+
+                    })
+                    .eq(
+                        "id",
+                        artworkId
+                    );
+
+
+            if (updateError) {
+
+
+                /*
+
+                   If database update fails
+                   after image upload, remove
+                   the newly uploaded image
+                   so there is no unnecessary
+                   file left in storage.
+
+                */
+
+
+                if (
+                    uploadedImage
+                ) {
+
+                    await supabaseClient
+                        .storage
+                        .from(
+                            STORAGE_BUCKET
+                        )
+                        .remove([
+                            uploadedImage.path
+                        ]);
+
+                }
+
+
+                throw updateError;
+
+            }
+
+
+            /* =========================
+               DELETE OLD IMAGE
+            ========================= */
+
+
+            if (
+                uploadedImage &&
+                currentArtwork.image_url
+            ) {
+
+                await deleteOldImage(
+                    currentArtwork.image_url
+                );
+
+            }
+
+
+            /* =========================
+               SUCCESS
+            ========================= */
+
+
+            showMessage(
+                "Artwork updated successfully.",
+                "success"
+            );
+
+
+            saveButton.textContent =
+                "Saved ✓";
+
+
+            setTimeout(
+                function () {
+
+                    window.location.href =
+                        "dashboard.html";
+
+                },
+                900
+            );
+
+
+        }
+        catch (error) {
+
+
+            console.error(
+                error
+            );
+
+
+            saveButton.disabled =
+                false;
+
 
             saveButton.textContent =
                 "Save Changes";
 
+
             showMessage(
                 "Could not save changes: " +
-                error.message,
+                (
+                    error.message ||
+                    "Unknown error"
+                ),
                 "error"
             );
 
-            return;
         }
 
-
-        showMessage(
-            "Artwork updated successfully.",
-            "success"
-        );
-
-
-        saveButton.textContent =
-            "Saved ✓";
-
-
-        setTimeout(
-            function () {
-
-                window.location.href =
-                    "dashboard.html";
-
-            },
-            900
-        );
     }
 
 
+    /* =========================
+       START
+    ========================= */
+
+
     async function start() {
+
 
         const loggedIn =
             await checkLogin();
 
 
         if (!loggedIn) {
+
             return;
+
         }
 
 
         await loadArtwork();
+
     }
 
 
     start();
 
+
 </script>
 
+
 </body>
+
 </html>
