@@ -922,6 +922,57 @@
     </section>
 
 
+    <section style="margin-top: 60px;">
+
+        <div class="section-header">
+
+            <h2>
+                Shop Products
+            </h2>
+
+            <span class="section-label">
+                Studio Shop
+            </span>
+
+        </div>
+
+
+        <div class="management-card">
+
+            <div class="management-top">
+
+                <p>
+                    Products are hidden behind "Coming Soon"
+                    on the public site until you turn the
+                    shop on.
+                </p>
+
+                <button
+                    class="add-button"
+                    id="addProductButton">
+
+                    + Add Product
+
+                </button>
+
+            </div>
+
+
+            <div id="productContainer">
+
+                <div class="loading-state">
+
+                    Loading products...
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
     <section class="quick-section">
 
         <div class="section-header">
@@ -1483,6 +1534,305 @@
 
 
     /* =========================
+       LOAD PRODUCTS
+    ========================= */
+
+    const productContainer =
+        document.getElementById(
+            "productContainer"
+        );
+
+
+    async function loadProducts() {
+
+        productContainer.innerHTML = `
+            <div class="loading-state">
+                Loading products...
+            </div>
+        `;
+
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from("products")
+                .select("*")
+                .order(
+                    "created_at",
+                    {
+                        ascending: false
+                    }
+                );
+
+
+        if (error) {
+
+            console.error(error);
+
+
+            showError(
+                "Could not load products: " +
+                error.message
+            );
+
+
+            productContainer.innerHTML = `
+                <div class="empty-state">
+
+                    <h3>
+                        Something went wrong
+                    </h3>
+
+                    <p>
+                        Check your Supabase RLS policy
+                        and try again.
+                    </p>
+
+                </div>
+            `;
+
+            return;
+        }
+
+
+        const products =
+            data || [];
+
+
+        if (products.length === 0) {
+
+            productContainer.innerHTML = `
+                <div class="empty-state">
+
+                    <div class="empty-symbol">
+                        +
+                    </div>
+
+                    <h3>
+                        No products yet
+                    </h3>
+
+                    <p>
+                        Add your first product to begin
+                        building the Artomb Studios shop.
+                    </p>
+
+                </div>
+            `;
+
+            return;
+        }
+
+
+        productContainer.innerHTML = `
+
+            <div class="artwork-list">
+
+                ${products.map(
+                    product => `
+
+                    <article
+                        class="artwork-item">
+
+
+                        ${
+                            product.image_url
+                            ?
+                            `
+                            <img
+                                class="artwork-image"
+                                src="${escapeHtml(
+                                    product.image_url
+                                )}"
+                                alt="${escapeHtml(
+                                    product.title ||
+                                    "Product"
+                                )}"
+                            >
+                            `
+                            :
+                            `
+                            <div
+                                class="artwork-image">
+                            </div>
+                            `
+                        }
+
+
+                        <h3
+                            class="artwork-title">
+
+                            ${escapeHtml(
+                                product.title ||
+                                "Untitled Product"
+                            )}
+
+                        </h3>
+
+
+                        <p
+                            class="artwork-category">
+
+                            ₹${escapeHtml(
+                                String(
+                                    product.price ?? "0"
+                                )
+                            )}
+
+                        </p>
+
+
+                        <span
+                            class="artwork-status">
+
+                            ${
+                                product.status ===
+                                "sold"
+                                ? "Sold"
+                                : "Available"
+                            }
+
+                            ·
+
+                            ${
+                                product.active
+                                ? "Published"
+                                : "Draft"
+                            }
+
+                        </span>
+
+
+                        <div
+                            class="artwork-actions">
+
+                            <button
+                                type="button"
+                                class="edit-button"
+                                onclick="editProduct('${encodeURIComponent(
+                                    String(product.id)
+                                )}')">
+
+                                Edit
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="delete-button"
+                                onclick="deleteProduct('${escapeHtml(
+                                    String(product.id)
+                                )}', '${escapeHtml(
+                                    product.title ||
+                                    "Untitled Product"
+                                )}')">
+
+                                Delete
+
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                `
+                ).join("")}
+
+            </div>
+        `;
+    }
+
+
+    /* =========================
+       EDIT PRODUCT
+    ========================= */
+
+    function editProduct(productId) {
+
+        if (!productId) {
+
+            showError(
+                "Unable to edit this product because its ID is missing."
+            );
+
+            return;
+        }
+
+
+        window.location.href =
+            "edit-product.html?id=" +
+            productId;
+    }
+
+
+    /* =========================
+       DELETE PRODUCT
+    ========================= */
+
+    async function deleteProduct(
+        productId,
+        productTitle
+    ) {
+
+        if (!productId) {
+
+            showError(
+                "Unable to delete this product because its ID is missing."
+            );
+
+            return;
+        }
+
+
+        const confirmed =
+            window.confirm(
+                `Delete "${productTitle}"?\n\nThis action cannot be undone.`
+            );
+
+
+        if (!confirmed) {
+            return;
+        }
+
+
+        errorBox.style.display =
+            "none";
+
+
+        const {
+            error
+        } =
+            await supabaseClient
+                .from("products")
+                .delete()
+                .eq(
+                    "id",
+                    productId
+                );
+
+
+        if (error) {
+
+            console.error(error);
+
+
+            showError(
+                "Could not delete product: " +
+                error.message
+            );
+
+            return;
+        }
+
+
+        await loadProducts();
+    }
+
+
+    /* =========================
        ESCAPE HTML
     ========================= */
 
@@ -1556,6 +1906,25 @@
 
 
     /* =========================
+       ADD PRODUCT
+    ========================= */
+
+    document
+        .getElementById(
+            "addProductButton"
+        )
+        .addEventListener(
+            "click",
+            function () {
+
+                window.location.href =
+                    "add-product.html";
+
+            }
+        );
+
+
+    /* =========================
        QUICK ADD
     ========================= */
 
@@ -1593,6 +1962,8 @@
 
 
         await loadArtworks();
+
+        await loadProducts();
     }
 
 
@@ -1601,4 +1972,4 @@
 </script>
 
 </body>
-</html>
+    </html>
