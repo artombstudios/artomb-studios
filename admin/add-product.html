@@ -1,0 +1,2248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#f7f4ee"
+    >
+
+    <title>Add Product — Artomb Studios</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        :root {
+            --bg: #f7f4ee;
+            --card: #fffdf9;
+            --text: #171717;
+            --muted: #77736c;
+            --border: rgba(23, 23, 23, .12);
+
+            --success-bg: #f3faf4;
+            --success-border: #b8d2bd;
+            --success-text: #38603e;
+
+            --error-bg: #fff4f4;
+            --error-border: #e1bebe;
+            --error-text: #9b3d3d;
+        }
+
+
+        body {
+            min-height: 100vh;
+
+            background:
+                var(--bg);
+
+            color:
+                var(--text);
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+        }
+
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        button,
+        input,
+        textarea,
+        select {
+            font: inherit;
+        }
+
+
+        button {
+            cursor: pointer;
+        }
+
+
+        /* ================================
+           HEADER
+        ================================= */
+
+        .header {
+            height: 72px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 5vw;
+
+            border-bottom:
+                1px solid var(--border);
+
+            background:
+                rgba(247, 244, 238, .95);
+
+            position: sticky;
+            top: 0;
+            z-index: 10;
+
+            backdrop-filter:
+                blur(12px);
+        }
+
+
+        .brand-main {
+            display: block;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 21px;
+
+            letter-spacing:
+                3px;
+        }
+
+
+        .brand-sub {
+            display: block;
+
+            margin-top: 4px;
+
+            font-size: 7px;
+
+            letter-spacing:
+                4px;
+
+            opacity: .55;
+        }
+
+
+        .back-link {
+            font-size: 10px;
+
+            letter-spacing:
+                1.5px;
+
+            text-transform:
+                uppercase;
+
+            color:
+                var(--muted);
+        }
+
+
+        /* ================================
+           MAIN
+        ================================= */
+
+        .page {
+            width:
+                min(1100px, 90%);
+
+            margin:
+                auto;
+
+            padding:
+                65px 0 90px;
+        }
+
+
+        .intro {
+            margin-bottom:
+                40px;
+        }
+
+
+        .eyebrow {
+            margin-bottom:
+                14px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                10px;
+
+            letter-spacing:
+                3px;
+
+            text-transform:
+                uppercase;
+        }
+
+
+        h1 {
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size:
+                clamp(42px, 7vw, 68px);
+
+            font-weight:
+                400;
+
+            line-height:
+                .98;
+
+            letter-spacing:
+                -2px;
+        }
+
+
+        .intro p:last-child {
+            max-width:
+                520px;
+
+            margin-top:
+                18px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                14px;
+
+            line-height:
+                1.7;
+        }
+
+
+        /* ================================
+           FORM
+        ================================= */
+
+        .form-layout {
+            display:
+                grid;
+
+            grid-template-columns:
+                1.1fr .9fr;
+
+            gap:
+                25px;
+        }
+
+
+        .card {
+            background:
+                var(--card);
+
+            border:
+                1px solid var(--border);
+
+            padding:
+                28px;
+        }
+
+
+        .card-title {
+            margin-bottom:
+                25px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size:
+                25px;
+
+            font-weight:
+                400;
+        }
+
+
+        .field {
+            margin-bottom:
+                22px;
+        }
+
+
+        label {
+            display:
+                block;
+
+            margin-bottom:
+                9px;
+
+            font-size:
+                10px;
+
+            letter-spacing:
+                1.8px;
+
+            text-transform:
+                uppercase;
+
+            color:
+                #555;
+        }
+
+
+        input,
+        textarea,
+        select {
+            width:
+                100%;
+
+            border:
+                1px solid #d8d4cc;
+
+            background:
+                #f7f4ee;
+
+            color:
+                var(--text);
+
+            outline:
+                none;
+
+            padding:
+                14px;
+
+            transition:
+                border-color .2s ease,
+                box-shadow .2s ease;
+        }
+
+
+        input {
+            height:
+                50px;
+        }
+
+
+        textarea {
+            min-height:
+                135px;
+
+            resize:
+                vertical;
+
+            line-height:
+                1.6;
+        }
+
+
+        select {
+            height:
+                50px;
+        }
+
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+
+            border-color:
+                #171717;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(23, 23, 23, .05);
+        }
+
+
+        /* ================================
+           IMAGE UPLOAD
+        ================================= */
+
+        .upload-box {
+            min-height:
+                250px;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            text-align:
+                center;
+
+            border:
+                1px dashed #bcb8b0;
+
+            background:
+                #f7f4ee;
+
+            padding:
+                25px;
+
+            cursor:
+                pointer;
+
+            transition:
+                border-color .2s ease,
+                background .2s ease;
+        }
+
+
+        .upload-box:hover {
+            border-color:
+                #171717;
+
+            background:
+                #f3efe8;
+        }
+
+
+        .upload-icon {
+            width:
+                52px;
+
+            height:
+                52px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border:
+                1px solid var(--border);
+
+            margin-bottom:
+                18px;
+
+            font-size:
+                23px;
+        }
+
+
+        .upload-box strong {
+            display:
+                block;
+
+            margin-bottom:
+                7px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size:
+                20px;
+
+            font-weight:
+                400;
+        }
+
+
+        .upload-box span {
+            color:
+                var(--muted);
+
+            font-size:
+                11px;
+
+            line-height:
+                1.6;
+        }
+
+
+        #productImage {
+            display:
+                none;
+        }
+
+
+        .preview {
+            display:
+                none;
+
+            width:
+                100%;
+
+            margin-top:
+                15px;
+        }
+
+
+        .preview img {
+            display:
+                block;
+
+            width:
+                100%;
+
+            max-height:
+                360px;
+
+            object-fit:
+                contain;
+
+            background:
+                #eeeae2;
+        }
+
+
+        /* ================================
+           STATUS
+        ================================= */
+
+        .status-options {
+            display:
+                grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap:
+                10px;
+        }
+
+
+        .status-option {
+            position:
+                relative;
+        }
+
+
+        .status-option input {
+            position:
+                absolute;
+
+            opacity:
+                0;
+
+            pointer-events:
+                none;
+        }
+
+
+        .status-option label {
+            height:
+                50px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            margin:
+                0;
+
+            border:
+                1px solid #d8d4cc;
+
+            cursor:
+                pointer;
+
+            color:
+                var(--muted);
+
+            transition:
+                background .2s ease,
+                color .2s ease,
+                border-color .2s ease;
+        }
+
+
+        .status-option input:checked + label {
+            background:
+                var(--text);
+
+            color:
+                white;
+
+            border-color:
+                var(--text);
+        }
+
+
+        /* ================================
+           MESSAGES
+        ================================= */
+
+        .message,
+        .error-message {
+            display:
+                none;
+
+            margin-top:
+                20px;
+
+            padding:
+                14px;
+
+            font-size:
+                12px;
+
+            line-height:
+                1.6;
+        }
+
+
+        .message {
+            border:
+                1px solid var(--success-border);
+
+            background:
+                var(--success-bg);
+
+            color:
+                var(--success-text);
+        }
+
+
+        .error-message {
+            border:
+                1px solid var(--error-border);
+
+            background:
+                var(--error-bg);
+
+            color:
+                var(--error-text);
+
+            word-break:
+                break-word;
+        }
+
+
+        /* ================================
+           PROGRESS
+        ================================= */
+
+        .progress {
+            display:
+                none;
+
+            margin-top:
+                15px;
+        }
+
+
+        .progress-text {
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            margin-bottom:
+                8px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                11px;
+
+            letter-spacing:
+                1px;
+
+            text-transform:
+                uppercase;
+        }
+
+
+        .progress-bar {
+            width:
+                100%;
+
+            height:
+                4px;
+
+            background:
+                #e2ded6;
+
+            overflow:
+                hidden;
+        }
+
+
+        .progress-fill {
+            width:
+                0%;
+
+            height:
+                100%;
+
+            background:
+                var(--text);
+
+            transition:
+                width .2s ease;
+        }
+
+
+        /* ================================
+           ACTIONS
+        ================================= */
+
+        .actions {
+            display:
+                flex;
+
+            justify-content:
+                flex-end;
+
+            gap:
+                10px;
+
+            margin-top:
+                25px;
+        }
+
+
+        .button {
+            min-height:
+                50px;
+
+            padding:
+                0 22px;
+
+            border:
+                1px solid var(--text);
+
+            font-size:
+                10px;
+
+            letter-spacing:
+                1.5px;
+
+            text-transform:
+                uppercase;
+
+            cursor:
+                pointer;
+        }
+
+
+        .button-secondary {
+            background:
+                transparent;
+
+            color:
+                var(--text);
+        }
+
+
+        .button-primary {
+            background:
+                var(--text);
+
+            color:
+                white;
+        }
+
+
+        .button-primary:disabled {
+            opacity:
+                .5;
+
+            cursor:
+                not-allowed;
+        }
+
+
+        /* ================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 760px) {
+
+            .header {
+                height:
+                    65px;
+            }
+
+
+            .page {
+                padding-top:
+                    50px;
+            }
+
+
+            .form-layout {
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .card {
+                padding:
+                    22px;
+            }
+
+
+            .actions {
+                flex-direction:
+                    column-reverse;
+            }
+
+
+            .button {
+                width:
+                    100%;
+            }
+
+        }
+
+
+        @media (max-width: 420px) {
+
+            .back-link {
+                font-size:
+                    9px;
+            }
+
+
+            h1 {
+                font-size:
+                    43px;
+            }
+
+
+            .status-options {
+                grid-template-columns:
+                    1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <a
+        href="dashboard.html"
+        aria-label="Back to dashboard">
+
+        <span class="brand-main">
+            ARTOMB
+        </span>
+
+        <span class="brand-sub">
+            STUDIOS
+        </span>
+
+    </a>
+
+
+    <a
+        href="dashboard.html"
+        class="back-link">
+
+        ← Dashboard
+
+    </a>
+
+</header>
+
+
+
+<main class="page">
+
+
+    <section class="intro">
+
+        <p class="eyebrow">
+            Studio Shop
+        </p>
+
+
+        <h1>
+            Add new<br>
+            product.
+        </h1>
+
+
+        <p>
+            Add the details of your product below.
+            Your image will be uploaded to the
+            Artomb Studios storage and the product
+            will be saved to your shop.
+        </p>
+
+    </section>
+
+
+
+    <form id="productForm">
+
+        <div class="form-layout">
+
+
+            <!-- ============================
+                 PRODUCT DETAILS
+            ============================= -->
+
+            <section class="card">
+
+                <h2 class="card-title">
+                    Product Details
+                </h2>
+
+
+                <div class="field">
+
+                    <label for="title">
+                        Product Title
+                    </label>
+
+                    <input
+                        type="text"
+                        id="title"
+                        placeholder="e.g. Silent Expression"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="field">
+
+                    <label for="price">
+                        Price (₹)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="price"
+                        min="0"
+                        step="0.01"
+                        placeholder="e.g. 2500"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="field">
+
+                    <label for="description">
+                        Description
+                    </label>
+
+                    <textarea
+                        id="description"
+                        placeholder="Tell the story behind this piece..."
+                    ></textarea>
+
+                </div>
+
+
+
+                <div class="field">
+
+                    <label>
+                        Availability
+                    </label>
+
+
+                    <div class="status-options">
+
+                        <div class="status-option">
+
+                            <input
+                                type="radio"
+                                id="available"
+                                name="availability"
+                                value="available"
+                                checked
+                            >
+
+                            <label for="available">
+                                Available
+                            </label>
+
+                        </div>
+
+
+                        <div class="status-option">
+
+                            <input
+                                type="radio"
+                                id="sold"
+                                name="availability"
+                                value="sold"
+                            >
+
+                            <label for="sold">
+                                Sold
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="field">
+
+                    <label>
+                        Publication Status
+                    </label>
+
+
+                    <div class="status-options">
+
+                        <div class="status-option">
+
+                            <input
+                                type="radio"
+                                id="published"
+                                name="status"
+                                value="published"
+                                checked
+                            >
+
+                            <label for="published">
+                                Published
+                            </label>
+
+                        </div>
+
+
+                        <div class="status-option">
+
+                            <input
+                                type="radio"
+                                id="draft"
+                                name="status"
+                                value="draft"
+                            >
+
+                            <label for="draft">
+                                Draft
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ============================
+                 IMAGE
+            ============================= -->
+
+            <section class="card">
+
+                <h2 class="card-title">
+                    Product Image
+                </h2>
+
+
+                <label
+                    for="productImage"
+                    class="upload-box">
+
+                    <div class="upload-icon">
+                        +
+                    </div>
+
+
+                    <strong>
+                        Choose product image
+                    </strong>
+
+
+                    <span>
+                        JPG, PNG or WEBP<br>
+                        Maximum 20 MB
+                    </span>
+
+                </label>
+
+
+
+                <input
+                    type="file"
+                    id="productImage"
+                    accept="image/jpeg,image/png,image/webp"
+                    required
+                >
+
+
+
+                <div
+                    class="preview"
+                    id="preview">
+
+                    <img
+                        id="previewImage"
+                        alt="Product preview"
+                    >
+
+                </div>
+
+
+
+                <div
+                    class="progress"
+                    id="progress">
+
+                    <div class="progress-text">
+
+                        <span id="progressStatus">
+                            Uploading product...
+                        </span>
+
+                        <span id="progressPercent">
+                            0%
+                        </span>
+
+                    </div>
+
+
+                    <div class="progress-bar">
+
+                        <div
+                            class="progress-fill"
+                            id="progressFill">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div
+                    class="message"
+                    id="message">
+                </div>
+
+
+
+                <div
+                    class="error-message"
+                    id="errorMessage">
+                </div>
+
+            </section>
+
+        </div>
+
+
+
+        <!-- ============================
+             ACTIONS
+        ============================= -->
+
+        <div class="actions">
+
+            <button
+                type="button"
+                class="button button-secondary"
+                id="cancelButton">
+
+                Cancel
+
+            </button>
+
+
+            <button
+                type="submit"
+                class="button button-primary"
+                id="saveButton">
+
+                Save Product
+
+            </button>
+
+        </div>
+
+
+    </form>
+
+</main>
+
+
+
+<!-- ================================
+     SUPABASE
+================================= -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+</script>
+
+
+
+<script>
+
+    /* =========================================
+       SUPABASE CONFIG
+    ========================================= */
+
+    const SUPABASE_URL =
+        "https://pdopupcnmvjzombukcpi.supabase.co";
+
+
+    const SUPABASE_KEY =
+        "sb_publishable_AbIdZemk0Mq7f1jNNM5zdQ_pYIzZNlU";
+
+
+    const {
+        createClient
+    } = supabase;
+
+
+    const supabaseClient =
+        createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY,
+            {
+                auth: {
+                    persistSession: true,
+                    autoRefreshToken: true,
+                    detectSessionInUrl: true
+                }
+            }
+        );
+
+
+
+    /* =========================================
+       ELEMENTS
+    ========================================= */
+
+    const form =
+        document.getElementById(
+            "productForm"
+        );
+
+
+    const imageInput =
+        document.getElementById(
+            "productImage"
+        );
+
+
+    const preview =
+        document.getElementById(
+            "preview"
+        );
+
+
+    const previewImage =
+        document.getElementById(
+            "previewImage"
+        );
+
+
+    const message =
+        document.getElementById(
+            "message"
+        );
+
+
+    const errorMessage =
+        document.getElementById(
+            "errorMessage"
+        );
+
+
+    const progress =
+        document.getElementById(
+            "progress"
+        );
+
+
+    const progressFill =
+        document.getElementById(
+            "progressFill"
+        );
+
+
+    const progressPercent =
+        document.getElementById(
+            "progressPercent"
+        );
+
+
+    const progressStatus =
+        document.getElementById(
+            "progressStatus"
+        );
+
+
+    const saveButton =
+        document.getElementById(
+            "saveButton"
+        );
+
+
+    const cancelButton =
+        document.getElementById(
+            "cancelButton"
+        );
+
+
+
+    /* =========================================
+       MESSAGE HELPERS
+    ========================================= */
+
+    function showMessage(text) {
+
+        message.textContent =
+            text;
+
+        message.style.display =
+            "block";
+
+        errorMessage.style.display =
+            "none";
+    }
+
+
+    function showError(text) {
+
+        errorMessage.textContent =
+            text;
+
+        errorMessage.style.display =
+            "block";
+
+        message.style.display =
+            "none";
+
+        console.error(
+            "ARTOMB ERROR:",
+            text
+        );
+    }
+
+
+    function setProgress(percent, text) {
+
+        const safePercent =
+            Math.max(
+                0,
+                Math.min(
+                    100,
+                    percent
+                )
+            );
+
+
+        progressFill.style.width =
+            safePercent + "%";
+
+
+        progressPercent.textContent =
+            Math.round(safePercent) + "%";
+
+
+        if (text) {
+
+            progressStatus.textContent =
+                text;
+
+        }
+
+    }
+
+
+
+    /* =========================================
+       LOGIN CHECK
+    ========================================= */
+
+    async function getCurrentSession() {
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .auth
+                .getSession();
+
+
+        if (error) {
+
+            console.error(
+                "SESSION ERROR:",
+                error
+            );
+
+            throw new Error(
+                "Unable to check your login session."
+            );
+        }
+
+
+        if (!data.session) {
+
+            window.location.href =
+                "login.html";
+
+            return null;
+        }
+
+
+        return data.session;
+    }
+
+
+
+    /* =========================================
+       IMAGE PREVIEW
+    ========================================= */
+
+    imageInput.addEventListener(
+        "change",
+        function () {
+
+            const file =
+                this.files[0];
+
+
+            if (!file) {
+
+                preview.style.display =
+                    "none";
+
+                return;
+            }
+
+
+            const allowedTypes = [
+
+                "image/jpeg",
+                "image/png",
+                "image/webp"
+
+            ];
+
+
+            if (
+                !allowedTypes.includes(
+                    file.type
+                )
+            ) {
+
+                alert(
+                    "Please choose a JPG, PNG or WEBP image."
+                );
+
+                this.value = "";
+
+                preview.style.display =
+                    "none";
+
+                return;
+            }
+
+
+            /*
+             * Keep uploads reliable.
+             * Supabase recommends resumable uploads
+             * for files larger than about 6 MB.
+             */
+
+            if (
+                file.size >
+                20 * 1024 * 1024
+            ) {
+
+                alert(
+                    "Image must be smaller than 20 MB."
+                );
+
+                this.value = "";
+
+                preview.style.display =
+                    "none";
+
+                return;
+            }
+
+
+            const reader =
+                new FileReader();
+
+
+            reader.onload =
+                function (event) {
+
+                    previewImage.src =
+                        event.target.result;
+
+                    preview.style.display =
+                        "block";
+
+                };
+
+
+            reader.readAsDataURL(file);
+
+        }
+    );
+
+
+
+    /* =========================================
+       CREATE SAFE FILE PATH
+    ========================================= */
+
+    function createFilePath(
+        userId,
+        title,
+        file
+    ) {
+
+        let extension =
+            file.name
+                .split(".")
+                .pop()
+                .toLowerCase();
+
+
+        if (
+            extension !== "jpg" &&
+            extension !== "jpeg" &&
+            extension !== "png" &&
+            extension !== "webp"
+        ) {
+
+            extension =
+                "jpg";
+        }
+
+
+        let safeTitle =
+            title
+                .toLowerCase()
+                .replace(
+                    /[^a-z0-9]+/g,
+                    "-"
+                )
+                .replace(
+                    /^-+|-+$/g,
+                    ""
+                );
+
+
+        if (!safeTitle) {
+
+            safeTitle =
+                "product";
+        }
+
+
+        return (
+            userId +
+            "/" +
+            Date.now() +
+            "-" +
+            safeTitle +
+            "." +
+            extension
+        );
+    }
+
+
+
+    /* =========================================
+       DIRECT XHR STORAGE UPLOAD
+       
+       This avoids the browser fetch layer that
+       can produce a generic "Failed to fetch"
+       on some Android/PWA setups.
+    ========================================= */
+
+    function uploadImageDirect(
+        filePath,
+        file,
+        accessToken
+    ) {
+
+        return new Promise(
+            function (resolve, reject) {
+
+                const xhr =
+                    new XMLHttpRequest();
+
+
+                const uploadUrl =
+                    SUPABASE_URL +
+                    "/storage/v1/object/products/" +
+                    filePath
+                        .split("/")
+                        .map(
+                            encodeURIComponent
+                        )
+                        .join("/");
+
+
+                xhr.open(
+                    "POST",
+                    uploadUrl,
+                    true
+                );
+
+
+                /*
+                 * Supabase authentication
+                 */
+
+                xhr.setRequestHeader(
+                    "apikey",
+                    SUPABASE_KEY
+                );
+
+
+                xhr.setRequestHeader(
+                    "Authorization",
+                    "Bearer " +
+                    accessToken
+                );
+
+
+                xhr.setRequestHeader(
+                    "Content-Type",
+                    file.type
+                );
+
+
+                xhr.setRequestHeader(
+                    "x-upsert",
+                    "false"
+                );
+
+
+                xhr.setRequestHeader(
+                    "cache-control",
+                    "3600"
+                );
+
+
+                /*
+                 * Real upload progress
+                 */
+
+                xhr.upload.onprogress =
+                    function (event) {
+
+                        if (
+                            event.lengthComputable
+                        ) {
+
+                            const percent =
+                                event.loaded /
+                                event.total *
+                                100;
+
+
+                            setProgress(
+                                percent,
+                                "Uploading product..."
+                            );
+
+                        }
+
+                    };
+
+
+                xhr.onload =
+                    function () {
+
+                        let response = null;
+
+
+                        try {
+
+                            response =
+                                xhr.responseText
+                                    ? JSON.parse(
+                                        xhr.responseText
+                                    )
+                                    : null;
+
+                        } catch (e) {
+
+                            response =
+                                xhr.responseText;
+
+                        }
+
+
+                        if (
+                            xhr.status >= 200 &&
+                            xhr.status < 300
+                        ) {
+
+                            resolve(
+                                response
+                            );
+
+                            return;
+                        }
+
+
+                        let serverMessage =
+                            "";
+
+
+                        if (
+                            response &&
+                            typeof response ===
+                            "object"
+                        ) {
+
+                            serverMessage =
+                                response.message ||
+                                response.error ||
+                                response.statusCode ||
+                                "";
+
+                        }
+
+
+                        reject(
+                            new Error(
+                                "Storage upload failed (" +
+                                xhr.status +
+                                "): " +
+                                (
+                                    serverMessage ||
+                                    xhr.statusText ||
+                                    "Unknown Supabase Storage error"
+                                )
+                            )
+                        );
+
+                    };
+
+
+                xhr.onerror =
+                    function () {
+
+                        reject(
+                            new Error(
+                                "Storage network request failed. " +
+                                "The browser could not connect to Supabase Storage. " +
+                                "Please check your internet connection and reload the page."
+                            )
+                        );
+
+                    };
+
+
+                xhr.ontimeout =
+                    function () {
+
+                        reject(
+                            new Error(
+                                "Storage upload timed out. " +
+                                "Please try again with a smaller image."
+                            )
+                        );
+
+                    };
+
+
+                xhr.onabort =
+                    function () {
+
+                        reject(
+                            new Error(
+                                "Storage upload was cancelled."
+                            )
+                        );
+
+                    };
+
+
+                xhr.timeout =
+                    120000;
+
+
+                try {
+
+                    xhr.send(file);
+
+                } catch (error) {
+
+                    reject(
+                        new Error(
+                            "Could not start the storage upload: " +
+                            error.message
+                        )
+                    );
+
+                }
+
+            }
+        );
+    }
+
+
+
+    /* =========================================
+       SAVE PRODUCT
+    ========================================= */
+
+    form.addEventListener(
+        "submit",
+        async function (event) {
+
+            event.preventDefault();
+
+
+            message.style.display =
+                "none";
+
+            errorMessage.style.display =
+                "none";
+
+
+            const title =
+                document
+                    .getElementById("title")
+                    .value
+                    .trim();
+
+
+            const price =
+                document
+                    .getElementById("price")
+                    .value;
+
+
+            const description =
+                document
+                    .getElementById("description")
+                    .value
+                    .trim();
+
+
+            const availability =
+                document
+                    .querySelector(
+                        'input[name="availability"]:checked'
+                    )
+                    .value;
+
+
+            const status =
+                document
+                    .querySelector(
+                        'input[name="status"]:checked'
+                    )
+                    .value;
+
+
+            const file =
+                imageInput.files[0];
+
+
+            /* =================================
+               VALIDATION
+            ================================= */
+
+            if (!title) {
+
+                showError(
+                    "Please enter a product title."
+                );
+
+                return;
+            }
+
+
+            if (
+                !price ||
+                Number(price) < 0
+            ) {
+
+                showError(
+                    "Please enter a valid price."
+                );
+
+                return;
+            }
+
+
+            if (!file) {
+
+                showError(
+                    "Please choose a product image."
+                );
+
+                return;
+            }
+
+
+            if (
+                file.size >
+                20 * 1024 * 1024
+            ) {
+
+                showError(
+                    "Image must be smaller than 20 MB."
+                );
+
+                return;
+            }
+
+
+            /* =================================
+               BUTTON
+            ================================= */
+
+            saveButton.disabled =
+                true;
+
+            saveButton.textContent =
+                "Uploading...";
+
+
+            progress.style.display =
+                "block";
+
+
+            setProgress(
+                0,
+                "Preparing upload..."
+            );
+
+
+            try {
+
+                /* =============================
+                   GET SESSION
+                ============================= */
+
+                const session =
+                    await getCurrentSession();
+
+
+                if (!session) {
+
+                    return;
+                }
+
+
+                const userId =
+                    session.user.id;
+
+
+                const accessToken =
+                    session.access_token;
+
+
+                setProgress(
+                    5,
+                    "Preparing product..."
+                );
+
+
+                /* =============================
+                   CREATE PATH
+                ============================= */
+
+                const filePath =
+                    createFilePath(
+                        userId,
+                        title,
+                        file
+                    );
+
+
+                console.log(
+                    "Product file path:",
+                    filePath
+                );
+
+
+                /* =============================
+                   UPLOAD IMAGE
+                ============================= */
+
+                await uploadImageDirect(
+                    filePath,
+                    file,
+                    accessToken
+                );
+
+
+                setProgress(
+                    100,
+                    "Image uploaded successfully."
+                );
+
+
+                /* =============================
+                   PUBLIC IMAGE URL
+                ============================= */
+
+                const imageUrl =
+                    SUPABASE_URL +
+                    "/storage/v1/object/public/products/" +
+                    filePath
+                        .split("/")
+                        .map(
+                            encodeURIComponent
+                        )
+                        .join("/");
+
+
+                console.log(
+                    "Product image URL:",
+                    imageUrl
+                );
+
+
+                /* =============================
+                   DATABASE
+                ============================= */
+
+                setProgress(
+                    100,
+                    "Saving product details..."
+                );
+
+
+                const {
+                    data: productData,
+                    error: insertError
+                } =
+                    await supabaseClient
+                        .from("products")
+                        .insert({
+
+                            title:
+                                title,
+
+                            price:
+                                Number(price),
+
+                            description:
+                                description,
+
+                            image_url:
+                                imageUrl,
+
+                            status:
+                                availability,
+
+                            active:
+                                status ===
+                                "published"
+
+                        })
+                        .select()
+                        .single();
+
+
+                if (insertError) {
+
+                    console.error(
+                        "DATABASE ERROR:",
+                        insertError
+                    );
+
+
+                    /*
+                     * Try to remove the uploaded
+                     * image if database save fails.
+                     */
+
+                    try {
+
+                        await supabaseClient
+                            .storage
+                            .from("products")
+                            .remove([
+                                filePath
+                            ]);
+
+                    } catch (
+                        cleanupError
+                    ) {
+
+                        console.error(
+                            "Cleanup error:",
+                            cleanupError
+                        );
+
+                    }
+
+
+                    throw new Error(
+                        "Product database save failed: " +
+                        (
+                            insertError.message ||
+                            "Unknown database error"
+                        )
+                    );
+                }
+
+
+                console.log(
+                    "Product saved:",
+                    productData
+                );
+
+
+                /* =============================
+                   SUCCESS
+                ============================= */
+
+                setProgress(
+                    100,
+                    "Product saved successfully."
+                );
+
+
+                saveButton.textContent =
+                    "Saved ✓";
+
+
+                showMessage(
+                    "Product added successfully. Redirecting to dashboard..."
+                );
+
+
+                setTimeout(
+                    function () {
+
+                        window.location.href =
+                            "dashboard.html";
+
+                    },
+                    1500
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "COMPLETE SAVE ERROR:",
+                    error
+                );
+
+
+                progress.style.display =
+                    "none";
+
+
+                saveButton.disabled =
+                    false;
+
+
+                saveButton.textContent =
+                    "Save Product";
+
+
+                showError(
+                    error.message ||
+                    "Something went wrong while saving the product."
+                );
+
+            }
+
+        }
+    );
+
+
+
+    /* =========================================
+       CANCEL
+    ========================================= */
+
+    cancelButton.addEventListener(
+        "click",
+        function () {
+
+            window.location.href =
+                "dashboard.html";
+
+        }
+    );
+
+
+
+    /* =========================================
+       PAGE START
+    ========================================= */
+
+    async function startPage() {
+
+        try {
+
+            await getCurrentSession();
+
+        } catch (error) {
+
+            console.error(
+                "PAGE START ERROR:",
+                error
+            );
+
+            showError(
+                error.message
+            );
+
+        }
+
+    }
+
+
+    startPage();
+
+</script>
+
+
+</body>
+
+  </html>
