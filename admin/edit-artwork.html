@@ -1010,6 +1010,24 @@ function renderForm(artwork) {
 
                 <div class="form-group">
 
+                    <label for="medium">
+                        Medium
+                    </label>
+
+                    <input
+                        type="text"
+                        id="medium"
+                        value="${escapeHtml(
+                            artwork.medium || ""
+                        )}"
+                        placeholder="e.g. Charcoal on paper"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
                     <label for="category">
                         Category
                     </label>
@@ -1596,6 +1614,12 @@ async function saveArtwork(
             ).value.trim();
 
 
+        const medium =
+            document.getElementById(
+                "medium"
+            ).value.trim();
+
+
         const category =
             document.getElementById(
                 "category"
@@ -1702,6 +1726,7 @@ async function saveArtwork(
                 .from("artworks")
                 .update({
                     title: title,
+                    medium: medium,
                     category: category,
                     description: description,
                     image_url: imageUrl,
