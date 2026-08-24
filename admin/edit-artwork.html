@@ -15,7 +15,7 @@
         content="#f7f4ee"
     >
 
-    <title>Edit Artwork — Artomb Studios</title>
+    <title>Edit Product — Artomb Studios</title>
 
     <style>
 
@@ -703,16 +703,16 @@
     <section class="intro">
 
         <p class="eyebrow">
-            Artwork Management
+            Product Management
         </p>
 
         <h1>
             Edit<br>
-            artwork.
+            product.
         </h1>
 
         <p class="intro-text">
-            Update your artwork details and
+            Update your product details and
             choose a new image directly from
             your phone gallery.
         </p>
@@ -735,7 +735,7 @@
     >
 
         <div class="loading">
-            Loading artwork...
+            Loading product...
         </div>
 
     </div>
@@ -803,7 +803,7 @@ const message =
 
 
 /* =========================================
-   ARTWORK ID
+   PRODUCT ID
 ========================================= */
 
 const params =
@@ -811,15 +811,15 @@ const params =
         window.location.search
     );
 
-const artworkId =
+const productId =
     params.get("id");
 
 
 /* =========================================
-   CURRENT ARTWORK
+   CURRENT PRODUCT
 ========================================= */
 
-let currentArtwork = null;
+let currentProduct = null;
 
 
 /* =========================================
@@ -902,21 +902,21 @@ async function checkLogin() {
 
 
 /* =========================================
-   LOAD ARTWORK
+   LOAD PRODUCT
 ========================================= */
 
-async function loadArtwork() {
+async function loadProduct() {
 
-    if (!artworkId) {
+    if (!productId) {
 
         showMessage(
-            "No artwork was selected. Please return to the dashboard and choose an artwork to edit.",
+            "No product was selected. Please return to the dashboard and choose a product to edit.",
             "error"
         );
 
         formCard.innerHTML = `
             <div class="loading">
-                Artwork ID is missing.
+                Product ID is missing.
             </div>
         `;
 
@@ -930,11 +930,11 @@ async function loadArtwork() {
         error
     } =
         await supabaseClient
-            .from("artworks")
+            .from("products")
             .select("*")
             .eq(
                 "id",
-                artworkId
+                productId
             )
             .single();
 
@@ -942,19 +942,19 @@ async function loadArtwork() {
     if (error) {
 
         console.error(
-            "LOAD ARTWORK ERROR:",
+            "LOAD PRODUCT ERROR:",
             error
         );
 
         showMessage(
-            "Could not load artwork: " +
+            "Could not load product: " +
             error.message,
             "error"
         );
 
         formCard.innerHTML = `
             <div class="loading">
-                Unable to load artwork.
+                Unable to load product.
             </div>
         `;
 
@@ -963,7 +963,7 @@ async function loadArtwork() {
     }
 
 
-    currentArtwork = data;
+    currentProduct = data;
 
     renderForm(data);
 
@@ -974,33 +974,33 @@ async function loadArtwork() {
    RENDER FORM
 ========================================= */
 
-function renderForm(artwork) {
+function renderForm(product) {
 
     formCard.innerHTML = `
 
         <form id="editForm">
 
 
-            <!-- ARTWORK DETAILS -->
+            <!-- PRODUCT DETAILS -->
 
             <div class="form-section">
 
                 <h2 class="section-title">
-                    Artwork Details
+                    Product Details
                 </h2>
 
 
                 <div class="form-group">
 
                     <label for="title">
-                        Artwork Title
+                        Product Title
                     </label>
 
                     <input
                         type="text"
                         id="title"
                         value="${escapeHtml(
-                            artwork.title || ""
+                            product.title || ""
                         )}"
                         required
                     >
@@ -1010,35 +1010,19 @@ function renderForm(artwork) {
 
                 <div class="form-group">
 
-                    <label for="medium">
-                        Medium
+                    <label for="price">
+                        Price (₹)
                     </label>
 
                     <input
-                        type="text"
-                        id="medium"
+                        type="number"
+                        id="price"
+                        min="0"
+                        step="0.01"
                         value="${escapeHtml(
-                            artwork.medium || ""
+                            product.price ?? ""
                         )}"
-                        placeholder="e.g. Charcoal on paper"
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="category">
-                        Category
-                    </label>
-
-                    <input
-                        type="text"
-                        id="category"
-                        value="${escapeHtml(
-                            artwork.category || ""
-                        )}"
-                        placeholder="e.g. Charcoal, Graphite, Portrait"
+                        required
                     >
 
                 </div>
@@ -1052,9 +1036,9 @@ function renderForm(artwork) {
 
                     <textarea
                         id="description"
-                        placeholder="Write something about this artwork..."
+                        placeholder="Write something about this product..."
                     >${escapeHtml(
-                        artwork.description || ""
+                        product.description || ""
                     )}</textarea>
 
                 </div>
@@ -1068,7 +1052,7 @@ function renderForm(artwork) {
             <div class="form-section">
 
                 <h2 class="section-title">
-                    Artwork Image
+                    Product Image
                 </h2>
 
 
@@ -1091,7 +1075,7 @@ function renderForm(artwork) {
                         </h3>
 
                         <p>
-                            Choose a new artwork image
+                            Choose a new product image
                             directly from your phone.
                         </p>
 
@@ -1124,7 +1108,7 @@ function renderForm(artwork) {
 
 
                     ${
-                        artwork.image_url
+                        product.image_url
                         ?
                         `
                         <p class="current-image-label">
@@ -1138,9 +1122,9 @@ function renderForm(artwork) {
 
                             <img
                                 src="${escapeHtml(
-                                    artwork.image_url
+                                    product.image_url
                                 )}"
-                                alt="Current artwork"
+                                alt="Current product"
                             >
 
                         </div>
@@ -1159,7 +1143,7 @@ function renderForm(artwork) {
                         <img
                             id="newPreviewImage"
                             src=""
-                            alt="New artwork preview"
+                            alt="New product preview"
                         >
 
                     </div>
@@ -1170,7 +1154,7 @@ function renderForm(artwork) {
 
 
 
-            <!-- FEATURED -->
+            <!-- PUBLISHING & AVAILABILITY -->
 
             <div class="form-section">
 
@@ -1184,12 +1168,12 @@ function renderForm(artwork) {
                     <div class="featured-info">
 
                         <h3>
-                            Featured Artwork
+                            Published
                         </h3>
 
                         <p>
-                            Show this artwork in
-                            your featured collection.
+                            Show this product in
+                            the public Artomb Shop.
                         </p>
 
                     </div>
@@ -1199,9 +1183,51 @@ function renderForm(artwork) {
 
                         <input
                             type="checkbox"
-                            id="featured"
+                            id="active"
                             ${
-                                artwork.featured
+                                product.active
+                                ? "checked"
+                                : ""
+                            }
+                        >
+
+                        <span
+                            class="toggle-slider"
+                        >
+                        </span>
+
+                    </label>
+
+                </div>
+
+
+
+                <div
+                    class="featured-row"
+                    style="margin-top: 12px;">
+
+                    <div class="featured-info">
+
+                        <h3>
+                            Mark as Sold
+                        </h3>
+
+                        <p>
+                            Show a "Sold" badge instead
+                            of the price on this product.
+                        </p>
+
+                    </div>
+
+
+                    <label class="toggle">
+
+                        <input
+                            type="checkbox"
+                            id="sold"
+                            ${
+                                product.status ===
+                                "sold"
                                 ? "checked"
                                 : ""
                             }
@@ -1217,6 +1243,7 @@ function renderForm(artwork) {
                 </div>
 
             </div>
+
 
 
 
@@ -1264,7 +1291,7 @@ function renderForm(artwork) {
         .getElementById("editForm")
         .addEventListener(
             "submit",
-            saveArtwork
+            saveProduct
         );
 
 }
@@ -1396,7 +1423,7 @@ function createFileName(file) {
 
 
     const cleanId =
-        String(artworkId)
+        String(productId)
             .replace(
                 /[^a-zA-Z0-9-_]/g,
                 ""
@@ -1437,7 +1464,7 @@ async function uploadNewImage(file) {
     } =
         await supabaseClient
             .storage
-            .from("artworks")
+            .from("products")
             .upload(
                 filePath,
                 file,
@@ -1469,7 +1496,7 @@ async function uploadNewImage(file) {
     } =
         supabaseClient
             .storage
-            .from("artworks")
+            .from("products")
             .getPublicUrl(
                 filePath
             );
@@ -1511,7 +1538,7 @@ async function deleteOldImage(
     try {
 
         const marker =
-            "/storage/v1/object/public/artworks/";
+            "/storage/v1/object/public/products/";
 
 
         const index =
@@ -1549,7 +1576,7 @@ async function deleteOldImage(
         } =
             await supabaseClient
                 .storage
-                .from("artworks")
+                .from("products")
                 .remove([
                     oldPath
                 ]);
@@ -1579,10 +1606,10 @@ async function deleteOldImage(
 
 
 /* =========================================
-   SAVE ARTWORK
+   SAVE PRODUCT
 ========================================= */
 
-async function saveArtwork(
+async function saveProduct(
     event
 ) {
 
@@ -1614,16 +1641,10 @@ async function saveArtwork(
             ).value.trim();
 
 
-        const medium =
+        const price =
             document.getElementById(
-                "medium"
-            ).value.trim();
-
-
-        const category =
-            document.getElementById(
-                "category"
-            ).value.trim();
+                "price"
+            ).value;
 
 
         const description =
@@ -1632,9 +1653,15 @@ async function saveArtwork(
             ).value.trim();
 
 
-        const featured =
+        const active =
             document.getElementById(
-                "featured"
+                "active"
+            ).checked;
+
+
+        const sold =
+            document.getElementById(
+                "sold"
             ).checked;
 
 
@@ -1647,7 +1674,19 @@ async function saveArtwork(
         if (!title) {
 
             throw new Error(
-                "Please enter an artwork title."
+                "Please enter a product title."
+            );
+
+        }
+
+
+        if (
+            price === "" ||
+            Number(price) < 0
+        ) {
+
+            throw new Error(
+                "Please enter a valid price."
             );
 
         }
@@ -1678,7 +1717,7 @@ async function saveArtwork(
         ========================= */
 
         let imageUrl =
-            currentArtwork.image_url || "";
+            currentProduct.image_url || "";
 
 
         let newUploadedPath =
@@ -1716,25 +1755,25 @@ async function saveArtwork(
         ========================= */
 
         saveButton.textContent =
-            "Saving Artwork...";
+            "Saving Product...";
 
 
         const {
             error
         } =
             await supabaseClient
-                .from("artworks")
+                .from("products")
                 .update({
                     title: title,
-                    medium: medium,
-                    category: category,
+                    price: Number(price),
                     description: description,
                     image_url: imageUrl,
-                    featured: featured
+                    active: active,
+                    status: sold ? "sold" : "available"
                 })
                 .eq(
                     "id",
-                    artworkId
+                    productId
                 );
 
 
@@ -1757,7 +1796,7 @@ async function saveArtwork(
 
                 await supabaseClient
                     .storage
-                    .from("artworks")
+                    .from("products")
                     .remove([
                         newUploadedPath
                     ]);
@@ -1766,7 +1805,7 @@ async function saveArtwork(
 
 
             throw new Error(
-                "Artwork database update failed: " +
+                "Product database update failed: " +
                 error.message
             );
 
@@ -1779,12 +1818,12 @@ async function saveArtwork(
 
         if (
             imageFile &&
-            currentArtwork.image_url &&
-            currentArtwork.image_url !== imageUrl
+            currentProduct.image_url &&
+            currentProduct.image_url !== imageUrl
         ) {
 
             await deleteOldImage(
-                currentArtwork.image_url
+                currentProduct.image_url
             );
 
         }
@@ -1795,7 +1834,7 @@ async function saveArtwork(
         ========================= */
 
         showMessage(
-            "Artwork updated successfully.",
+            "Product updated successfully.",
             "success"
         );
 
@@ -1877,7 +1916,7 @@ async function start() {
     }
 
 
-    await loadArtwork();
+    await loadProduct();
 
 }
 
