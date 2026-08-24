@@ -84,6 +84,51 @@
             border: 1px solid rgba(23,23,23,.11);
         }
 
+        .shop-item {
+            position: relative;
+        }
+
+        .shop-price-tag {
+            position: absolute;
+
+            left: 14px;
+            bottom: 14px;
+
+            padding: 7px 12px;
+
+            background: rgba(247, 244, 238, .92);
+
+            color: #11110f;
+
+            font-size: 11px;
+            letter-spacing: 1px;
+
+            backdrop-filter: blur(6px);
+        }
+
+        .shop-price-tag.sold {
+            color: #77736c;
+
+            text-decoration: line-through;
+        }
+
+        .shop-sold-badge {
+            position: absolute;
+
+            top: 14px;
+            right: 14px;
+
+            padding: 6px 10px;
+
+            background: #11110f;
+
+            color: #f7f4ee;
+
+            font-size: 9px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
     </style>
 
 </head>
@@ -834,7 +879,8 @@
         ========================== -->
 
         <section
-            class="coming-soon section-padding">
+            class="coming-soon section-padding"
+            id="shopComingSoon">
 
             <div class="coming-inner">
 
@@ -859,6 +905,53 @@
                 <span class="coming-label">
                     COMING SOON
                 </span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             SHOP (hidden until enabled)
+        ========================== -->
+
+        <section
+            class="gallery section-padding"
+            id="shopSection"
+            style="display: none;">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        THE ARTOMB SHOP
+                    </p>
+
+                    <h2>
+                        Own an
+                        original piece.
+                    </h2>
+
+                </div>
+
+
+                <p class="gallery-description">
+                    Each piece is one of a kind —
+                    once it's sold, it's gone.
+                </p>
+
+            </div>
+
+
+            <div
+                class="gallery-grid"
+                id="shopProducts">
+
+                <div class="gallery-loading">
+                    Loading shop...
+                </div>
 
             </div>
 
@@ -1346,9 +1439,217 @@
             function () {
 
                 loadPublicArtworks();
+                loadShopProducts();
 
             }
         );
+
+
+
+        /* =========================
+         * SHOP
+         *
+         * Flip SHOP_ENABLED to true
+         * whenever the shop is ready
+         * to go live. Until then the
+         * "Coming Soon" section stays
+         * visible and this never runs.
+         * =========================
+         */
+
+        const SHOP_ENABLED = false;
+
+
+        async function loadShopProducts() {
+
+            if (!SHOP_ENABLED) {
+                return;
+            }
+
+
+            const comingSoon =
+                document.getElementById(
+                    "shopComingSoon"
+                );
+
+            const shopSection =
+                document.getElementById(
+                    "shopSection"
+                );
+
+            const shopContainer =
+                document.getElementById(
+                    "shopProducts"
+                );
+
+
+            if (comingSoon) {
+
+                comingSoon.style.display =
+                    "none";
+
+            }
+
+
+            if (shopSection) {
+
+                shopSection.style.display =
+                    "";
+
+            }
+
+
+            try {
+
+                const {
+                    data,
+                    error
+                } =
+                    await supabaseClient
+                        .from("products")
+                        .select(
+                            "id,title,price,image_url,status,active,created_at"
+                        )
+                        .eq(
+                            "active",
+                            true
+                        )
+                        .order(
+                            "created_at",
+                            {
+                                ascending: false
+                            }
+                        );
+
+
+                if (error) {
+
+                    console.error(
+                        "Supabase Shop Error:",
+                        error
+                    );
+
+                    shopContainer.innerHTML = `
+                        <div class="gallery-error">
+                            Unable to load the shop right now.
+                        </div>
+                    `;
+
+                    return;
+                }
+
+
+                const products =
+                    data || [];
+
+
+                if (products.length === 0) {
+
+                    shopContainer.innerHTML = `
+                        <div class="gallery-error">
+                            The Artomb Shop is currently empty.
+                        </div>
+                    `;
+
+                    return;
+                }
+
+
+                shopContainer.innerHTML =
+                    products
+                        .map(
+                            function (
+                                product,
+                                index
+                            ) {
+
+                                const isSold =
+                                    product.status ===
+                                    "sold";
+
+
+                                const largeClass =
+                                    index === 0
+                                    ? "gallery-large"
+                                    : "";
+
+
+                                return `
+
+                                    <div
+                                        class="gallery-item shop-item ${largeClass}">
+
+                                        <div
+                                            class="gallery-placeholder dynamic-gallery-placeholder">
+
+                                            <img
+                                                src="${escapeHtml(
+                                                    product.image_url
+                                                )}"
+                                                class="dynamic-gallery-image"
+                                                alt="${escapeHtml(
+                                                    product.title ||
+                                                    "Artomb Studios Product"
+                                                )}"
+                                                loading="lazy"
+                                            >
+
+                                        </div>
+
+
+                                        <span
+                                            class="shop-price-tag ${
+                                                isSold
+                                                ? "sold"
+                                                : ""
+                                            }">
+
+                                            ₹${escapeHtml(
+                                                String(
+                                                    product.price ?? ""
+                                                )
+                                            )}
+
+                                        </span>
+
+
+                                        ${
+                                            isSold
+                                            ?
+                                            `
+                                            <span class="shop-sold-badge">
+                                                Sold
+                                            </span>
+                                            `
+                                            :
+                                            ""
+                                        }
+
+                                    </div>
+
+                                `;
+
+                            }
+                        )
+                        .join("");
+
+
+            } catch (error) {
+
+                console.error(
+                    "Shop loading failed:",
+                    error
+                );
+
+                shopContainer.innerHTML = `
+                    <div class="gallery-error">
+                        Unable to connect to the shop.
+                    </div>
+                `;
+
+            }
+
+        }
 
     </script>
 
