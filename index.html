@@ -84,49 +84,219 @@
             border: 1px solid rgba(23,23,23,.11);
         }
 
-        .shop-item {
-            position: relative;
+        /* =========================
+           SHOP
+        ========================= */
+
+        .shop-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 28px;
+
+            margin-top: 50px;
         }
 
-        .shop-price-tag {
+        .shop-card {
+            display: flex;
+            flex-direction: column;
+
+            border:
+                1px solid
+                rgba(17, 17, 15, .1);
+
+            background: var(--white);
+
+            transition:
+                transform .5s cubic-bezier(.2,.8,.2,1),
+                box-shadow .5s ease;
+        }
+
+        .shop-card:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 20px 45px
+                rgba(17, 17, 15, .08);
+        }
+
+        .shop-card-image-wrap {
+            position: relative;
+
+            width: 100%;
+
+            aspect-ratio: 1 / 1;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    140deg,
+                    #cfc8bc,
+                    #a49d91
+                );
+        }
+
+        .shop-card-image {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition:
+                transform .8s cubic-bezier(.2,.8,.2,1);
+        }
+
+        .shop-card:hover .shop-card-image {
+            transform: scale(1.045);
+        }
+
+        .shop-sold-overlay {
             position: absolute;
 
-            left: 14px;
-            bottom: 14px;
+            inset: 0;
 
-            padding: 7px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-            background: rgba(247, 244, 238, .92);
-
-            color: #11110f;
-
-            font-size: 11px;
-            letter-spacing: 1px;
-
-            backdrop-filter: blur(6px);
+            background: rgba(17, 17, 15, .38);
         }
 
-        .shop-price-tag.sold {
-            color: #77736c;
+        .shop-sold-overlay span {
+            padding: 9px 16px;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, .7);
+
+            color: var(--white);
+
+            font-size: 10px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+        }
+
+        .shop-card-body {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+
+            padding: 20px 22px 24px;
+        }
+
+        .shop-card-title {
+            font-family: var(--serif);
+
+            font-size: 20px;
+            font-weight: 400;
+
+            margin-bottom: 8px;
+
+            text-wrap: balance;
+        }
+
+        .shop-card-desc {
+            color: var(--grey);
+
+            font-size: 12.5px;
+            line-height: 1.7;
+
+            margin-bottom: 16px;
+
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+
+            overflow: hidden;
+        }
+
+        .shop-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 12px;
+
+            margin-top: auto;
+
+            padding-top: 16px;
+
+            border-top:
+                1px solid
+                rgba(17, 17, 15, .08);
+        }
+
+        .shop-card-price {
+            font-family: var(--serif);
+
+            font-size: 19px;
+
+            color: var(--gold-dark);
+        }
+
+        .shop-card-price.sold {
+            color: #a29d93;
 
             text-decoration: line-through;
         }
 
-        .shop-sold-badge {
-            position: absolute;
+        .shop-inquire-link {
+            display: inline-flex;
+            align-items: center;
 
-            top: 14px;
-            right: 14px;
+            gap: 6px;
 
-            padding: 6px 10px;
+            color: var(--black);
 
-            background: #11110f;
-
-            color: #f7f4ee;
-
-            font-size: 9px;
+            font-size: 9.5px;
             letter-spacing: 1.5px;
             text-transform: uppercase;
+
+            border-bottom:
+                1px solid
+                rgba(17, 17, 15, .35);
+
+            transition: color var(--transition);
+
+            white-space: nowrap;
+        }
+
+        .shop-inquire-link:hover {
+            color: var(--gold-dark);
+
+            border-color: var(--gold-dark);
+        }
+
+        .shop-inquire-link.disabled {
+            pointer-events: none;
+
+            color: #a29d93;
+
+            border-color: rgba(17, 17, 15, .15);
+        }
+
+        @media (max-width: 900px) {
+
+            .shop-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+                gap: 18px;
+            }
+
+        }
+
+        @media (max-width: 560px) {
+
+            .shop-grid {
+                grid-template-columns: 1fr;
+            }
+
         }
 
     </style>
@@ -946,7 +1116,7 @@
 
 
             <div
-                class="gallery-grid"
+                class="shop-grid"
                 id="shopProducts">
 
                 <div class="gallery-loading">
@@ -1508,7 +1678,7 @@
                     await supabaseClient
                         .from("products")
                         .select(
-                            "id,title,price,image_url,status,active,created_at"
+                            "id,title,description,price,image_url,status,active,created_at"
                         )
                         .eq(
                             "active",
@@ -1558,72 +1728,138 @@
                 shopContainer.innerHTML =
                     products
                         .map(
-                            function (
-                                product,
-                                index
-                            ) {
+                            function (product) {
 
                                 const isSold =
                                     product.status ===
                                     "sold";
 
 
-                                const largeClass =
-                                    index === 0
-                                    ? "gallery-large"
-                                    : "";
+                                const title =
+                                    product.title ||
+                                    "Untitled Piece";
+
+
+                                const price =
+                                    "₹" +
+                                    escapeHtml(
+                                        String(
+                                            product.price ?? ""
+                                        )
+                                    );
+
+
+                                const description =
+                                    product.description
+                                    ?
+                                    escapeHtml(
+                                        product.description
+                                    )
+                                    :
+                                    "An original hand-drawn piece from Artomb Studios.";
+
+
+                                const mailSubject =
+                                    encodeURIComponent(
+                                        "Purchase Inquiry — " +
+                                        title
+                                    );
+
+
+                                const mailBody =
+                                    encodeURIComponent(
+                                        "Hi, I'm interested in \"" +
+                                        title +
+                                        "\" (" +
+                                        price +
+                                        ") from the Artomb Studios shop. Is it still available?"
+                                    );
 
 
                                 return `
 
-                                    <div
-                                        class="gallery-item shop-item ${largeClass}">
+                                    <div class="shop-card">
 
-                                        <div
-                                            class="gallery-placeholder dynamic-gallery-placeholder">
+                                        <div class="shop-card-image-wrap">
 
                                             <img
                                                 src="${escapeHtml(
                                                     product.image_url
                                                 )}"
-                                                class="dynamic-gallery-image"
+                                                class="shop-card-image"
                                                 alt="${escapeHtml(
-                                                    product.title ||
-                                                    "Artomb Studios Product"
+                                                    title
                                                 )}"
                                                 loading="lazy"
                                             >
 
+                                            ${
+                                                isSold
+                                                ?
+                                                `
+                                                <div class="shop-sold-overlay">
+                                                    <span>
+                                                        Sold
+                                                    </span>
+                                                </div>
+                                                `
+                                                :
+                                                ""
+                                            }
+
                                         </div>
 
 
-                                        <span
-                                            class="shop-price-tag ${
-                                                isSold
-                                                ? "sold"
-                                                : ""
-                                            }">
+                                        <div class="shop-card-body">
 
-                                            ₹${escapeHtml(
-                                                String(
-                                                    product.price ?? ""
-                                                )
-                                            )}
-
-                                        </span>
+                                            <h3 class="shop-card-title">
+                                                ${escapeHtml(
+                                                    title
+                                                )}
+                                            </h3>
 
 
-                                        ${
-                                            isSold
-                                            ?
-                                            `
-                                            <span class="shop-sold-badge">
-                                                Sold
-                                            </span>
-                                            `
-                                            :
-                                            ""
-                                        }
+                                            <p class="shop-card-desc">
+                                                ${description}
+                                            </p>
+
+
+                                            <div class="shop-card-footer">
+
+                                                <span class="shop-card-price ${
+                                                    isSold
+                                                    ? "sold"
+                                                    : ""
+                                                }">
+
+                                                    ${price}
+
+                                                </span>
+
+
+                                                ${
+                                                    isSold
+                                                    ?
+                                                    `
+                                                    <span class="shop-inquire-link disabled">
+                                                        Sold Out
+                                                    </span>
+                                                    `
+                                                    :
+                                                    `
+                                                    <a
+                                                        class="shop-inquire-link"
+                                                        href="mailto:artombstudios.co@gmail.com?subject=${mailSubject}&body=${mailBody}">
+
+                                                        Inquire ↗
+
+                                                    </a>
+                                                    `
+                                                }
+
+                                            </div>
+
+                                        </div>
 
                                     </div>
 
