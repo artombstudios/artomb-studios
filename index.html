@@ -21,6 +21,10 @@
 
     <title>Artomb Studios — Art Beyond Imagination</title>
 
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+
     <link rel="stylesheet" href="style.css">
 
     <style>
@@ -299,6 +303,53 @@
 
         }
 
+        /* =========================
+           LOGO / BRAND MARK
+        ========================= */
+
+        .brand-icon {
+            width: 42px;
+            height: 42px;
+
+            object-fit: contain;
+
+            flex-shrink: 0;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+
+            line-height: 1;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+        }
+
+        .footer-brand-icon {
+            width: 40px;
+            height: 40px;
+
+            object-fit: contain;
+
+            flex-shrink: 0;
+        }
+
+        .loader-logo-image {
+            width: 130px;
+            height: 130px;
+
+            object-fit: contain;
+
+            margin: 0 auto;
+
+            display: block;
+        }
+
     </style>
 
 </head>
@@ -312,9 +363,11 @@
 
     <div class="page-loader" id="pageLoader">
 
-        <div class="loader-logo">
-            ARTOMB
-        </div>
+        <img
+            src="logo-badge-320.png"
+            alt="Artomb Studios"
+            class="loader-logo-image"
+        >
 
         <div class="loader-line"></div>
 
@@ -331,12 +384,23 @@
 
             <a href="#home" class="brand">
 
-                <span class="brand-main">
-                    ARTOMB
-                </span>
+                <img
+                    src="logo-badge-160.png"
+                    srcset="logo-badge-160.png 1x, logo-badge-320.png 2x"
+                    alt="Artomb Studios"
+                    class="brand-icon"
+                >
 
-                <span class="brand-sub">
-                    STUDIOS
+                <span class="brand-text">
+
+                    <span class="brand-main">
+                        ARTOMB
+                    </span>
+
+                    <span class="brand-sub">
+                        STUDIOS
+                    </span>
+
                 </span>
 
             </a>
@@ -1213,6 +1277,13 @@
 
             <div class="footer-brand">
 
+                <img
+                    src="logo-badge-160.png"
+                    srcset="logo-badge-160.png 1x, logo-badge-320.png 2x"
+                    alt="Artomb Studios"
+                    class="footer-brand-icon"
+                >
+
                 <span class="brand-main">
                     ARTOMB
                 </span>
@@ -1627,7 +1698,7 @@
          * =========================
          */
 
-        const SHOP_ENABLED = true;
+        const SHOP_ENABLED = false;
 
 
         async function loadShopProducts() {
@@ -1891,4 +1962,4 @@
 
 
 </body>
-</html>
+    </html>
